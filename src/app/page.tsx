@@ -1,236 +1,148 @@
-'use client';
-
-import React from 'react';
+// OPIc Bank 홈 — 히어로 + 6개 핵심 메뉴 카드
 import Link from 'next/link';
-import { useAuth } from '@/hooks/useAuth';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { PageSEO } from '@/components/seo';
-import { pageDefaults } from '@/lib/seo/config';
+import type { Metadata } from 'next';
+import {
+  BookOpen,
+  ClipboardList,
+  MessageCircleQuestion,
+  Library,
+  Trophy,
+  StickyNote,
+} from 'lucide-react';
+
+export const metadata: Metadata = {
+  title: 'OPIc Bank — 오픽이 처음인 사람을 위한 가장 쉬운 시작',
+  description:
+    '오픽 시험 구조 이해부터 유리한 서베이 조합 추천, 질문·표현 라이브러리까지 한곳에서. 오픽 입문자를 위한 무료 학습 가이드.',
+};
+
+const menus = [
+  {
+    href: '/guide',
+    icon: BookOpen,
+    title: '오픽이 처음이라면?',
+    desc: '시험 소개부터 등급 체계, 첫 준비 순서까지',
+  },
+  {
+    href: '/survey',
+    icon: ClipboardList,
+    title: '서베이 추천',
+    desc: '목표 등급과 성향에 맞는 유리한 서베이 조합',
+    highlight: true,
+  },
+  {
+    href: '/questions',
+    icon: MessageCircleQuestion,
+    title: '질문 라이브러리',
+    desc: '콤보·돌발 주제별 실전 질문 모음',
+  },
+  {
+    href: '/expressions',
+    icon: Library,
+    title: '표현 라이브러리',
+    desc: '주제별 표현, 필러, 만능 문장 패턴',
+  },
+  {
+    href: '/grade',
+    icon: Trophy,
+    title: 'AL·IH 표현집',
+    desc: '목표 등급별 고득점 표현만 모아서',
+  },
+  {
+    href: '/notes',
+    icon: StickyNote,
+    title: '나만의 노트',
+    desc: '저장한 표현과 질문으로 만드는 암기장',
+  },
+];
 
 export default function Home() {
-  const { user, signOut } = useAuth();
-
-  // 구조화된 데이터는 layout.tsx에서 전역으로 처리됨
-
-  const features = [
-    {
-      title: '🔐 Supabase 인증',
-      description: '이메일/소셜 로그인, 회원가입, 인증 상태 관리',
-      status: 'completed',
-    },
-    {
-      title: '💳 토스페이먼츠 결제',
-      description: '카드 결제, 간편결제, 결제 승인 시스템',
-      status: 'completed',
-    },
-    {
-      title: '🎨 Shadcn/ui 컴포넌트',
-      description: '모던하고 접근성 좋은 UI 컴포넌트 라이브러리',
-      status: 'completed',
-    },
-    {
-      title: '🚀 SEO 최적화',
-      description: '동적 메타태그, 사이트맵, 구조화된 데이터',
-      status: 'completed',
-    },
-  ];
-
   return (
     <>
-      {/* SEO 메타태그 */}
-      <PageSEO
-        title={pageDefaults.home.title}
-        description={pageDefaults.home.description}
-        keywords={pageDefaults.home.keywords}
-        ogImage="/images/og/home.jpg"
-      />
+      {/* 히어로 */}
+      <section className="relative overflow-hidden">
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 -z-10 h-[420px] opacity-80 blur-3xl saturate-150"
+          style={{
+            background:
+              'radial-gradient(ellipse 55% 50% at 15% 20%, #f5e9d4 0%, transparent 55%), radial-gradient(ellipse 55% 55% at 50% 5%, #b9b9f9 0%, transparent 60%), radial-gradient(ellipse 60% 55% at 85% 20%, #665efd 0%, transparent 55%), radial-gradient(ellipse 45% 40% at 98% 45%, #ea2261 0%, transparent 50%)',
+          }}
+        />
+        <div className="mx-auto max-w-6xl px-5 pb-16 pt-20 text-center sm:pt-28">
+          <p className="mx-auto mb-5 w-fit rounded-full bg-primary-subdued/40 px-4 py-1 text-[12px] font-medium tracking-wide text-primary-press">
+            오픽 입문자를 위한 무료 가이드
+          </p>
+          <h1 className="mx-auto max-w-2xl text-[40px] leading-[1.1] tracking-[-0.03em] sm:text-[56px]">
+            오픽, 뭐부터 해야 할지
+            <br />
+            모르겠다면
+          </h1>
+          <p className="mx-auto mt-5 max-w-md text-[17px] text-muted-foreground">
+            시험 구조 이해부터 나에게 유리한 서베이 선택까지. 처음 준비하는 사람의 순서대로
+            안내합니다.
+          </p>
+          <div className="mt-8 flex justify-center gap-3">
+            <Link
+              href="/survey"
+              className="rounded-full bg-primary px-6 py-2.5 text-[15px] text-primary-foreground transition-colors hover:bg-primary-press"
+            >
+              내 서베이 조합 추천받기
+            </Link>
+            <Link
+              href="/guide"
+              className="rounded-full border border-primary px-6 py-2.5 text-[15px] text-primary transition-colors hover:bg-accent"
+            >
+              오픽이 뭔가요?
+            </Link>
+          </div>
+        </div>
+      </section>
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-        {/* 헤더 */}
-        <header className="bg-white/80 backdrop-blur-md border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <div className="flex items-center space-x-2">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  딩코딩코 스타터킷
-                </h1>
-                <Badge variant="secondary">v1.0</Badge>
-              </div>
-              <div className="flex items-center space-x-4">
-                {user ? (
-                  <div className="flex items-center space-x-4">
-                    <span className="text-sm text-gray-600">안녕하세요, {user.email}님!</span>
-                    <Button variant="outline" onClick={signOut}>
-                      로그아웃
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="space-x-2">
-                    <Link href="/auth">
-                      <Button variant="outline">로그인</Button>
-                    </Link>
-                    <Link href="/auth">
-                      <Button>시작하기</Button>
-                    </Link>
-                  </div>
+      {/* 메뉴 카드 */}
+      <section className="mx-auto max-w-6xl px-5 pb-24">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {menus.map((m) => (
+            <Link
+              key={m.href}
+              href={m.href}
+              className={`group rounded-xl border p-7 shadow-[0_1px_3px_rgba(0,55,112,0.08)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,55,112,0.08)] ${
+                m.highlight ? 'border-primary/40 bg-accent/40' : 'border-border bg-card'
+              }`}
+            >
+              <m.icon className="mb-4 size-6 text-primary" strokeWidth={1.5} />
+              <h2 className="text-[18px] tracking-tight">
+                {m.title}
+                {m.highlight && (
+                  <span className="ml-2 rounded-full bg-primary px-2 py-0.5 align-middle text-[10px] text-primary-foreground">
+                    추천
+                  </span>
                 )}
-              </div>
-            </div>
-          </div>
-        </header>
+              </h2>
+              <p className="mt-1.5 text-[14px] text-muted-foreground">{m.desc}</p>
+            </Link>
+          ))}
+        </div>
 
-        {/* 메인 컨텐츠 */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* 히어로 섹션 */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              개발 시간을{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                70% 단축
-              </span>
-              시키는
-              <br />
-              올인원 스타터킷
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Supabase 인증, 토스페이먼츠 결제, SEO 최적화까지 모든 것이 준비된 완성형 개발 환경.
-              <br />
-              강의 수강생들이 바로 핵심 기능 개발에 집중할 수 있습니다.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/payment">
-                <Button size="lg" className="min-w-[200px]">
-                  결제 시스템 체험하기
-                </Button>
-              </Link>
-              <Link href="/auth">
-                <Button variant="outline" size="lg" className="min-w-[200px]">
-                  인증 시스템 체험하기
-                </Button>
-              </Link>
-            </div>
-          </div>
-
-          {/* 기능 섹션 */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              포함된 핵심 기능들
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {features.map((feature, index) => (
-                <Card key={index} className="relative overflow-hidden">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg">{feature.title}</CardTitle>
-                      <Badge variant={feature.status === 'completed' ? 'default' : 'secondary'}>
-                        {feature.status === 'completed' ? '완료' : '진행중'}
-                      </Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>{feature.description}</CardDescription>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* 기술 스택 */}
-          <Card className="mb-16">
-            <CardHeader>
-              <CardTitle className="text-2xl text-center">사용된 기술 스택</CardTitle>
-              <CardDescription className="text-center">
-                최신 기술과 검증된 라이브러리들로 구성
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Tabs defaultValue="frontend" className="w-full">
-                <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="frontend">프론트엔드</TabsTrigger>
-                  <TabsTrigger value="backend">백엔드 & 인증</TabsTrigger>
-                  <TabsTrigger value="tools">도구 & 배포</TabsTrigger>
-                </TabsList>
-
-                <TabsContent value="frontend" className="mt-6">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Shadcn/ui'].map(
-                      (tech) => (
-                        <div
-                          key={tech}
-                          className="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg text-center"
-                        >
-                          <p className="font-semibold text-gray-900">{tech}</p>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="backend" className="mt-6">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {['Supabase', '토스페이먼츠', 'PostgreSQL', 'Row Level Security'].map(
-                      (tech) => (
-                        <div
-                          key={tech}
-                          className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg text-center"
-                        >
-                          <p className="font-semibold text-gray-900">{tech}</p>
-                        </div>
-                      ),
-                    )}
-                  </div>
-                </TabsContent>
-
-                <TabsContent value="tools" className="mt-6">
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {['Vercel', 'ESLint', 'Prettier', 'Husky', 'Commitlint'].map((tech) => (
-                      <div
-                        key={tech}
-                        className="bg-gradient-to-br from-purple-50 to-pink-50 p-4 rounded-lg text-center"
-                      >
-                        <p className="font-semibold text-gray-900">{tech}</p>
-                      </div>
-                    ))}
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </CardContent>
-          </Card>
-
-          {/* CTA 섹션 */}
-          <Card className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-            <CardContent className="text-center py-12">
-              <h2 className="text-3xl font-bold mb-4">지금 바로 시작하세요!</h2>
-              <p className="text-xl mb-8 opacity-90">
-                모든 설정이 완료된 개발 환경에서 바로 프로젝트를 시작할 수 있습니다.
-              </p>
-            </CardContent>
-          </Card>
-        </main>
-
-        {/* 푸터 */}
-        <footer className="bg-white border-t">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="text-center text-gray-600">
-              <p className="mb-2">
-                Made with ❤️ by{' '}
-                <a
-                  href="https://www.inflearn.com/users/408812/@dingcodingco"
-                  className="text-blue-600 hover:text-blue-500 font-medium"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  딩코딩코
-                </a>
-              </p>
-              <p className="text-sm">© 2025 dingcodingco. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
-      </div>
+        {/* 시작 순서 안내 */}
+        <div className="mt-16 rounded-xl bg-cream p-8 sm:p-10">
+          <h2 className="text-[24px] tracking-tight">처음이라면 이 순서로</h2>
+          <ol className="mt-5 grid gap-4 text-[15px] sm:grid-cols-3">
+            <li className="rounded-lg bg-white/70 p-5">
+              <span className="text-primary">1.</span> <strong>시험 이해</strong> — 오픽이 어떤
+              시험인지, 등급이 어떻게 나뉘는지 10분만 읽어보세요.
+            </li>
+            <li className="rounded-lg bg-white/70 p-5">
+              <span className="text-primary">2.</span> <strong>서베이 전략</strong> — 시험 범위를
+              결정하는 건 서베이예요. 내게 유리한 조합을 추천받으세요.
+            </li>
+            <li className="rounded-lg bg-white/70 p-5">
+              <span className="text-primary">3.</span> <strong>질문·표현 연습</strong> — 내 서베이
+              기준의 질문과 표현을 노트에 저장하며 연습하세요.
+            </li>
+          </ol>
+        </div>
+      </section>
     </>
   );
 }
