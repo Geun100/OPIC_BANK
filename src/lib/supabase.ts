@@ -1,8 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 import { createBrowserClient } from '@supabase/ssr';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+// 키 미설정(placeholder) 상태에서도 앱이 죽지 않도록 유효성 검사 후 더미 값으로 대체
+const rawUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? '';
+const rawKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
+
+export const isSupabaseConfigured = rawUrl.startsWith('https://') && rawKey.length > 40;
+
+const supabaseUrl = isSupabaseConfigured ? rawUrl : 'https://placeholder.supabase.co';
+const supabaseAnonKey = isSupabaseConfigured ? rawKey : 'public-anon-key-placeholder';
 
 // 클라이언트 사이드용 Supabase 클라이언트
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
