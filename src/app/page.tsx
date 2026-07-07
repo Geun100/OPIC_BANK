@@ -115,7 +115,7 @@ export default function Home() {
                 {m.title}
                 {m.highlight && (
                   <span className="ml-2 rounded-full bg-primary px-2 py-0.5 align-middle text-[10px] text-primary-foreground">
-                    추천
+                    여기부터
                   </span>
                 )}
               </h2>
