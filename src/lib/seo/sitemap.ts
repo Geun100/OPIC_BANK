@@ -1,13 +1,27 @@
 import { SitemapUrl, RobotsRule } from '@/types/seo';
 import { seoConfig } from './config';
 
-// 정적 페이지 URL들 (실제 프로젝트에 맞게 수정)
+// 정적 페이지 URL들 — OPIc Bank 라우트
 const staticPages = [
   { url: '/', priority: 1.0, changeFrequency: 'daily' as const },
-  { url: '/auth', priority: 0.8, changeFrequency: 'monthly' as const },
-  { url: '/payment', priority: 0.8, changeFrequency: 'monthly' as const },
-  { url: '/payment/success', priority: 0.5, changeFrequency: 'monthly' as const },
-  { url: '/payment/fail', priority: 0.5, changeFrequency: 'monthly' as const },
+  { url: '/guide', priority: 0.9, changeFrequency: 'monthly' as const },
+  { url: '/guide/what-is-opic', priority: 0.9, changeFrequency: 'monthly' as const },
+  { url: '/guide/exam-process', priority: 0.9, changeFrequency: 'monthly' as const },
+  { url: '/guide/grades', priority: 0.9, changeFrequency: 'monthly' as const },
+  { url: '/guide/first-steps', priority: 0.9, changeFrequency: 'monthly' as const },
+  { url: '/survey', priority: 1.0, changeFrequency: 'monthly' as const },
+  { url: '/questions', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/questions/combo', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/questions/sudden', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/questions/trends', priority: 0.7, changeFrequency: 'weekly' as const },
+  { url: '/questions/expected', priority: 0.7, changeFrequency: 'weekly' as const },
+  { url: '/expressions', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/expressions/topics', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/expressions/filler', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/expressions/patterns', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/expressions/emotions', priority: 0.7, changeFrequency: 'weekly' as const },
+  { url: '/expressions/connectors', priority: 0.7, changeFrequency: 'weekly' as const },
+  { url: '/grade', priority: 0.8, changeFrequency: 'weekly' as const },
 ];
 
 // 동적 페이지 URL 생성 함수

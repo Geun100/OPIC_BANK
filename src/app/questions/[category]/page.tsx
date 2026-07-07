@@ -1,0 +1,114 @@
+// 질문 카테고리 페이지 — 콤보/돌발/경향/예상 질문을 렌더링
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { comboTopics, suddenTopics, trendNotes, expectedQuestions } from '@/data/questions';
+import { SaveButton } from '@/components/save-button';
+
+const categories = {
+  combo: {
+    title: '콤보 주제',
+    desc: '같은 주제로 묘사 → 습관 → 경험 순서로 이어지는 질문 세트예요. 내 서베이에서 고른 주제만 골라 준비하세요.',
+  },
+  sudden: {
+    title: '돌발 주제',
+    desc: '서베이 선택과 무관하게 출제되는 주제예요. 빈출 주제는 기본 답변을 만들어 두는 것이 안전해요.',
+  },
+  trends: {
+    title: '최신 출제 경향',
+    desc: '시험 구조와 최근 출제 패턴을 요약했어요.',
+  },
+  expected: {
+    title: '예상 질문 모음',
+    desc: '사실상 고정으로 출제되는 질문이에요. 첫 질문인 자기소개는 반드시 준비하세요.',
+  },
+} as const;
+
+type Category = keyof typeof categories;
+
+export function generateStaticParams() {
+  return Object.keys(categories).map((category) => ({ category }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+  const meta = categories[category as Category];
+  if (!meta) return {};
+  return {
+    title: `오픽 ${meta.title}`,
+    description: meta.desc,
+  };
+}
+
+export default async function QuestionCategoryPage({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
+  const { category } = await params;
+  const meta = categories[category as Category];
+  if (!meta) notFound();
+
+  return (
+    <div className="mx-auto max-w-3xl px-5 py-16">
+      <Link href="/questions" className="text-[13px] text-primary hover:underline">
+        ← 질문 라이브러리
+      </Link>
+      <h1 className="mt-3 text-[32px]">{meta.title}</h1>
+      <p className="mt-2 text-[15px] text-muted-foreground">{meta.desc}</p>
+
+      <div className="mt-10 flex flex-col gap-8">
+        {(category === 'combo' || category === 'sudden') &&
+          (category === 'combo' ? comboTopics : suddenTopics).map((topic) => (
+            <section key={topic.name} className="rounded-xl border border-border bg-card p-6">
+              <h2 className="text-[20px]">{topic.name}</h2>
+              {topic.note && <p className="mt-1 text-[13px] text-primary">{topic.note}</p>}
+              <ul className="mt-4 flex flex-col gap-3">
+                {topic.questions.map((q) => (
+                  <li key={q.en} className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[15px]">{q.en}</p>
+                      <p className="mt-0.5 text-[13px] text-muted-foreground">{q.ko}</p>
+                    </div>
+                    <SaveButton id={q.en} type="question" en={q.en} ko={q.ko} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+
+        {category === 'trends' &&
+          trendNotes.map((n) => (
+            <section key={n.title} className="rounded-xl border border-border bg-card p-6">
+              <h2 className="text-[18px]">{n.title}</h2>
+              <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">{n.body}</p>
+            </section>
+          ))}
+
+        {category === 'expected' && (
+          <section className="rounded-xl border border-border bg-card p-6">
+            <ul className="flex flex-col gap-4">
+              {expectedQuestions.map((q) => (
+                <li key={q.en} className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-[15px]">{q.en}</p>
+                    <p className="mt-0.5 text-[13px] text-muted-foreground">{q.ko}</p>
+                  </div>
+                  <SaveButton id={q.en} type="question" en={q.en} ko={q.ko} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
+
+      <p className="mt-10 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
+        질문은 공개된 수험 후기 기반으로 정리한 연습용 예시예요. 실제 시험 문항과 다를 수 있어요.
+      </p>
+    </div>
+  );
+}
