@@ -1,5 +1,6 @@
 // 가이드 3 — 등급 체계 설명
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { GuideArticle } from '@/components/guide-article';
 
 export const metadata: Metadata = {
@@ -84,7 +85,9 @@ export default function Page() {
         </ul>
         <p className="mt-3">
           목표 등급을 정했다면, 그에 맞는 서베이·난이도 전략을{' '}
-          <a href="/survey“ className=”text-primary hover:underline">서베이 추천</a>
+          <Link href="/survey" className="text-primary hover:underline">
+            서베이 추천
+          </Link>
           에서 받아보세요.
         </p>
       </section>
