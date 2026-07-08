@@ -13,6 +13,7 @@ const staticPages = [
   { url: '/questions', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/questions/combo', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/questions/sudden', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/questions/roleplay', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/questions/trends', priority: 0.7, changeFrequency: 'weekly' as const },
   { url: '/questions/expected', priority: 0.7, changeFrequency: 'weekly' as const },
   { url: '/expressions', priority: 0.8, changeFrequency: 'weekly' as const },

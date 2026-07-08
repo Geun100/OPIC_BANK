@@ -1,7 +1,7 @@
 // 질문 라이브러리 인덱스 — 콤보/돌발/경향/예상 4개 섹션 안내
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { comboTopics, suddenTopics, expectedQuestions } from '@/data/questions';
+import { comboTopics, suddenTopics, roleplayTopics, expectedQuestions } from '@/data/questions';
 
 export const metadata: Metadata = {
   title: '오픽 질문 라이브러리 — 콤보·돌발 주제별 실전 질문',
@@ -21,7 +21,12 @@ export default function QuestionsIndex() {
       title: '돌발 주제',
       desc: `${suddenTopics.length}개 주제 — 서베이와 무관하게 나오는 질문`,
     },
-    { href: '/questions/trends', title: '최신 출제 경향', desc: '시험 구조와 최근 출제 패턴 메모' },
+    {
+      href: '/questions/roleplay',
+      title: '롤플레이 (11~13번)',
+      desc: `${roleplayTopics.length}개 유형 — 질문하기·문제 해결·경험 말하기 상황극`,
+    },
+    { href: '/questions/trends', title: '최신 출제 경향', desc: '15문항 구조와 유형별 공략 메모' },
     {
       href: '/questions/expected',
       title: '예상 질문 모음',

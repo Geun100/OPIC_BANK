@@ -197,40 +197,77 @@ export const expressionCategories: ExpressionCategory[] = [
   {
     slug: 'filler',
     name: '필러 (Filler)',
-    description: '답변이 끊기지 않게 자연스럽게 시간을 벌어주는 연결 표현',
+    description:
+      '답변이 끊기지 않게 자연스럽게 시간을 벌어주는 연결 표현 — 침묵 대신 필러로 잇는 것이 유창성 점수의 핵심이에요',
     groups: [
       {
-        title: '답변 시작할 때',
+        title: '답변 시작 — 쉬운 질문이 나왔을 때',
         items: [
-          { en: 'Well...', ko: '음...', example: "Well, that's an interesting question." },
-          { en: "That's a good question.", ko: '좋은 질문이네요 (생각할 시간 벌기)' },
-          { en: 'Hmm, let me think...', ko: '음, 생각해볼게요...' },
-          { en: 'Oh, where do I start?', ko: '오, 어디서부터 말하지?' },
+          {
+            en: 'Oh, I love this question.',
+            ko: '오, 이 질문 너무 좋아요 (자신 있게 시작하는 인상)',
+          },
+          {
+            en: 'I actually have a pretty vivid memory of this.',
+            ko: '이건 꽤 생생하게 기억나요 (경험 답변 도입에 최적)',
+          },
+        ],
+      },
+      {
+        title: '답변 시작 — 어려운 질문이 나왔을 때',
+        items: [
+          { en: "That's a tough one.", ko: '어려운 질문이네요 (생각할 시간 벌기)' },
+          {
+            en: 'Let me think about that for a second.',
+            ko: '잠깐 생각해볼게요',
+            example: 'Hmm, let me think about that for a second... Oh, I remember!',
+          },
+          {
+            en: 'How should I put this?',
+            ko: '이걸 어떻게 표현해야 하지? (암기 답변이 아니라는 인상을 주는 혼잣말)',
+          },
+        ],
+      },
+      {
+        title: '말 보정·구체화할 때',
+        items: [
+          {
+            en: 'I mean...',
+            ko: '그러니까 제 말은... (방금 한 말을 구체화·정정)',
+            example: 'It was fun. I mean, it was the best trip I ever had.',
+          },
+          { en: 'Actually, to be honest...', ko: '사실 솔직히 말하면... (반전·솔직한 생각 앞에)' },
+          { en: 'You know...', ko: '있잖아요 (문장 사이 자연스러운 연결)' },
+          { en: 'Basically...', ko: '기본적으로/한마디로...' },
         ],
       },
       {
         title: '생각이 안 날 때',
         items: [
           { en: 'What was it called...', ko: '그게 뭐였더라...' },
-          { en: "It's on the tip of my tongue.", ko: '혀끝에서 맴도네요.' },
           { en: 'As far as I remember...', ko: '내 기억으로는...' },
-          { en: 'If I remember correctly...', ko: '내가 제대로 기억한다면...' },
+          { en: 'Let me see...', ko: '어디 보자...' },
         ],
       },
       {
-        title: '말 이어갈 때',
+        title: '다음 이야기로 넘어갈 때 (브릿지)',
         items: [
-          { en: 'Actually...', ko: '사실은...' },
-          { en: 'To be honest...', ko: '솔직히 말하면...' },
+          {
+            en: 'What else can I say...',
+            ko: '또 무슨 말을 할 수 있을까... (말이 끊길 것 같을 때 다음 에피소드를 떠올리는 다리)',
+          },
           { en: 'Come to think of it...', ko: '생각해 보니...' },
-          { en: 'You know what?', ko: '있잖아요' },
+          { en: 'Oh, and one more thing.', ko: '아, 하나 더요.' },
         ],
       },
       {
         title: '마무리할 때',
         items: [
           { en: "That's pretty much it.", ko: '대충 그게 다예요.' },
-          { en: "So yeah, that's the story.", ko: '네, 그런 이야기예요.' },
+          {
+            en: "So yeah, that's why I love it.",
+            ko: '그래서 제가 좋아하는 거예요 (이유로 마무리)',
+          },
           { en: 'Anyway, long story short...', ko: '어쨌든 요약하자면...' },
         ],
       },
@@ -314,6 +351,49 @@ export const expressionCategories: ExpressionCategory[] = [
             ko: '예전엔 ~였는데 지금은 ~',
             example: "It used to be a quiet town, but now it's full of cafés.",
           },
+          {
+            en: 'A is ..., while B is ..., but personally I prefer A because ...',
+            ko: 'A는 ~고 B는 ~지만, 나는 ~해서 A가 좋아요 (비교 답변은 선호로 마무리하면 완성도가 올라가요)',
+            example:
+              'Parks are free and relaxing, while cafés cost money, but personally I prefer parks because I can bring my dog.',
+          },
+        ],
+      },
+      {
+        title: '답변 뼈대 — What · Feeling · Why',
+        items: [
+          {
+            en: 'I usually ... (What)',
+            ko: '1단계: 무엇을 하는지',
+            example: 'I usually listen to music at the café.',
+          },
+          {
+            en: 'It makes me feel ... (Feeling)',
+            ko: '2단계: 어떤 감정인지',
+            example: 'It makes me feel so refreshed.',
+          },
+          {
+            en: "That's mainly because ... (Why)",
+            ko: '3단계: 왜 그런지 — 이 3단계만 지켜도 문장이 자연스럽게 늘어나요',
+            example: "That's mainly because I'm really into dance music these days.",
+          },
+        ],
+      },
+      {
+        title: '위기 탈출 — 정말 모르는 질문이 나왔을 때',
+        items: [
+          {
+            en: "Hmm... that's a tough question, Ava.",
+            ko: '음... 어려운 질문이네요 (침묵하지 말고 일단 반응)',
+          },
+          {
+            en: "Actually, I don't have any experience with this.",
+            ko: '사실 이건 경험이 없어요 (솔직하게 말하는 것도 전략)',
+          },
+          {
+            en: "So I think I'd better move on to the next question.",
+            ko: '다음 질문으로 넘어가는 게 좋겠어요 (한 문제는 이렇게 패스해도 IH 달성 후기가 있어요)',
+          },
         ],
       },
     ],
@@ -321,29 +401,63 @@ export const expressionCategories: ExpressionCategory[] = [
   {
     slug: 'emotions',
     name: '감정 표현',
-    description: '답변에 생동감을 더하는 감정·리액션 표현',
+    description:
+      '"It was good"만 반복하면 암기한 답처럼 들려요. 구체적인 감정 형용사가 진짜 내 경험처럼 만들어줘요',
     groups: [
       {
-        title: '기쁨·신남',
+        title: '긍정 — good을 업그레이드',
         items: [
-          { en: 'I was over the moon.', ko: '정말 뛸 듯이 기뻤어요.' },
-          { en: 'It totally made my day.', ko: '그 덕에 하루가 행복했어요.' },
-          { en: "I couldn't stop smiling.", ko: '웃음이 멈추지 않았어요.' },
+          { en: 'amazing / awesome / fantastic', ko: 'good 대신 쓰는 업그레이드 3종' },
+          { en: 'I was thrilled.', ko: '완전 신났어요/설렜어요.' },
+          {
+            en: 'relaxed / peaceful',
+            ko: '편안한, 평화로운 (힐링 스토리에)',
+            example: 'I felt so relaxed after the walk in the park.',
+          },
+          {
+            en: "I'm really into ...",
+            ko: '~에 푹 빠져 있어요 (몰입·애정)',
+            example: "I'm really into indie music these days.",
+          },
+          {
+            en: 'chill',
+            ko: '느긋한, 여유로운 (집·카페 답변의 필수템)',
+            example: 'I just stayed home and had a chill day.',
+          },
         ],
       },
       {
-        title: '놀람',
+        title: '부정 — bad를 업그레이드',
         items: [
+          {
+            en: 'frustrating',
+            ko: '답답한, 짜증 나는 (문제 상황 답변 필수템)',
+            example: "It was so frustrating because the app didn't work.",
+          },
+          {
+            en: 'exhausted',
+            ko: 'tired를 넘어 완전히 녹초가 된',
+            example: 'After the trip, I was totally exhausted.',
+          },
+          { en: 'overwhelmed / stressful', ko: '벅찬, 스트레스 받는' },
+          { en: 'annoyed / irritated', ko: '짜증 난' },
+          { en: 'disappointed', ko: '실망한' },
+        ],
+      },
+      {
+        title: '상황에 생동감을 주는 표현',
+        items: [
+          {
+            en: 'breathtaking',
+            ko: '숨이 멎을 듯한 (풍경·공연 묘사)',
+            example: 'The view from the top was just breathtaking.',
+          },
+          {
+            en: 'awkward',
+            ko: '어색한, 민망한 (에피소드에 감칠맛)',
+            example: 'I forgot her name, and it was so awkward.',
+          },
           { en: 'It blew my mind.', ko: '정말 놀라웠어요.' },
-          { en: "I couldn't believe my eyes.", ko: '내 눈을 의심했어요.' },
-          { en: 'It caught me off guard.', ko: '허를 찔렸어요/예상 못 했어요.' },
-        ],
-      },
-      {
-        title: '아쉬움·당황',
-        items: [
-          { en: 'It was a bummer.', ko: '아쉬웠어요.' },
-          { en: 'I was at a loss.', ko: '어쩔 줄 몰랐어요.' },
           { en: 'My mind went blank.', ko: '머릿속이 하얘졌어요.' },
         ],
       },

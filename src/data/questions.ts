@@ -215,23 +215,85 @@ export const suddenTopics: QuestionTopic[] = [
   },
 ];
 
-// 최신 출제 경향 메모
+// 롤플레이 — 11~13번 콤보로 출제되는 상황극 유형 (실제 후기 기반 3유형)
+export const roleplayTopics: QuestionTopic[] = [
+  {
+    name: '유형 ① 정보 요청하기 (질문 3~4개 던지기)',
+    note: '주어진 상황에서 상대에게 궁금한 것을 3~4가지 질문하는 유형',
+    questions: [
+      {
+        en: 'Your friend just bought a new smartphone. Call your friend and ask three or four questions about it.',
+        ko: '친구가 새 스마트폰을 샀어요. 전화해서 궁금한 점을 3~4가지 물어보세요.',
+      },
+      {
+        en: 'You want to see a doctor. Call the clinic and ask questions to make an appointment.',
+        ko: '병원에 가려고 해요. 전화로 예약에 필요한 질문을 해보세요.',
+      },
+      {
+        en: 'You are planning a trip. Call a travel agency and ask three or four questions about the package.',
+        ko: '여행을 계획 중이에요. 여행사에 전화해 상품에 대해 3~4가지 질문하세요.',
+      },
+    ],
+  },
+  {
+    name: '유형 ② 문제 상황 설명 + 대안 제시',
+    note: '유형 ①의 상황에서 문제가 생기고, 상황을 설명한 뒤 대안 2~3개를 제시하는 유형',
+    questions: [
+      {
+        en: 'You broke the smartphone you borrowed from your friend. Explain the situation and offer two or three solutions.',
+        ko: '친구에게 빌린 스마트폰을 고장 냈어요. 상황을 설명하고 대안을 2~3가지 제시하세요.',
+      },
+      {
+        en: 'You cannot make it to the appointment. Call and explain why, then suggest alternatives.',
+        ko: '예약 시간에 못 가게 됐어요. 이유를 설명하고 대안을 제시하세요.',
+      },
+      {
+        en: 'The tickets you booked have a problem. Explain the situation and give some options to resolve it.',
+        ko: '예매한 티켓에 문제가 생겼어요. 상황을 설명하고 해결 방안을 제시하세요.',
+      },
+    ],
+  },
+  {
+    name: '유형 ③ 비슷한 문제를 겪은 내 경험 말하기',
+    note: '유형 ②에 이어 “너도 비슷한 경험 있어?”로 마무리되는 유형 — 과거 경험 스토리로 대응',
+    questions: [
+      {
+        en: 'Have you ever had a problem with something you bought or borrowed? Tell me what happened and how you solved it.',
+        ko: '구매하거나 빌린 물건에 문제가 있었던 경험이 있나요? 무슨 일이었고 어떻게 해결했는지 말해주세요.',
+      },
+      {
+        en: 'Tell me about a time you had to cancel or change plans at the last minute.',
+        ko: '막판에 계획을 취소하거나 바꿔야 했던 경험을 이야기해 주세요.',
+      },
+    ],
+  },
+];
+
+// 최신 출제 경향 메모 — 실제 15문항 구조 기반
 export const trendNotes: { title: string; body: string }[] = [
   {
-    title: '콤보 3연속 구조가 기본',
-    body: '같은 주제로 묘사 → 습관/루틴 → 과거 경험 순서의 3문항 콤보가 기본 골격이에요. 주제 하나를 준비할 때 이 3가지 각도를 모두 준비해야 해요.',
+    title: '시험은 15문항 · 5개 콤보로 구성돼요',
+    body: '1번 자기소개 → 콤보1(2~4번: 묘사·루틴·최근 경험) → 콤보2·3(5~10번: 묘사·최근 경험·기억에 남는 경험 2세트) → 콤보4(11~13번: 롤플레이) → 콤보5(14~15번: 비교·대조 + 관련 이슈). 이 구조를 알고 가면 다음 질문이 예측돼요.',
   },
   {
-    title: '돌발은 피할 수 없다',
-    body: '서베이를 아무리 좁혀도 돌발 주제(날씨·재활용·교통 등)는 출제돼요. 자주 나오는 돌발 6개는 기본 표현이라도 준비해두는 것이 안전해요.',
+    title: '배점이 높은 건 “기억에 남는 경험”이에요',
+    body: '단순 묘사(2번 유형)는 배점이 낮으니 답변을 길게 끌지 마세요. 대신 memorable·unforgettable이 들어간 경험 질문에는 누가 들어도 인상적인 에피소드로 힘을 실어야 해요. 과거 경험 답변은 초반에 언제·어디서·누구와·무엇을·왜·어떻게(육하원칙)를 먼저 깔면 안정적이에요.',
   },
   {
-    title: '롤플레이는 후반부에 등장',
-    body: '시험 후반부에 상황극(전화로 질문하기, 문제 해결하기, 관련 경험 말하기) 세트가 나와요. "질문 3개 던지기 + 대안 제시" 패턴을 연습해두세요.',
+    title: 'IH와 AL을 가르는 건 14~15번이에요',
+    body: '비교·대조(과거 vs 현재, A vs B)와 관련 이슈 설명 유형이 등급을 가르는 구간이에요. 비교 답변은 “A는 이렇고 B는 이런데, 나는 이런 이유로 A가 좋다”처럼 선호로 마무리하면 완성도가 올라가요.',
   },
   {
-    title: '난이도 설정에 따라 질문 수준이 달라진다',
-    body: '시험 중간의 난이도 재선택 화면에서 선택한 수준에 따라 이후 질문의 난이도가 달라져요. 목표 등급에 맞는 난이도 전략은 서베이 추천 페이지를 참고하세요.',
+    title: '롤플레이는 3유형이 반복돼요',
+    body: '약속/예약 잡기·취소, 물건 구매·문제 해결 상황에서 ① 질문 3~4개 던지기 → ② 문제 설명 + 대안 제시 → ③ 비슷한 내 경험 순서로 이어져요. 유형이 고정적이라 뼈대 문장을 미리 만들어두면 단어만 바꿔 대응할 수 있어요.',
+  },
+  {
+    title: '50~60초 끊기지 않고 말하는 게 핵심이에요',
+    body: '오픽은 유창성·시제·구체성을 종합 평가해요. 문법이 틀려도 멈추지 않는 게 더 중요해요. 막히면 침묵 대신 필러로 잇고, 문제당 한 문장은 접속사를 활용해 의도적으로 길게 만들어 보세요.',
+  },
+  {
+    title: '난이도 설정에 따라 질문 수준이 달라져요',
+    body: '시험 중간의 난이도 재선택에서 고른 수준에 따라 이후 질문이 달라져요. 목표 등급별 난이도 전략(5-5/6-6)은 서베이 추천 페이지를 참고하세요.',
   },
 ];
 

@@ -2,7 +2,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { comboTopics, suddenTopics, trendNotes, expectedQuestions } from '@/data/questions';
+import {
+  comboTopics,
+  suddenTopics,
+  roleplayTopics,
+  trendNotes,
+  expectedQuestions,
+} from '@/data/questions';
 import { SaveButton } from '@/components/save-button';
 
 const categories = {
@@ -13,6 +19,10 @@ const categories = {
   sudden: {
     title: '돌발 주제',
     desc: '서베이 선택과 무관하게 출제되는 주제예요. 빈출 주제는 기본 답변을 만들어 두는 것이 안전해요.',
+  },
+  roleplay: {
+    title: '롤플레이 (11~13번)',
+    desc: '유형이 3가지로 고정된 상황극이에요. ① 질문 3~4개 던지기 → ② 문제 설명 + 대안 제시 → ③ 비슷한 내 경험 순서로 이어지니, 뼈대 문장을 만들어두고 단어만 바꿔 쓰세요.',
   },
   trends: {
     title: '최신 출제 경향',
@@ -62,8 +72,13 @@ export default async function QuestionCategoryPage({
       <p className="mt-2 text-[15px] text-muted-foreground">{meta.desc}</p>
 
       <div className="mt-10 flex flex-col gap-8">
-        {(category === 'combo' || category === 'sudden') &&
-          (category === 'combo' ? comboTopics : suddenTopics).map((topic) => (
+        {(category === 'combo' || category === 'sudden' || category === 'roleplay') &&
+          (category === 'combo'
+            ? comboTopics
+            : category === 'sudden'
+              ? suddenTopics
+              : roleplayTopics
+          ).map((topic) => (
             <section key={topic.name} className="rounded-xl border border-border bg-card p-6">
               <h2 className="text-[20px]">{topic.name}</h2>
               {topic.note && <p className="mt-1 text-[13px] text-primary">{topic.note}</p>}
