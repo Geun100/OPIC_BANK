@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'OPIc Bank — 오픽이 처음인 사람을 위한 가장 쉬운 시작',
-    template: '%s | OPIc Bank',
+    default: 'OPIC Sprint — 시험이 언제예요?',
+    template: '%s | OPIC Sprint',
   },
   description:
-    '오픽 시험 소개부터 백그라운드 서베이 추천, 질문·표현 라이브러리까지. 오픽을 처음 준비하는 사람을 위한 학습 가이드.',
+    '오픽이 처음이라면, 아니면 D-14·D-7·D-1 중 남은 기간에 맞는 스프린트로 바로 시작하세요.',
 };
 
 export default function RootLayout({

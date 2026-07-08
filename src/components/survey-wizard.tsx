@@ -1,28 +1,22 @@
-// 서베이 추천 위저드 — 목표 등급/성향 선택 → 추천 조합 + GPT 프롬프트
+// 서베이 추천 위저드 — 목표 등급 구간/성향 선택 → 추천 조합 + GPT 프롬프트
 'use client';
 
 import { useState } from 'react';
 import { Check, Copy, RotateCcw } from 'lucide-react';
-import {
-  goalGradeInfo,
-  recommend,
-  buildGptPrompt,
-  type GoalGrade,
-  type Trait,
-} from '@/data/survey';
+import { goalTierInfo, recommend, buildGptPrompt, type GoalTier, type Trait } from '@/data/survey';
 
-type Step = 'grade' | 'style' | 'place' | 'result';
+type Step = 'tier' | 'style' | 'place' | 'result';
 
 export function SurveyWizard() {
-  const [step, setStep] = useState<Step>('grade');
-  const [grade, setGrade] = useState<GoalGrade | null>(null);
+  const [step, setStep] = useState<Step>('tier');
+  const [tier, setTier] = useState<GoalTier | null>(null);
   const [style, setStyle] = useState<Trait['style'] | null>(null);
   const [place, setPlace] = useState<Trait['place'] | null>(null);
   const [copied, setCopied] = useState(false);
 
   const reset = () => {
-    setStep('grade');
-    setGrade(null);
+    setStep('tier');
+    setTier(null);
     setStyle(null);
     setPlace(null);
     setCopied(false);
@@ -31,21 +25,26 @@ export function SurveyWizard() {
   const optionBtn =
     'w-full rounded-xl border border-border bg-card p-5 text-left transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(0,55,112,0.08)]';
 
-  if (step === 'grade') {
+  if (step === 'tier') {
     return (
       <div className="flex flex-col gap-3">
-        <p className="mb-2 text-[14px] text-muted-foreground">1 / 3 — 목표 등급을 선택하세요</p>
-        {(Object.keys(goalGradeInfo) as GoalGrade[]).map((g) => (
+        <p className="mb-2 text-[14px] text-muted-foreground">
+          1 / 3 — 목표 등급 구간을 선택하세요
+        </p>
+        {(Object.keys(goalTierInfo) as GoalTier[]).map((t) => (
           <button
-            key={g}
+            key={t}
             className={optionBtn}
             onClick={() => {
-              setGrade(g);
+              setTier(t);
               setStep('style');
             }}
           >
-            <span className="text-[17px]">{goalGradeInfo[g].label}</span>
-            <p className="mt-1 text-[13px] text-muted-foreground">{goalGradeInfo[g].difficulty}</p>
+            <div className="flex items-baseline justify-between">
+              <span className="text-[17px]">{goalTierInfo[t].label}</span>
+              <span className="text-[13px] text-primary">{goalTierInfo[t].difficulty}</span>
+            </div>
+            <p className="mt-1 text-[13px] text-muted-foreground">{goalTierInfo[t].keyPoint}</p>
           </button>
         ))}
       </div>
@@ -117,11 +116,11 @@ export function SurveyWizard() {
   }
 
   // result
-  if (!grade || !style || !place) return null;
+  if (!tier || !style || !place) return null;
   const trait: Trait = { style, place };
-  const picks = recommend(grade, trait);
-  const prompt = buildGptPrompt(grade, trait);
-  const info = goalGradeInfo[grade];
+  const picks = recommend(tier, trait);
+  const prompt = buildGptPrompt(tier, trait);
+  const info = goalTierInfo[tier];
 
   return (
     <div className="flex flex-col gap-6">
@@ -132,9 +131,9 @@ export function SurveyWizard() {
           {style === 'safe' ? '안전형' : '다재형'}
         </h2>
         <p className="mt-3 text-[14px] text-white/80">
-          <strong className="text-white">난이도 설정: {info.difficulty}</strong>
+          <strong className="text-white">권장 난이도: {info.difficulty}</strong>
           <br />
-          {info.difficultyReason}
+          {info.keyPoint}
         </p>
       </div>
 

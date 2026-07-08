@@ -39,7 +39,6 @@ export default function Page() {
       title="등급 체계 (IM · IH · AL)"
       intro="오픽 등급은 Novice부터 Advanced까지 이어지는 말하기 숙련도 단계예요."
       prev={{ href: '/guide/exam-process', label: '시험 진행 방식' }}
-      next={{ href: '/guide/first-steps', label: '처음 준비하는 사람 가이드' }}
     >
       <section>
         <h2>등급표</h2>
@@ -71,16 +70,16 @@ export default function Page() {
         <h2>목표 등급은 어떻게 정하나요?</h2>
         <ul>
           <li>
-            <strong>IM2~IM3</strong> — 지원 자격 요건 충족이 목표라면. 기본 주제를 안정적으로 답하는
-            것에 집중.
+            <strong>IL ~ IM2</strong> (권장 난이도 3~4) — 지원 자격 요건 충족이 목표라면. 기본
+            의사소통, 일상 주제를 안정적으로 설명하는 데 집중.
           </li>
           <li>
-            <strong>IH</strong> — 서류에서 어학으로 감점당하지 않는 것이 목표라면. 돌발·비교 질문
-            대응력이 관건.
+            <strong>IM3 ~ IH</strong> (권장 난이도 4~5) — 서류에서 어학으로 감점당하지 않는 것이
+            목표라면. 경험을 에피소드로 확장하고 논리 전개를 강화.
           </li>
           <li>
-            <strong>AL</strong> — 어학 우대를 노린다면. 구체적 에피소드와 풍부한 표현으로 답변을
-            확장하는 힘이 필요.
+            <strong>IH ~ AL</strong> (권장 난이도 5~6) — 어학 우대를 노린다면. 복잡한 상황 해결과
+            의견 제시까지 완성도 있게 답변할 수 있어야 함.
           </li>
         </ul>
         <p className="mt-3">

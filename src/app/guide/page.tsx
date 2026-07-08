@@ -1,6 +1,7 @@
-// 입문 가이드 인덱스 — 4개 가이드 문서로 안내
+// 입문 가이드 인덱스 — 3개 가이드 문서 + 스프린트 픽커로 연결
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { SprintPicker } from '@/components/sprint-picker';
 
 export const metadata: Metadata = {
   title: '오픽이 처음이라면? 입문 가이드',
@@ -27,12 +28,6 @@ const docs = [
     title: '등급 체계 (IM·IH·AL)',
     desc: '등급이 어떻게 나뉘고, 취업엔 보통 어떤 등급이 필요한지',
   },
-  {
-    href: '/guide/first-steps',
-    step: 'STEP 4',
-    title: '처음 준비하는 사람 가이드',
-    desc: '4주 안에 첫 시험까지, 입문자의 준비 순서',
-  },
 ];
 
 export default function GuideIndex() {
@@ -41,7 +36,7 @@ export default function GuideIndex() {
       <p className="text-[13px] font-medium tracking-wide text-primary">GUIDE</p>
       <h1 className="mt-2 text-[34px]">오픽이 처음이라면?</h1>
       <p className="mt-3 text-[16px] text-muted-foreground">
-        오픽은 구조만 이해해도 절반은 준비된 시험이에요. 아래 순서대로 읽으면 30분 안에 전체 그림이
+        오픽은 구조만 이해해도 절반은 준비된 시험이에요. 아래 순서대로 읽으면 10분 안에 전체 그림이
         잡힙니다.
       </p>
       <div className="mt-10 flex flex-col gap-4">
@@ -56,6 +51,16 @@ export default function GuideIndex() {
             <p className="mt-1 text-[14px] text-muted-foreground">{d.desc}</p>
           </Link>
         ))}
+      </div>
+
+      <div className="mt-14 rounded-xl bg-cream p-8">
+        <h2 className="text-[22px] tracking-tight">다 읽었다면, 시험이 언제예요?</h2>
+        <p className="mt-2 text-[14px] text-secondary-foreground">
+          남은 기간에 맞는 스프린트를 고르면 오늘부터 뭘 해야 하는지 바로 알려드려요.
+        </p>
+        <div className="mt-6">
+          <SprintPicker />
+        </div>
       </div>
     </div>
   );

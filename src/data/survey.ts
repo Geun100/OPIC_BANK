@@ -1,33 +1,30 @@
-// 서베이 추천 로직 — 목표 등급/성향에 따라 백그라운드 서베이 조합과 GPT 연습 프롬프트를 생성
+// 서베이 추천 로직 — 목표 등급 구간/성향에 따라 백그라운드 서베이 조합과 GPT 연습 프롬프트를 생성
 // 실제 IH 달성 수험 후기 자료를 기반으로 재구성 (개인 후기 기반이므로 시험 화면과 다를 수 있음)
 
-export type GoalGrade = 'IM' | 'IH' | 'AL';
+export type GoalTier = 'basic' | 'episode' | 'advanced';
 export type Trait = {
   style: 'safe' | 'variety'; // 한 스토리 재활용 선호 vs 다양한 소재 선호
   place: 'indoor' | 'outdoor'; // 실내 취미 vs 야외 활동
 };
 
-export const goalGradeInfo: Record<
-  GoalGrade,
-  { label: string; difficulty: string; difficultyReason: string }
+export const goalTierInfo: Record<
+  GoalTier,
+  { label: string; difficulty: string; keyPoint: string }
 > = {
-  IM: {
-    label: 'IM (Intermediate Mid)',
-    difficulty: '난이도 5-5 권장',
-    difficultyReason:
-      '실제 후기 기준으로 5-5는 IM3~IH 목표의 표준 설정이에요. 난이도를 너무 낮추면 받을 수 있는 등급의 상한도 함께 낮아질 수 있어요.',
+  basic: {
+    label: 'IL ~ IM2',
+    difficulty: '난이도 3 ~ 4',
+    keyPoint: '기본 의사소통, 일상 주제를 안정적으로 설명',
   },
-  IH: {
-    label: 'IH (Intermediate High)',
-    difficulty: '난이도 5-5',
-    difficultyReason:
-      '5-5 이상이면 IH를 받는 데 문제가 없다는 것이 다수 후기의 공통 의견이에요. 무리해서 6-6을 고를 필요는 없어요.',
+  episode: {
+    label: 'IM3 ~ IH',
+    difficulty: '난이도 4 ~ 5',
+    keyPoint: '경험을 에피소드로 확장, 논리 전개 강화',
   },
-  AL: {
-    label: 'AL (Advanced Low)',
-    difficulty: '난이도 6-6 (5-5도 가능)',
-    difficultyReason:
-      'AL은 비교·대조와 이슈 설명 같은 고난도 유형에서 결정돼요. 6-6으로 어려운 질문에 노출되는 것이 유리하지만, 5-5로도 AL 달성 후기가 있어요.',
+  advanced: {
+    label: 'IH ~ AL',
+    difficulty: '난이도 5 ~ 6',
+    keyPoint: '복잡한 상황 해결·의견 제시까지 완성도 요구',
   },
 };
 
@@ -109,22 +106,24 @@ const focusByTrait: Record<Trait['place'], Record<Trait['style'], SurveyPick>> =
   },
 };
 
-export function recommend(grade: GoalGrade, trait: Trait): SurveyPick[] {
+export function recommend(tier: GoalTier, trait: Trait): SurveyPick[] {
   return [...basePicks, focusByTrait[trait.place][trait.style]];
 }
 
-export function buildGptPrompt(grade: GoalGrade, trait: Trait): string {
-  const picks = recommend(grade, trait)
+export function buildGptPrompt(tier: GoalTier, trait: Trait): string {
+  const picks = recommend(tier, trait)
     .slice(0, -1) // 우선 준비 주제는 서베이 항목이 아니므로 제외
     .map((p) => `- ${p.category}: ${p.pick}`)
     .join('\n');
   const focus = focusByTrait[trait.place][trait.style].pick;
+  const info = goalTierInfo[tier];
   return `당신은 오픽(OPIc) 시험관 Ava입니다. 아래는 제가 백그라운드 서베이에서 선택한 항목입니다.
 
 ${picks}
 
-목표 등급: ${grade}
-설정 난이도: ${goalGradeInfo[grade].difficulty}
+목표 등급 구간: ${info.label}
+설정 난이도: ${info.difficulty}
+핵심 포인트: ${info.keyPoint}
 우선 준비 주제: ${focus}
 
 실제 오픽 시험 구조(15문항)처럼 진행해주세요. 같은 주제로 묘사 → 습관/루틴 → 경험 순서로 이어지는 콤보 형식으로 영어 질문을 하나씩 출제하고, 중간에 롤플레이(정보 요청하기, 문제 상황 해결하기)와 돌발 주제도 섞어주세요.
@@ -132,5 +131,5 @@ ${picks}
 제가 영어로 답변하면 다음 기준으로 피드백해주세요.
 1. 이 시험은 일상 회화 시험이므로 casual하고 natural한 표현 기준으로 문법·표현을 교정해주세요.
 2. 자연스러운 필러(filler)는 허용되니, 제 답변에 어울리는 필러도 추천해주세요.
-3. ${grade} 기준에서 잘한 점 1가지와 아쉬운 점 1가지를 짚고 다음 질문으로 넘어가주세요.`;
+3. 위 핵심 포인트(${info.keyPoint}) 기준에서 잘한 점 1가지와 아쉬운 점 1가지를 짚고 다음 질문으로 넘어가주세요.`;
 }
