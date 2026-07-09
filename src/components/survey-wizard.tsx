@@ -3,7 +3,14 @@
 
 import { useState } from 'react';
 import { Check, Copy, RotateCcw } from 'lucide-react';
-import { goalTierInfo, recommend, buildGptPrompt, type GoalTier, type Trait } from '@/data/survey';
+import {
+  goalTierInfo,
+  recommend,
+  buildGptPrompt,
+  surveyFacts,
+  type GoalTier,
+  type Trait,
+} from '@/data/survey';
 
 type Step = 'tier' | 'style' | 'place' | 'result';
 
@@ -135,6 +142,20 @@ export function SurveyWizard() {
           <br />
           {info.keyPoint}
         </p>
+        <p className="mt-3 border-t border-white/15 pt-3 text-[13px] leading-relaxed text-white/80">
+          {info.strategy}
+        </p>
+      </div>
+
+      <div className="rounded-xl bg-cream p-5">
+        <h3 className="text-[15px] font-medium">시작 전에 꼭 알아둘 4가지</h3>
+        <ul className="mt-2 list-disc pl-5 text-[13px] leading-relaxed text-secondary-foreground">
+          {surveyFacts.map((f) => (
+            <li key={f} className="mt-1.5">
+              {f}
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div>
