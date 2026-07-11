@@ -1,13 +1,59 @@
-// OPIC Sprint 홈 — "시험이 언제예요?" 즉시 선택 히어로
+// OPIC Bank 홈 — 6메뉴 라이브러리 카드 구조로 소프트 롤백(v4)
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { SprintPicker } from '@/components/sprint-picker';
+import {
+  HelpCircle,
+  ListChecks,
+  MessageSquareQuote,
+  Search,
+  Award,
+  NotebookPen,
+} from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'OPIC Sprint — 시험이 언제예요?',
+  title: 'OPIC Bank — 오픽 표현·질문 검색',
   description:
-    '오픽이 처음이라면, 아니면 D-14·D-7·D-1 중 남은 기간에 맞는 스프린트로 바로 시작하세요.',
+    '오픽이 처음이라면 입문 가이드부터, 준비 중이라면 서베이 추천·질문·표현 라이브러리에서 필요한 것만 바로 찾아보세요.',
 };
+
+const menus = [
+  {
+    href: '/guide',
+    icon: HelpCircle,
+    title: '오픽이 처음이라면?',
+    desc: '시험 구조와 등급 체계를 5분 만에 이해하기',
+  },
+  {
+    href: '/survey',
+    icon: ListChecks,
+    title: '서베이 추천',
+    desc: '목표 등급·성향에 맞는 서베이 조합 추천받기',
+  },
+  {
+    href: '/questions',
+    icon: MessageSquareQuote,
+    title: '질문 라이브러리',
+    desc: '콤보·돌발·롤플레이 예상 질문 모아보기',
+  },
+  {
+    href: '/expressions',
+    icon: Search,
+    title: '표현 라이브러리',
+    desc: '주제별 표현, 필러, 만능 패턴 검색',
+  },
+  {
+    href: '/grade',
+    icon: Award,
+    title: 'AL·IH 표현집',
+    desc: '고득점 표현·문장 패턴 모음',
+  },
+  {
+    href: '/notes',
+    icon: NotebookPen,
+    title: '나만의 노트',
+    desc: '저장한 표현·질문 모아보기',
+  },
+];
 
 export default function Home() {
   return (
@@ -22,25 +68,28 @@ export default function Home() {
       />
       <div className="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
         <p className="mx-auto mb-5 w-fit rounded-full bg-primary-subdued/40 px-4 py-1 text-[12px] font-medium tracking-wide text-primary-press">
-          OPIC Sprint
+          OPIC Bank
         </p>
         <h1 className="mx-auto max-w-2xl text-[40px] leading-[1.1] tracking-[-0.03em] sm:text-[52px]">
-          시험이 언제예요?
+          오픽 표현, 검색 몇 초면 끝나요
         </h1>
         <p className="mx-auto mt-5 max-w-md text-[17px] text-muted-foreground">
-          남은 기간에 맞는 스프린트 하나만 고르면, 그날부터 뭘 해야 하는지 전부 정해드려요.
+          필요한 메뉴 하나만 고르면, 그 안에서 바로 찾아볼 수 있어요.
         </p>
 
-        <div className="mt-10">
-          <SprintPicker />
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {menus.map((m) => (
+            <Link
+              key={m.href}
+              href={m.href}
+              className="rounded-2xl border border-border bg-card p-6 text-left transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(0,55,112,0.08)]"
+            >
+              <m.icon className="size-6 text-primary" />
+              <p className="mt-4 text-[17px]">{m.title}</p>
+              <p className="mt-1 text-[13px] text-muted-foreground">{m.desc}</p>
+            </Link>
+          ))}
         </div>
-
-        <p className="mt-8 text-[13px] text-muted-foreground">
-          이미 저장한 표현·질문이 있나요?{' '}
-          <Link href="/notes" className="text-primary hover:underline">
-            나만의 노트 보기
-          </Link>
-        </p>
       </div>
     </section>
   );
