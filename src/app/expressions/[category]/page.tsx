@@ -13,6 +13,10 @@ const topicSlugByTitle: Record<string, TopicKey> = {
   여행: 'travel',
   '운동 (걷기·조깅)': 'exercise',
   공원: 'park',
+  공연: 'performance',
+  콘서트: 'concert',
+  쇼핑: 'shopping',
+  '음악 감상': 'music',
 };
 
 export function generateStaticParams() {

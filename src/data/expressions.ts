@@ -192,6 +192,98 @@ export const expressionCategories: ExpressionCategory[] = [
           },
         ],
       },
+      {
+        title: '공연',
+        items: [
+          {
+            en: 'get goosebumps',
+            ko: '소름이 돋다',
+            example: 'The ending was so powerful that I got goosebumps.',
+          },
+          {
+            en: 'a standing ovation',
+            ko: '기립박수',
+            example: 'The whole audience gave a standing ovation at the end.',
+          },
+          {
+            en: 'once in a lifetime',
+            ko: '일생에 한 번뿐인',
+            example: 'Watching it live felt like a once in a lifetime experience.',
+          },
+          {
+            en: 'worth every penny',
+            ko: '돈이 하나도 안 아까운',
+            example: 'The tickets were expensive, but it was worth every penny.',
+          },
+        ],
+      },
+      {
+        title: '콘서트',
+        items: [
+          {
+            en: 'sing along',
+            ko: '따라 부르다',
+            example: 'Everyone was singing along the whole time.',
+          },
+          {
+            en: 'the opening act',
+            ko: '오프닝 공연',
+            example: 'The opening act was surprisingly good.',
+          },
+          { en: 'sold out', ko: '매진된', example: 'The concert was sold out within minutes.' },
+          {
+            en: 'an unforgettable night',
+            ko: '잊을 수 없는 밤',
+            example: 'It turned out to be an unforgettable night.',
+          },
+        ],
+      },
+      {
+        title: '쇼핑',
+        items: [
+          {
+            en: 'window shopping',
+            ko: '아이쇼핑',
+            example: 'I like window shopping even when I have no money to spend.',
+          },
+          { en: 'browse around', ko: '둘러보다', example: 'I usually just browse around first.' },
+          {
+            en: 'a great deal',
+            ko: '저렴하게 잘 산 것',
+            example: 'I got a great deal on this jacket.',
+          },
+          {
+            en: 'try something on',
+            ko: '(옷을) 입어보다',
+            example: 'I always try things on before I buy them.',
+          },
+        ],
+      },
+      {
+        title: '음악 감상',
+        items: [
+          {
+            en: 'make a playlist',
+            ko: '플레이리스트를 만들다',
+            example: 'I make a playlist for different moods.',
+          },
+          {
+            en: 'have a good ear for music',
+            ko: '음악 듣는 귀가 있다',
+            example: 'I think I have a pretty good ear for music.',
+          },
+          {
+            en: 'put on some music',
+            ko: '음악을 틀다',
+            example: 'I put on some music the moment I get home.',
+          },
+          {
+            en: 'lyrics that hit different',
+            ko: '유난히 와닿는 가사',
+            example: 'This song has lyrics that hit different.',
+          },
+        ],
+      },
     ],
   },
   {

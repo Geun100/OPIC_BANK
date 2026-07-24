@@ -1,7 +1,17 @@
 // 주제×컷(묘사/습관/경험) 조합별 예상 질문 + 모범답안 데이터 — SEO 색인용 개별 페이지 소스
 // ⚠️ 답안은 학습용 초안이며 오픽 경험자 검증 필요 (LEARNING.md 참고)
 
-export type TopicKey = 'home' | 'cafe' | 'movie' | 'travel' | 'exercise' | 'park';
+export type TopicKey =
+  | 'home'
+  | 'cafe'
+  | 'movie'
+  | 'travel'
+  | 'exercise'
+  | 'park'
+  | 'performance'
+  | 'concert'
+  | 'shopping'
+  | 'music';
 export type CutKey = 'description' | 'habit' | 'experience';
 
 export const topicInfo: Record<TopicKey, { name: string; slug: TopicKey }> = {
@@ -11,6 +21,10 @@ export const topicInfo: Record<TopicKey, { name: string; slug: TopicKey }> = {
   travel: { name: '여행', slug: 'travel' },
   exercise: { name: '운동', slug: 'exercise' },
   park: { name: '공원', slug: 'park' },
+  performance: { name: '공연', slug: 'performance' },
+  concert: { name: '콘서트', slug: 'concert' },
+  shopping: { name: '쇼핑', slug: 'shopping' },
+  music: { name: '음악 감상', slug: 'music' },
 };
 
 export const cutInfo: Record<CutKey, { name: string; slug: CutKey; hint: string }> = {
@@ -305,6 +319,162 @@ export const topicQAs: TopicQA[] = [
     answer:
       "Come to think of it, I remember one weekend when I went to the park and ended up watching a small outdoor concert that was happening there by chance. It was such an unexpected experience because I hadn't planned on staying that long. What I remember most is how relaxed everyone looked, just sitting on the grass and enjoying the music together. Looking back, it's one of those small experiences that reminded me why I love that park so much.",
     keyExpressions: ['Come to think of it', 'such an ... experience that', 'Looking back'],
+  },
+  {
+    topic: 'performance',
+    cut: 'description',
+    question: {
+      ko: '좋아하는 공연 종류를 묘사해달라는 질문',
+      en: 'What kind of performances do you like to watch?',
+    },
+    answer:
+      "I really enjoy going to see live performances, especially musicals and dance shows. What I like most about watching them live is that the energy feels completely different from watching something on a screen. I usually go with a friend who shares the same interest, so we can talk about it afterward. Honestly, if the performance is really well done, I sometimes get goosebumps just from watching it. There's this one show I saw a while ago that I still remember vividly, because the ending was so powerful that the entire audience gave a standing ovation. Compared to watching a video online, being there in person just makes the whole thing feel once in a lifetime. That's mainly why I try to catch a good performance whenever I get the chance.",
+    keyExpressions: [
+      'get goosebumps',
+      'a standing ovation',
+      'once in a lifetime',
+      'Compared to ...',
+    ],
+  },
+  {
+    topic: 'performance',
+    cut: 'habit',
+    question: {
+      ko: '공연을 얼마나 자주, 어떻게 보는지 묻는 질문',
+      en: "How often do you go see performances, and what's your routine?",
+    },
+    answer:
+      "I tend to check for new shows every few months, mainly through social media or recommendations from friends. Once I find something interesting, I usually book tickets a few weeks in advance so I can get good seats. I've made it a habit to arrive a bit early, just to soak up the atmosphere before it starts. What I enjoy most is that quiet moment right before the lights go down, when everyone gets excited together. After the show, I usually grab a cup of coffee nearby and just talk about it with whoever I went with. As a result, going to see a performance has become more of a whole evening event for me rather than just watching a show.",
+    keyExpressions: ['I tend to', 'soak up the atmosphere', 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'performance',
+    cut: 'experience',
+    question: {
+      ko: '공연 관람 중 기억에 남는 경험',
+      en: 'Tell me about a memorable experience watching a performance.',
+    },
+    answer:
+      "Let me think about that for a second... Actually, I remember watching a performance where something unexpected happened on stage, and the performers just handled it so smoothly that most people didn't even notice. It was such an impressive experience because you could tell how professional they were. What I remember most is how the whole audience gave a standing ovation at the end, which honestly gave me goosebumps. Looking back, that's probably the performance that made me start going to more live shows, because I realized how different it feels compared to watching something recorded.",
+    keyExpressions: [
+      'Let me think about that for a second',
+      'such an ... experience that',
+      'a standing ovation',
+      'Looking back',
+    ],
+  },
+  {
+    topic: 'concert',
+    cut: 'description',
+    question: {
+      ko: '콘서트를 묘사해달라는 질문',
+      en: "Describe a concert you've been to or would like to attend.",
+    },
+    answer:
+      "I went to a concert last year for one of my favorite singers, and it's still one of my favorite memories. What I liked most was that everyone in the crowd was singing along the whole time, so it felt like we were all part of the show. The opening act was also really good, which honestly surprised me since I hadn't expected much from it. Even though the tickets were a bit expensive, it was totally worth every penny. On top of that, the venue had great sound, so every song felt even more powerful live. That's mainly why I'd say it was an unforgettable night for me.",
+    keyExpressions: [
+      'sing along',
+      'the opening act',
+      'worth every penny',
+      'an unforgettable night',
+    ],
+  },
+  {
+    topic: 'concert',
+    cut: 'habit',
+    question: {
+      ko: '콘서트 갈 때 평소 준비하는 방식',
+      en: 'What do you usually do to prepare for a concert?',
+    },
+    answer:
+      "I usually try to get tickets as early as possible, since good concerts tend to be sold out within minutes. Before the concert, I tend to listen to the artist's songs on repeat, just to get familiar with everything I might hear live. I've made it a habit to go with friends who like the same music, since singing along together makes it way more fun. What I enjoy most is the moment the lights dim and the crowd starts cheering, right before the artist comes out. After it's over, we usually talk about our favorite moments the whole way home.",
+    keyExpressions: ['get tickets', 'sold out', 'sing along', 'what I enjoy most is'],
+  },
+  {
+    topic: 'concert',
+    cut: 'experience',
+    question: {
+      ko: '콘서트에서의 기억에 남는 경험',
+      en: 'Tell me about a memorable experience at a concert.',
+    },
+    answer:
+      "Come to think of it, I remember a concert where the artist suddenly came down into the crowd, which none of us were expecting at all. It was such an exciting experience that everyone started screaming at the same time. What I remember most is being close enough to actually make eye contact for a second, which still feels surreal thinking about it now. Looking back, that's the kind of moment you can't really plan for, and it's exactly why I keep going to concerts.",
+    keyExpressions: ['Come to think of it', 'such an ... experience that', 'Looking back'],
+  },
+  {
+    topic: 'shopping',
+    cut: 'description',
+    question: {
+      ko: '평소 하는 쇼핑을 묘사해달라는 질문',
+      en: 'What kind of shopping do you usually do?',
+    },
+    answer:
+      "I mostly enjoy clothes shopping, but I also like just window shopping even when I'm not planning to buy anything. What I like most about it is browsing around without any pressure to purchase something right away. I usually go to shopping malls rather than online, mainly because I like trying things on before I decide. Honestly, finding a great deal on something I actually needed is probably my favorite part of the whole experience. That's mainly why I enjoy shopping so much, even on days when I don't end up buying anything.",
+    keyExpressions: ['window shopping', 'browse around', 'a great deal', 'try something on'],
+  },
+  {
+    topic: 'shopping',
+    cut: 'habit',
+    question: {
+      ko: '쇼핑을 얼마나 자주, 어떻게 하는지 묻는 질문',
+      en: "How often do you go shopping, and what's your routine?",
+    },
+    answer:
+      "I tend to go shopping once or twice a month, usually on weekends when I have more free time. I usually start by browsing around a few of my favorite stores before deciding what I actually need. I've made it a habit to try things on first, since sizes can vary a lot between brands. What I enjoy most is that moment when I find something that fits perfectly and looks even better than I expected. Sometimes I end up making an impulse buy, but honestly, that's part of the fun for me.",
+    keyExpressions: ['I tend to', 'try something on', 'what I enjoy most is', 'an impulse buy'],
+  },
+  {
+    topic: 'shopping',
+    cut: 'experience',
+    question: {
+      ko: '쇼핑 중 기억에 남는 경험',
+      en: 'Tell me about a memorable shopping experience.',
+    },
+    answer:
+      "Let me see... actually, I remember finding a jacket on sale that I had wanted for months, and it turned out to be the last one in my size. It was such a lucky experience that I still can't believe the timing worked out. What I remember most is how excited I felt at the checkout, like I had actually won something. Looking back, that's probably the best deal I've ever gotten while shopping, and it's the story I tell whenever someone asks about a good find.",
+    keyExpressions: ['Let me see', 'it turned out that', 'a great deal', 'Looking back'],
+  },
+  {
+    topic: 'music',
+    cut: 'description',
+    question: {
+      ko: '좋아하는 음악 취향을 묘사해달라는 질문',
+      en: 'What kind of music do you usually listen to?',
+    },
+    answer:
+      "I'm really into indie music these days, but I also enjoy pop and R&B depending on my mood. I usually make a playlist for different situations, like one for working and another for relaxing before bed. Honestly, I think I have a pretty good ear for music, since I can usually tell within the first few seconds whether I'll like a song. What I like most about certain songs is when the lyrics hit different, especially if they match something I'm going through at the time. That's mainly why music has become such a big part of my everyday life.",
+    keyExpressions: [
+      "I'm really into",
+      'make a playlist',
+      'have a good ear for music',
+      'lyrics that hit different',
+    ],
+  },
+  {
+    topic: 'music',
+    cut: 'habit',
+    question: {
+      ko: '음악 감상할 때 평소 하는 것',
+      en: 'What do you usually do when you listen to music?',
+    },
+    answer:
+      "I usually put on some music the moment I get home, just to set the mood before I do anything else. I tend to discover new artists through playlists that get recommended to me, rather than searching for them myself. I've made it a habit to update my playlist every few weeks, so I don't get tired of listening to the same songs. What I enjoy most is finding a song that fits perfectly with whatever I'm doing at the moment, whether that's studying or just relaxing. As a result, I almost always have something playing in the background throughout the day.",
+    keyExpressions: ['put on some music', 'discover new artists', 'make a playlist', 'As a result'],
+  },
+  {
+    topic: 'music',
+    cut: 'experience',
+    question: {
+      ko: '음악과 관련된 기억에 남는 경험',
+      en: 'Tell me about a memorable experience related to music.',
+    },
+    answer:
+      "Actually, I have a pretty vivid memory of discovering a song completely by accident through a playlist, and it ended up becoming one of my all-time favorites. It was such a surprising experience because I almost skipped past it without listening properly. What I remember most is listening to the lyrics closely for the first time and realizing how much they meant to me. Looking back, that's probably why I always give new songs a real chance now, instead of judging them in the first few seconds.",
+    keyExpressions: [
+      'I actually have a pretty vivid memory of this',
+      'such an ... experience that',
+      'Looking back',
+    ],
   },
 ];
 
