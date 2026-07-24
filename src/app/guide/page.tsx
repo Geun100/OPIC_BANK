@@ -1,7 +1,6 @@
-// 입문 가이드 인덱스 — 3개 가이드 문서 + 스프린트 픽커로 연결
+// 입문 가이드 인덱스 — 3개 가이드 문서 안내
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { SprintPicker } from '@/components/sprint-picker';
 
 export const metadata: Metadata = {
   title: '오픽이 처음이라면? 입문 가이드',
@@ -54,12 +53,23 @@ export default function GuideIndex() {
       </div>
 
       <div className="mt-14 rounded-xl bg-cream p-8">
-        <h2 className="text-[22px] tracking-tight">다 읽었다면, 시험이 언제예요?</h2>
+        <h2 className="text-[22px] tracking-tight">다 읽었다면, 실전 표현으로</h2>
         <p className="mt-2 text-[14px] text-secondary-foreground">
-          남은 기간에 맞는 스프린트를 고르면 오늘부터 뭘 해야 하는지 바로 알려드려요.
+          구조를 이해했다면 이제 실제로 쓸 표현과 예상 질문을 찾아볼 차례예요.
         </p>
-        <div className="mt-6">
-          <SprintPicker />
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link
+            href="/survey"
+            className="rounded-full bg-primary px-5 py-2.5 text-[14px] text-primary-foreground hover:bg-primary-press"
+          >
+            서베이 추천 받기
+          </Link>
+          <Link
+            href="/expressions"
+            className="rounded-full border border-border bg-card px-5 py-2.5 text-[14px] hover:border-primary/40"
+          >
+            표현 라이브러리 보기
+          </Link>
         </div>
       </div>
     </div>

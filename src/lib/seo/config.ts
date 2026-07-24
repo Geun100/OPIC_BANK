@@ -1,18 +1,18 @@
-// OPIC Sprint 사이트 전역 SEO 설정
+// OPIC Bank 사이트 전역 SEO 설정
 import { SeoConfigProps } from '@/types/seo';
 
 // 사이트 기본 SEO 설정
 export const seoConfig: SeoConfigProps = {
-  defaultTitle: 'OPIC Sprint — 시험이 언제예요?',
-  titleTemplate: '%s | OPIC Sprint',
+  defaultTitle: 'OPIC Bank — 오픽 표현 아카이브',
+  titleTemplate: '%s | OPIC Bank',
   defaultDescription:
-    '오픽이 처음이라면, 아니면 D-14·D-7·D-1 중 남은 기간에 맞는 스프린트로 바로 시작하세요.',
+    '오픽에 필요한 모든 표현을 한곳에 모아둔 아카이브. 표현·필러·만능 문장·예상 질문을 검색하고 나만의 노트로 저장하세요.',
   defaultKeywords:
-    '오픽, OPIc, 오픽 벼락치기, 오픽 스프린트, 오픽 서베이, 오픽 등급, 오픽 IM, 오픽 IH, 오픽 AL, 오픽 표현, 오픽 질문, 오픽 돌발주제',
+    '오픽, OPIc, 오픽 표현, 오픽 필러, 오픽 만능 문장, 오픽 서베이, 오픽 등급, 오픽 IM, 오픽 IH, 오픽 AL, 오픽 질문, 오픽 돌발주제',
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-  siteName: 'OPIC Sprint',
+  siteName: 'OPIC Bank',
   defaultImage: '/og-image.jpg',
-  twitterUsername: '@opicsprint',
+  twitterUsername: '@opicbank',
   language: 'ko',
   locale: 'ko_KR',
 };
@@ -20,9 +20,9 @@ export const seoConfig: SeoConfigProps = {
 // 페이지별 기본 SEO 설정들
 export const pageDefaults = {
   home: {
-    title: '시험이 언제예요?',
-    description: 'D-14·D-7·D-1 중 남은 기간에 맞는 스프린트로 오늘 할 일을 바로 확인하세요.',
-    keywords: '오픽 벼락치기, 오픽 스프린트, 오픽 준비, 오픽 입문, 오픽 공부법',
+    title: '오픽 표현, 검색 몇 초면 끝나요',
+    description: '필요한 메뉴 하나만 고르면, 그 안에서 바로 찾아볼 수 있어요.',
+    keywords: '오픽 표현, 오픽 필러, 오픽 만능 문장, 오픽 준비, 오픽 입문, 오픽 공부법',
   },
   auth: {
     title: '로그인 / 회원가입',
@@ -80,7 +80,7 @@ export const structuredDataTemplates = {
     },
     author: {
       '@type': 'Organization',
-      name: 'OPIC Sprint',
+      name: 'OPIC Bank',
     },
   },
 };

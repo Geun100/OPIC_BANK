@@ -1,16 +1,14 @@
 import { SitemapUrl, RobotsRule } from '@/types/seo';
 import { seoConfig } from './config';
+import { topicQAs } from '@/data/topic-qa';
 
-// 정적 페이지 URL들 — OPIC Sprint 라우트
+// 정적 페이지 URL들 — OPIC Bank 라우트
 const staticPages = [
   { url: '/', priority: 1.0, changeFrequency: 'daily' as const },
   { url: '/guide', priority: 0.9, changeFrequency: 'monthly' as const },
   { url: '/guide/what-is-opic', priority: 0.9, changeFrequency: 'monthly' as const },
   { url: '/guide/exam-process', priority: 0.9, changeFrequency: 'monthly' as const },
   { url: '/guide/grades', priority: 0.9, changeFrequency: 'monthly' as const },
-  { url: '/sprint/d14', priority: 1.0, changeFrequency: 'monthly' as const },
-  { url: '/sprint/d7', priority: 1.0, changeFrequency: 'monthly' as const },
-  { url: '/sprint/d1', priority: 1.0, changeFrequency: 'monthly' as const },
   { url: '/survey', priority: 1.0, changeFrequency: 'monthly' as const },
   { url: '/questions', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/questions/combo', priority: 0.8, changeFrequency: 'weekly' as const },
@@ -25,6 +23,12 @@ const staticPages = [
   { url: '/expressions/emotions', priority: 0.7, changeFrequency: 'weekly' as const },
   { url: '/expressions/connectors', priority: 0.7, changeFrequency: 'weekly' as const },
   { url: '/grade', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/tips', priority: 0.8, changeFrequency: 'weekly' as const },
+  ...topicQAs.map((q) => ({
+    url: `/expressions/topics/${q.topic}/${q.cut}`,
+    priority: 0.7,
+    changeFrequency: 'monthly' as const,
+  })),
 ];
 
 // 동적 페이지 URL 생성 함수

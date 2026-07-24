@@ -237,7 +237,11 @@ export const expressionCategories: ExpressionCategory[] = [
             example: 'It was fun. I mean, it was the best trip I ever had.',
           },
           { en: 'Actually, to be honest...', ko: '사실 솔직히 말하면... (반전·솔직한 생각 앞에)' },
-          { en: 'You know...', ko: '있잖아요 (문장 사이 자연스러운 연결)' },
+          {
+            en: 'You know...',
+            ko: '있잖아요, 알다시피 (문장 사이 자연스러운 연결)',
+            example: 'It was, you know, a really great experience.',
+          },
           { en: 'Basically...', ko: '기본적으로/한마디로...' },
         ],
       },
@@ -246,7 +250,42 @@ export const expressionCategories: ExpressionCategory[] = [
         items: [
           { en: 'What was it called...', ko: '그게 뭐였더라...' },
           { en: 'As far as I remember...', ko: '내 기억으로는...' },
-          { en: 'Let me see...', ko: '어디 보자...' },
+          {
+            en: 'Let me see...',
+            ko: '어디 보자, 그러니까',
+            example: 'Let me see... I think it was about two years ago.',
+          },
+        ],
+      },
+      {
+        title: '말 안 끊기는 필러 치트키',
+        items: [
+          { en: 'Well', ko: '글쎄, 음', example: "Well, I've never thought about that before." },
+          {
+            en: 'Actually',
+            ko: '사실은, 실제로',
+            example: "Actually, I've been there a couple of times.",
+          },
+          {
+            en: 'Like',
+            ko: '뭐랄까, ~같은',
+            example: "It was like the best movie I've ever seen.",
+          },
+          {
+            en: 'To be honest',
+            ko: '솔직히 말해서',
+            example: 'To be honest, I was a bit nervous at first.',
+          },
+          {
+            en: 'You know what I mean?',
+            ko: '내 말 무슨 뜻인지 알지?',
+            example: 'It was so crowded, you know what I mean?',
+          },
+          {
+            en: 'Kind of / Sort of',
+            ko: '약간, 어느 정도',
+            example: 'It was kind of expensive, but worth it.',
+          },
         ],
       },
       {
@@ -356,6 +395,75 @@ export const expressionCategories: ExpressionCategory[] = [
             ko: 'A는 ~고 B는 ~지만, 나는 ~해서 A가 좋아요 (비교 답변은 선호로 마무리하면 완성도가 올라가요)',
             example:
               'Parks are free and relaxing, while cafés cost money, but personally I prefer parks because I can bring my dog.',
+          },
+        ],
+      },
+      {
+        title: '관계대명사로 문장 늘리기',
+        items: [
+          {
+            en: 'I have a friend who lives in Canada.',
+            ko: '[Who] 캐나다에 사는 친구가 있어요',
+          },
+          {
+            en: 'I bought a new phone which has a great camera.',
+            ko: '[Which] 카메라 기능이 좋은 새 폰을 샀어요',
+          },
+          {
+            en: 'This is the cafe that I told you about.',
+            ko: '[That] 이게 내가 말했던 그 카페야',
+          },
+          {
+            en: 'I visited the park where I used to play.',
+            ko: '[Where] 내가 예전에 놀던 그 공원에 갔어',
+          },
+          {
+            en: 'I remember the day when we first met.',
+            ko: '[When] 우리가 처음 만난 날이 기억나',
+          },
+        ],
+      },
+      {
+        title: '부사로 원어민 느낌 내기',
+        items: [
+          {
+            en: 'Basically',
+            ko: '기본적으로, 결국',
+            example: "Basically, I'm a big fan of action movies, so I watch them every weekend.",
+          },
+          { en: 'Literally', ko: '말 그대로, 진짜' },
+          { en: 'Definitely', ko: '확실히, 당연히' },
+          { en: 'Totally', ko: '완전히, 전적으로' },
+          { en: 'Personally', ko: '개인적으로는' },
+          { en: 'Obviously', ko: '누가 봐도, 분명히' },
+        ],
+      },
+      {
+        title: '질문 반응·마무리 패턴',
+        items: [
+          {
+            en: "Oh, that's an interesting question! Let me think about it for a second... okay.",
+            ko: '일반적인 주제 — 바로 답하지 말고 질문에 먼저 반응하기',
+          },
+          {
+            en: "Wow, I've never really thought about that before. To be honest, it's a bit of a tough one, but let me try.",
+            ko: '어렵거나 처음 들어본 질문일 때',
+          },
+          {
+            en: 'Actually, I was just talking about this with my friend the other day!',
+            ko: '익숙한 주제가 나왔을 때',
+          },
+          {
+            en: "So, basically, that's why I love hiking. Anyway, it was a memorable experience.",
+            ko: '요약하며 마무리할 때',
+          },
+          {
+            en: 'What about you, Eva? Have you ever been there? I high-key recommend it!',
+            ko: '면접관에게 역질문하며 끝내기',
+          },
+          {
+            en: "That's all I can say about this.",
+            ko: '답변을 완전히 끝맺을 때',
           },
         ],
       },

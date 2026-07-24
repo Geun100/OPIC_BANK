@@ -4,6 +4,16 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { expressionCategories, getCategory } from '@/data/expressions';
 import { SaveButton } from '@/components/save-button';
+import { cutInfo, type CutKey, type TopicKey } from '@/data/topic-qa';
+
+const topicSlugByTitle: Record<string, TopicKey> = {
+  집: 'home',
+  카페: 'cafe',
+  영화: 'movie',
+  여행: 'travel',
+  '운동 (걷기·조깅)': 'exercise',
+  공원: 'park',
+};
 
 export function generateStaticParams() {
   return expressionCategories.map((c) => ({ category: c.slug }));
@@ -41,27 +51,45 @@ export default async function ExpressionCategoryPage({
       <p className="mt-2 text-[15px] text-muted-foreground">{cat.description}</p>
 
       <div className="mt-10 flex flex-col gap-8">
-        {cat.groups.map((g) => (
-          <section key={g.title} className="rounded-xl border border-border bg-card p-6">
-            <h2 className="text-[20px]">{g.title}</h2>
-            <ul className="mt-4 flex flex-col gap-4">
-              {g.items.map((item) => (
-                <li key={item.en} className="flex items-start justify-between gap-3">
-                  <div>
-                    <p className="text-[16px] font-medium">{item.en}</p>
-                    <p className="mt-0.5 text-[13px] text-muted-foreground">{item.ko}</p>
-                    {item.example && (
-                      <p className="mt-1 text-[13px] italic text-secondary-foreground/70">
-                        {item.example}
-                      </p>
-                    )}
+        {cat.groups.map((g) => {
+          const topicSlug = topicSlugByTitle[g.title];
+          return (
+            <section key={g.title} className="rounded-xl border border-border bg-card p-6">
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="text-[20px]">{g.title}</h2>
+                {topicSlug && (
+                  <div className="flex gap-2">
+                    {(Object.keys(cutInfo) as CutKey[]).map((cut) => (
+                      <Link
+                        key={cut}
+                        href={`/expressions/topics/${topicSlug}/${cut}`}
+                        className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                      >
+                        {cutInfo[cut].name} 답변
+                      </Link>
+                    ))}
                   </div>
-                  <SaveButton id={item.en} type="expression" en={item.en} ko={item.ko} />
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+                )}
+              </div>
+              <ul className="mt-4 flex flex-col gap-4">
+                {g.items.map((item) => (
+                  <li key={item.en} className="flex items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[16px] font-medium">{item.en}</p>
+                      <p className="mt-0.5 text-[13px] text-muted-foreground">{item.ko}</p>
+                      {item.example && (
+                        <p className="mt-1 text-[13px] italic text-secondary-foreground/70">
+                          {item.example}
+                        </p>
+                      )}
+                    </div>
+                    <SaveButton id={item.en} type="expression" en={item.en} ko={item.ko} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
       </div>
 
       <p className="mt-10 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">

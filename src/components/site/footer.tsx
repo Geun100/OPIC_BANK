@@ -1,4 +1,4 @@
-// OPIC Sprint 사이트 푸터 — 메뉴 링크와 면책 문구
+// OPIC Bank 사이트 푸터 — 메뉴 링크와 면책 문구
 import Link from 'next/link';
 
 export function Footer() {
@@ -7,23 +7,20 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 text-[13px] text-muted-foreground sm:grid-cols-3">
         <div>
           <p className="mb-2 text-[14px] text-foreground">
-            OPIC <span className="text-primary">Sprint</span>
+            OPIC <span className="text-primary">Bank</span>
           </p>
-          <p>시험이 언제든, 오늘 뭘 해야 하는지 바로 알려주는 오픽 준비 스프린트</p>
+          <p>오픽에 필요한 모든 표현을 한곳에 모아둔 아카이브</p>
         </div>
         <div className="flex flex-col gap-2">
-          <p className="text-foreground">스프린트</p>
+          <p className="text-foreground">가이드</p>
           <Link href="/guide" className="hover:text-primary">
             오픽이 처음이라면
           </Link>
-          <Link href="/sprint/d14" className="hover:text-primary">
-            D-14 스프린트
+          <Link href="/survey" className="hover:text-primary">
+            서베이 추천
           </Link>
-          <Link href="/sprint/d7" className="hover:text-primary">
-            D-7 스프린트
-          </Link>
-          <Link href="/sprint/d1" className="hover:text-primary">
-            D-1 벼락치기
+          <Link href="/notes" className="hover:text-primary">
+            나만의 노트
           </Link>
         </div>
         <div className="flex flex-col gap-2">

@@ -4,15 +4,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
-
-const links = [
-  { href: '/guide', label: '오픽이 처음이라면' },
-  { href: '/survey', label: '서베이 추천' },
-  { href: '/questions', label: '질문 라이브러리' },
-  { href: '/expressions', label: '표현 라이브러리' },
-  { href: '/grade', label: 'AL·IH 표현집' },
-  { href: '/notes', label: '나만의 노트' },
-];
+import { navLinks as links } from '@/lib/nav-links';
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
