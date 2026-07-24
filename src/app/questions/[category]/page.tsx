@@ -10,6 +10,17 @@ import {
   expectedQuestions,
 } from '@/data/questions';
 import { SaveButton } from '@/components/save-button';
+import { suddenCutInfo, type SuddenTopicKey } from '@/data/sudden-qa';
+import type { CutKey } from '@/data/topic-qa';
+
+const suddenSlugByName: Record<string, SuddenTopicKey> = {
+  날씨: 'weather',
+  재활용: 'recycling',
+  '교통·대중교통': 'transportation',
+  '인터넷·기술': 'internet',
+  건강: 'health',
+  약속: 'appointments',
+};
 
 const categories = {
   combo: {
@@ -78,23 +89,41 @@ export default async function QuestionCategoryPage({
             : category === 'sudden'
               ? suddenTopics
               : roleplayTopics
-          ).map((topic) => (
-            <section key={topic.name} className="rounded-xl border border-border bg-card p-6">
-              <h2 className="text-[20px]">{topic.name}</h2>
-              {topic.note && <p className="mt-1 text-[13px] text-primary">{topic.note}</p>}
-              <ul className="mt-4 flex flex-col gap-3">
-                {topic.questions.map((q) => (
-                  <li key={q.en} className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-[15px]">{q.en}</p>
-                      <p className="mt-0.5 text-[13px] text-muted-foreground">{q.ko}</p>
+          ).map((topic) => {
+            const suddenSlug = category === 'sudden' ? suddenSlugByName[topic.name] : undefined;
+            return (
+              <section key={topic.name} className="rounded-xl border border-border bg-card p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-[20px]">{topic.name}</h2>
+                  {suddenSlug && (
+                    <div className="flex gap-2">
+                      {(Object.keys(suddenCutInfo) as CutKey[]).map((cut) => (
+                        <Link
+                          key={cut}
+                          href={`/questions/sudden/${suddenSlug}/${cut}`}
+                          className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                        >
+                          {suddenCutInfo[cut].name} 답변
+                        </Link>
+                      ))}
                     </div>
-                    <SaveButton id={q.en} type="question" en={q.en} ko={q.ko} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
+                  )}
+                </div>
+                {topic.note && <p className="mt-1 text-[13px] text-primary">{topic.note}</p>}
+                <ul className="mt-4 flex flex-col gap-3">
+                  {topic.questions.map((q) => (
+                    <li key={q.en} className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-[15px]">{q.en}</p>
+                        <p className="mt-0.5 text-[13px] text-muted-foreground">{q.ko}</p>
+                      </div>
+                      <SaveButton id={q.en} type="question" en={q.en} ko={q.ko} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            );
+          })}
 
         {category === 'trends' &&
           trendNotes.map((n) => (

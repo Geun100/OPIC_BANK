@@ -1,6 +1,7 @@
 import { SitemapUrl, RobotsRule } from '@/types/seo';
 import { seoConfig } from './config';
 import { topicQAs } from '@/data/topic-qa';
+import { suddenQAs } from '@/data/sudden-qa';
 
 // 정적 페이지 URL들 — OPIC Bank 라우트
 const staticPages = [
@@ -26,6 +27,11 @@ const staticPages = [
   { url: '/tips', priority: 0.8, changeFrequency: 'weekly' as const },
   ...topicQAs.map((q) => ({
     url: `/expressions/topics/${q.topic}/${q.cut}`,
+    priority: 0.7,
+    changeFrequency: 'monthly' as const,
+  })),
+  ...suddenQAs.map((q) => ({
+    url: `/questions/sudden/${q.topic}/${q.cut}`,
     priority: 0.7,
     changeFrequency: 'monthly' as const,
   })),
