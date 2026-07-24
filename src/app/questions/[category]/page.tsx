@@ -12,6 +12,7 @@ import {
 import { SaveButton } from '@/components/save-button';
 import { suddenCutInfo, type SuddenTopicKey } from '@/data/sudden-qa';
 import type { CutKey } from '@/data/topic-qa';
+import { roleplayQAs, type RoleplayType } from '@/data/roleplay-qa';
 
 const suddenSlugByName: Record<string, SuddenTopicKey> = {
   날씨: 'weather',
@@ -20,6 +21,12 @@ const suddenSlugByName: Record<string, SuddenTopicKey> = {
   '인터넷·기술': 'internet',
   건강: 'health',
   약속: 'appointments',
+};
+
+const roleplaySlugByName: Record<string, RoleplayType> = {
+  '유형 ① 정보 요청하기 (질문 3~4개 던지기)': 'request',
+  '유형 ② 문제 상황 설명 + 대안 제시': 'problem',
+  '유형 ③ 비슷한 문제를 겪은 내 경험 말하기': 'experience',
 };
 
 const categories = {
@@ -91,6 +98,8 @@ export default async function QuestionCategoryPage({
               : roleplayTopics
           ).map((topic) => {
             const suddenSlug = category === 'sudden' ? suddenSlugByName[topic.name] : undefined;
+            const roleplayType =
+              category === 'roleplay' ? roleplaySlugByName[topic.name] : undefined;
             return (
               <section key={topic.name} className="rounded-xl border border-border bg-card p-6">
                 <div className="flex items-center justify-between gap-3">
@@ -106,6 +115,21 @@ export default async function QuestionCategoryPage({
                           {suddenCutInfo[cut].name} 답변
                         </Link>
                       ))}
+                    </div>
+                  )}
+                  {roleplayType && (
+                    <div className="flex flex-wrap justify-end gap-2">
+                      {roleplayQAs
+                        .filter((q) => q.type === roleplayType)
+                        .map((q) => (
+                          <Link
+                            key={q.scenario}
+                            href={`/questions/roleplay/${roleplayType}/${q.scenario}`}
+                            className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                          >
+                            {q.scenarioName} 답변
+                          </Link>
+                        ))}
                     </div>
                   )}
                 </div>
