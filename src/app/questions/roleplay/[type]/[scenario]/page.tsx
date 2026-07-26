@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { roleplayQAs, roleplayTypeInfo, getRoleplayQA } from '@/data/roleplay-qa';
 import { SaveButton } from '@/components/save-button';
+import { splitByExpressions } from '@/lib/highlight';
 
 export function generateStaticParams() {
   return roleplayQAs.map((q) => ({ type: q.type, scenario: q.scenario }));
@@ -64,7 +65,17 @@ export default async function RoleplayCutPage({
             ko={qa.question.ko}
           />
         </div>
-        <p className="mt-2 text-[16px] leading-relaxed">{qa.answer}</p>
+        <p className="mt-2 text-[16px] leading-relaxed">
+          {splitByExpressions(qa.answer, qa.keyExpressions).map((part, i) =>
+            qa.keyExpressions.includes(part) ? (
+              <strong key={i} className="font-semibold text-primary-press">
+                {part}
+              </strong>
+            ) : (
+              <span key={i}>{part}</span>
+            ),
+          )}
+        </p>
       </div>
 
       <div className="mt-6 rounded-xl bg-cream p-6">

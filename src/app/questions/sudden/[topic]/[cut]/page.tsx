@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { suddenQAs, suddenTopicInfo, suddenCutInfo, getSuddenQA } from '@/data/sudden-qa';
 import { SaveButton } from '@/components/save-button';
+import { splitByExpressions } from '@/lib/highlight';
 
 export function generateStaticParams() {
   return suddenQAs.map((q) => ({ topic: q.topic, cut: q.cut }));
@@ -66,7 +67,17 @@ export default async function SuddenTopicCutPage({
             ko={qa.question.ko}
           />
         </div>
-        <p className="mt-2 text-[16px] leading-relaxed">{qa.answer}</p>
+        <p className="mt-2 text-[16px] leading-relaxed">
+          {splitByExpressions(qa.answer, qa.keyExpressions).map((part, i) =>
+            qa.keyExpressions.includes(part) ? (
+              <strong key={i} className="font-semibold text-primary-press">
+                {part}
+              </strong>
+            ) : (
+              <span key={i}>{part}</span>
+            ),
+          )}
+        </p>
       </div>
 
       <div className="mt-6 rounded-xl bg-cream p-6">
