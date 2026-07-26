@@ -284,6 +284,56 @@ export const expressionCategories: ExpressionCategory[] = [
           },
         ],
       },
+      {
+        title: '캠핑',
+        items: [
+          {
+            en: 'set up a tent',
+            ko: '텐트를 치다',
+            example: 'We set up a tent near the lake.',
+          },
+          {
+            en: 'build a small fire',
+            ko: '작은 모닥불을 피우다',
+            example: 'We build a small fire and relax around it until late.',
+          },
+          {
+            en: 'a refreshing escape',
+            ko: '상쾌한 도피처',
+            example: 'Camping feels like such a refreshing escape from the city.',
+          },
+          {
+            en: 'disconnect from my daily routine',
+            ko: '일상에서 벗어나다',
+            example: 'Camping helps me disconnect from my daily routine.',
+          },
+        ],
+      },
+      {
+        title: '스포츠 관람',
+        items: [
+          {
+            en: 'a close match',
+            ko: '접전인 경기',
+            example: 'A close match that comes down to the final minutes is the most exciting.',
+          },
+          {
+            en: 'the atmosphere',
+            ko: '(경기장의) 분위기',
+            example: 'What I like most about watching sports live is the atmosphere.',
+          },
+          {
+            en: 'go into overtime',
+            ko: '연장전에 들어가다',
+            example: 'The match went into overtime.',
+          },
+          {
+            en: 'the winning goal',
+            ko: '결승골',
+            example: 'Everyone jumped up when the winning goal went in.',
+          },
+        ],
+      },
     ],
   },
   {

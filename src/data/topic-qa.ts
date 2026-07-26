@@ -11,7 +11,9 @@ export type TopicKey =
   | 'performance'
   | 'concert'
   | 'shopping'
-  | 'music';
+  | 'music'
+  | 'camping'
+  | 'sports';
 export type CutKey = 'description' | 'habit' | 'experience';
 
 export const topicInfo: Record<TopicKey, { name: string; slug: TopicKey }> = {
@@ -25,6 +27,8 @@ export const topicInfo: Record<TopicKey, { name: string; slug: TopicKey }> = {
   concert: { name: '콘서트', slug: 'concert' },
   shopping: { name: '쇼핑', slug: 'shopping' },
   music: { name: '음악 감상', slug: 'music' },
+  camping: { name: '캠핑', slug: 'camping' },
+  sports: { name: '스포츠 관람', slug: 'sports' },
 };
 
 export const cutInfo: Record<CutKey, { name: string; slug: CutKey; hint: string }> = {
@@ -536,6 +540,84 @@ export const topicQAs: TopicQA[] = [
       'such an ... experience that',
       'Looking back',
     ],
+  },
+  {
+    topic: 'camping',
+    cut: 'description',
+    question: {
+      ko: '캠핑을 묘사해달라는 질문',
+      en: 'Can you describe what camping is usually like for you? Where do you usually go?',
+    },
+    answer:
+      "I usually go camping at a campsite near a lake or in the mountains, not too far from the city. What I like most about it is how quiet everything feels at night, especially compared to how loud the city usually is. We normally set up a tent, build a small fire, and just relax around it until late. Honestly, the smell of the campfire and the sound of nature around us is what makes the whole experience feel so different from everyday life. On top of that, seeing the stars clearly at night is something you just can't get in the city. That's mainly why camping feels like such a refreshing escape whenever I go.",
+    answerKo:
+      '저는 보통 도시에서 그렇게 멀지 않은 호숫가나 산 근처 캠핑장으로 캠핑을 가요. 제가 제일 좋아하는 건 밤이 되면 모든 게 정말 조용해진다는 건데, 평소 도시가 얼마나 시끄러운지랑 비교하면 특히 그래요. 보통 텐트를 치고 작은 모닥불을 피운 다음 늦게까지 그 주변에서 쉬어요. 솔직히 모닥불 냄새랑 주변 자연의 소리가 일상이랑 완전히 다른 느낌을 만들어줘요. 게다가 밤에 별이 선명하게 보이는 것도 도시에서는 볼 수 없는 거예요. 그래서 캠핑 갈 때마다 정말 상쾌한 도피처처럼 느껴지는 거예요.',
+    keyExpressions: ['set up a tent', 'On top of that', "That's mainly why"],
+  },
+  {
+    topic: 'camping',
+    cut: 'habit',
+    question: {
+      ko: '캠핑을 얼마나 자주, 어떻게 준비하는지 묻는 질문',
+      en: 'How often do you go camping, and what do you usually do to prepare?',
+    },
+    answer:
+      "I tend to go camping a few times a year, mostly in spring or fall when the weather is comfortable. Before we go, I usually make a checklist of everything we need, like a tent, sleeping bags, and food. I've made it a habit to pack a portable stove, since cooking outside is honestly one of my favorite parts of the trip. What I enjoy most is the moment we finally set everything up and can just sit back and relax. As a result, camping has become one of the easiest ways for me to disconnect from my daily routine.",
+    answerKo:
+      '저는 날씨가 쾌적한 봄이나 가을에 일 년에 몇 번 캠핑을 가는 편이에요. 가기 전에는 보통 텐트, 침낭, 음식처럼 필요한 것들의 체크리스트를 만들어요. 휴대용 버너를 챙기는 걸 습관으로 만들었는데, 밖에서 요리하는 게 사실 여행에서 제일 좋아하는 부분 중 하나거든요. 제가 제일 좋아하는 순간은 드디어 다 준비를 마치고 편하게 앉아서 쉴 수 있을 때예요. 그러다 보니 캠핑이 일상에서 벗어나는 제일 쉬운 방법 중 하나가 됐어요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'camping',
+    cut: 'experience',
+    question: {
+      ko: '캠핑 중 기억에 남는 경험',
+      en: 'Tell me about a memorable camping experience.',
+    },
+    answer:
+      "Let me think about that for a second... Actually, I remember a camping trip where it suddenly started raining in the middle of the night, and we had to scramble to keep everything dry. It was such a chaotic experience at first, since none of us expected the weather to change so quickly. But once we got everything under control, we just sat inside the tent laughing about how ridiculous the whole situation was. Looking back, it's actually one of my favorite memories, because it turned into a much funnier story than if everything had gone smoothly.",
+    answerKo:
+      '잠깐 생각해볼게요... 한밤중에 갑자기 비가 내리기 시작해서 모든 걸 젖지 않게 하려고 정신없이 움직였던 캠핑이 기억나요. 다들 날씨가 그렇게 갑자기 바뀔 줄 몰랐어서 처음엔 정말 정신없는 경험이었어요. 근데 다 정리하고 나서는 그냥 텐트 안에 앉아서 그 상황이 얼마나 어이없었는지 얘기하며 웃었어요. 돌이켜보면 다 순조로웠을 때보다 훨씬 더 재밌는 얘깃거리가 돼서 제가 제일 좋아하는 추억 중 하나예요.',
+    keyExpressions: ['Let me think about that for a second', 'Looking back'],
+  },
+  {
+    topic: 'sports',
+    cut: 'description',
+    question: {
+      ko: '좋아하는 스포츠 관람을 묘사해달라는 질문',
+      en: 'What kind of sports do you like to watch?',
+    },
+    answer:
+      "I really enjoy watching soccer, especially when there's a big match between two strong teams. What I like most about watching sports live is the atmosphere, since everyone in the crowd gets so into the game together. I usually watch games either at home with friends or occasionally at the stadium if tickets are available. Honestly, a close match that comes down to the final minutes is what makes watching sports really exciting for me. There's this one game I still remember clearly, because the ending was so intense that the whole room was practically screaming. That's mainly why I try to catch a big match whenever I get the chance.",
+    answerKo:
+      '저는 축구 보는 걸 정말 좋아하는데, 특히 강팀끼리 붙는 큰 경기가 있을 때요. 스포츠를 라이브로 보는 걸 제일 좋아하는 이유는 분위기 때문인데, 관중 전체가 다 같이 경기에 몰입하거든요. 보통 집에서 친구들이랑 보거나 티켓이 있으면 가끔 경기장에서 보기도 해요. 솔직히 마지막 순간까지 접전인 경기가 저한테는 스포츠 관람을 정말 흥미롭게 만드는 요소예요. 아직도 생생하게 기억나는 경기가 하나 있는데, 결말이 너무 팽팽해서 방 안 전체가 거의 소리를 지르고 있었어요. 그래서 기회가 될 때마다 큰 경기를 챙겨 보려고 해요.',
+    keyExpressions: ['the atmosphere', "That's mainly why"],
+  },
+  {
+    topic: 'sports',
+    cut: 'habit',
+    question: {
+      ko: '스포츠 관람을 얼마나 자주, 어떻게 하는지 묻는 질문',
+      en: "How often do you watch sports, and what's your routine?",
+    },
+    answer:
+      "I tend to check the schedule every week to see which games are on, especially during the season. Once I find a match I want to watch, I usually grab some snacks and get comfortable on the couch. I've made it a habit to watch with friends whenever possible, since cheering together makes it way more fun. What I enjoy most is that tense feeling right before a big play happens, when everyone just goes quiet for a second. After the game, we usually spend a while just talking about the best moments.",
+    answerKo:
+      '특히 시즌 중에는 무슨 경기가 있는지 매주 일정을 확인하는 편이에요. 보고 싶은 경기를 찾으면 보통 간식을 챙겨서 소파에 편하게 자리 잡아요. 가능하면 친구들이랑 같이 보는 걸 습관으로 만들었어요, 같이 응원하면 훨씬 재밌거든요. 제가 제일 좋아하는 건 큰 플레이가 나오기 직전, 다들 잠깐 조용해지는 그 긴장되는 순간이에요. 경기가 끝나면 보통 한참 동안 제일 좋았던 순간들을 얘기해요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is'],
+  },
+  {
+    topic: 'sports',
+    cut: 'experience',
+    question: {
+      ko: '스포츠 관람 중 기억에 남는 경험',
+      en: 'Tell me about a memorable experience watching a sports game.',
+    },
+    answer:
+      "Come to think of it, I remember watching a match that went into overtime, and the tension in the room just kept building the whole time. It was such an intense experience that nobody could even sit still by the end. What I remember most is the moment the winning goal went in — everyone jumped up and started cheering at the same time. Looking back, that's probably the most exciting game I've ever watched, because you rarely get to see something come down to the very last second like that.",
+    answerKo:
+      '생각해보니, 연장전까지 갔던 경기를 본 적이 있는데 그 내내 방 안의 긴장감이 계속 커졌어요. 끝날 때쯤엔 아무도 가만히 앉아있지 못할 정도로 강렬한 경험이었어요. 제일 기억에 남는 건 결승골이 들어간 순간인데, 다들 동시에 벌떡 일어나서 환호하기 시작했어요. 돌이켜보면 그게 제가 본 것 중 가장 흥미진진한 경기였던 것 같아요, 그렇게 마지막 순간까지 가는 경기는 좀처럼 보기 힘들거든요.',
+    keyExpressions: ['Come to think of it', 'such an intense experience that', 'Looking back'],
   },
 ];
 

@@ -17,6 +17,8 @@ const topicSlugByTitle: Record<string, TopicKey> = {
   콘서트: 'concert',
   쇼핑: 'shopping',
   '음악 감상': 'music',
+  캠핑: 'camping',
+  '스포츠 관람': 'sports',
 };
 
 export function generateStaticParams() {
