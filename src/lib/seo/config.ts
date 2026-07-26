@@ -20,7 +20,7 @@ export const seoConfig: SeoConfigProps = {
 // 페이지별 기본 SEO 설정들
 export const pageDefaults = {
   home: {
-    title: '오픽 표현, 검색 몇 초면 끝나요',
+    title: '모든 오픽을 한곳에서. Find What You Need. Speak Naturally.',
     description: '필요한 메뉴 하나만 고르면, 그 안에서 바로 찾아볼 수 있어요.',
     keywords: '오픽 표현, 오픽 필러, 오픽 만능 문장, 오픽 준비, 오픽 입문, 오픽 공부법',
   },

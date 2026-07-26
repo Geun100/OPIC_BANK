@@ -71,7 +71,9 @@ export default function Home() {
           OPIC Bank
         </p>
         <h1 className="mx-auto max-w-2xl text-[40px] leading-[1.1] tracking-[-0.03em] sm:text-[52px]">
-          오픽 표현, 검색 몇 초면 끝나요
+          모든 오픽을 한곳에서.
+          <br />
+          Find What You Need. Speak Naturally.
         </h1>
         <p className="mx-auto mt-5 max-w-md text-[17px] text-muted-foreground">
           필요한 메뉴 하나만 고르면, 그 안에서 바로 찾아볼 수 있어요.

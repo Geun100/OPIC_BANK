@@ -10,6 +10,7 @@
 딩코딩코 올인원 스타터킷은 강의 수강생들이 환경 설정에 시간을 낭비하지 않고, **바로 핵심 기능 개발에 집중**할 수 있도록 만들어진 완성형 스타터킷입니다.
 
 ### ✨ 핵심 기능
+
 - 🔐 **Supabase 인증** - 이메일/소셜 로그인, 회원가입
 - 💳 **토스페이먼츠 결제** - 카드 결제, 간편결제, 결제 승인
 - 🎨 **Shadcn/ui 컴포넌트** - 모던하고 접근성 좋은 UI
@@ -20,6 +21,7 @@
 ## 🛠️ 기술 스택
 
 ### Frontend
+
 - **Next.js 15** (App Router)
 - **React 19**
 - **TypeScript**
@@ -27,11 +29,13 @@
 - **Shadcn/ui**
 
 ### Backend & 인증
+
 - **Supabase** (PostgreSQL + Auth)
 - **토스페이먼츠** API
 - **Row Level Security** (RLS)
 
 ### 도구 & 배포
+
 - **Vercel** 배포
 - **ESLint + Prettier** 코드 품질
 - **Husky + Commitlint** Git 훅
@@ -40,6 +44,7 @@
 ## 🚀 빠른 시작
 
 ### 1. 프로젝트 설정
+
 ```bash
 # 프로젝트 복제
 git clone [repository-url]
@@ -57,6 +62,7 @@ npm run dev
 ```
 
 ### 2. 브라우저에서 확인
+
 - 홈페이지: [http://localhost:3000](http://localhost:3000)
 - 인증 페이지: [http://localhost:3000/auth](http://localhost:3000/auth)
 - 결제 페이지: [http://localhost:3000/payment](http://localhost:3000/payment)
@@ -83,6 +89,7 @@ src/
 ## 🎯 개발 가이드
 
 ### 커밋 규칙
+
 ```bash
 # 형식: feat|fix|docs|style|refactor|test|chore: 작업 내용
 git commit -m "feat: 토스페이먼츠 결제 시스템 구현"
@@ -90,6 +97,7 @@ git commit -m "fix: Supabase 인증 오류 수정"
 ```
 
 ### 코드 스타일
+
 - ✅ **TypeScript 필수**
 - ✅ **ESLint + Prettier** 자동 적용
 - ✅ **컴포넌트 재사용성** 고려
@@ -98,11 +106,13 @@ git commit -m "fix: Supabase 인증 오류 수정"
 ## 🌐 배포
 
 ### Vercel 배포
+
 1. Vercel 계정 연결
 2. 환경 변수 설정
 3. 자동 배포 활성화
 
 ### 필수 환경 변수
+
 ```env
 # Supabase
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
@@ -121,6 +131,7 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.com
 이 프로젝트는 **Cursor AI 에디터**에 최적화된 개발 규칙을 제공합니다.
 
 ### 1. Cursor Rules 자동 적용
+
 ```bash
 # Cursor 에디터에서 프로젝트 열기
 cursor .
@@ -129,6 +140,7 @@ cursor .
 ```
 
 ### 2. 포함된 AI 개발 규칙
+
 - 🏗️ **프로젝트 구조** - 파일 구조와 네이밍 컨벤션
 - 📝 **TypeScript 코딩** - 타입 안전성과 베스트 프랙티스
 - 🔐 **Supabase 인증** - 인증 시스템 구현 가이드
@@ -136,7 +148,9 @@ cursor .
 - 🚀 **SEO 최적화** - 검색엔진 최적화 전략
 
 ### 3. AI 어시스턴트 활용
+
 Cursor의 AI 어시스턴트에게 다음과 같이 요청하세요:
+
 ```
 "Supabase 인증 컴포넌트를 만들어줘"
 "토스페이먼츠 결제 버튼을 구현해줘"

@@ -1,15 +1,18 @@
-// 나만의 노트 — 저장한 표현/질문 목록 (localStorage 기반)
+// 나만의 노트 — 저장한 표현/질문 목록 (localStorage 기반) + 암기카드 복습 모드
 'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Trash2, Copy, Check } from 'lucide-react';
+import { Trash2, Copy, Check, Layers, ListFilter } from 'lucide-react';
 import { getNotes, removeNote, onNotesChange, type NoteItem } from '@/lib/notes';
+import { SaveButton } from '@/components/save-button';
+import { NotesFlashcard } from '@/components/notes-flashcard';
 
 export default function NotesPage() {
   const [notes, setNotes] = useState<NoteItem[]>([]);
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [viewMode, setViewMode] = useState<'list' | 'flashcard'>('list');
 
   useEffect(() => {
     setNotes(getNotes());
@@ -35,18 +38,25 @@ export default function NotesPage() {
         </h2>
         <ul className="mt-4 flex flex-col gap-3">
           {items.map((n) => (
-            <li key={n.id} className="flex items-start justify-between gap-3">
+            <li
+              key={n.id}
+              className="flex items-start justify-between gap-3 border-b border-border/50 pb-3 last:border-0 last:pb-0"
+            >
               <div>
                 <p className="text-[15px] font-medium">{n.en}</p>
                 <p className="mt-0.5 text-[13px] text-muted-foreground">{n.ko}</p>
               </div>
-              <button
-                aria-label="노트에서 삭제"
-                onClick={() => removeNote(n.id)}
-                className="shrink-0 rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-destructive"
-              >
-                <Trash2 className="size-4" />
-              </button>
+              <div className="flex items-center gap-1">
+                <SaveButton id={n.id} type={n.type} en={n.en} ko={n.ko} />
+                <button
+                  type="button"
+                  aria-label="노트에서 삭제"
+                  onClick={() => removeNote(n.id)}
+                  className="shrink-0 rounded-full p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-destructive"
+                >
+                  <Trash2 className="size-4" />
+                </button>
+              </div>
             </li>
           ))}
         </ul>
@@ -81,17 +91,59 @@ export default function NotesPage() {
 
       {notes.length > 0 && (
         <>
-          <button
-            onClick={copyAll}
-            className="mt-6 flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-[13px] text-primary-foreground transition-colors hover:bg-primary-press"
-          >
-            {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
-            {copied ? '복사됨' : '전체 복사 (암기용)'}
-          </button>
-          <div className="mt-6 flex flex-col gap-6">
-            <Section title="저장한 표현" items={expressions} />
-            <Section title="저장한 질문" items={questions} />
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-b border-border pb-4">
+            {/* 보기 모드 전환 스위처 */}
+            <div className="flex items-center gap-1 rounded-xl bg-muted p-1 text-[13px]">
+              <button
+                type="button"
+                onClick={() => setViewMode('list')}
+                className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 font-medium transition-colors ${
+                  viewMode === 'list'
+                    ? 'bg-background shadow-sm text-foreground'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <ListFilter className="size-4" />
+                리스트 보기 ({notes.length})
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode('flashcard')}
+                className={`flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 font-medium transition-colors ${
+                  viewMode === 'flashcard'
+                    ? 'bg-primary text-primary-foreground shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <Layers className="size-4" />
+                🎴 암기카드 복습 모드
+              </button>
+            </div>
+
+            {/* 전체 복사 버튼 */}
+            <button
+              type="button"
+              onClick={copyAll}
+              className="flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-1.5 text-[13px] font-medium transition-colors hover:bg-accent"
+            >
+              {copied ? (
+                <Check className="size-3.5 text-emerald-600" />
+              ) : (
+                <Copy className="size-3.5" />
+              )}
+              {copied ? '복사 완료!' : '전체 텍스트 복사'}
+            </button>
           </div>
+
+          {/* 보기 모드에 따른 분기 */}
+          {viewMode === 'list' ? (
+            <div className="mt-6 flex flex-col gap-6">
+              <Section title="저장한 표현" items={expressions} />
+              <Section title="저장한 질문" items={questions} />
+            </div>
+          ) : (
+            <NotesFlashcard items={notes} />
+          )}
         </>
       )}
     </div>

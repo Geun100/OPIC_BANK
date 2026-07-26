@@ -3,8 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { topicQAs, topicInfo, cutInfo, getTopicQA } from '@/data/topic-qa';
-import { SaveButton } from '@/components/save-button';
-import { splitByExpressions, pickMemorizeSentences } from '@/lib/highlight';
+import { AnswerGradeViewer } from '@/components/answer-grade-viewer';
 
 export function generateStaticParams() {
   return topicQAs.map((q) => ({ topic: q.topic, cut: q.cut }));
@@ -21,8 +20,8 @@ export async function generateMetadata({
   const topicName = topicInfo[qa.topic].name;
   const cutName = cutInfo[qa.cut].name;
   return {
-    title: `오픽 ${topicName} ${cutName} 답변 — 예상 질문과 모범답안`,
-    description: `오픽 ${topicName} 주제 ${cutName} 질문 예상 답안. ${qa.question.en}`,
+    title: `오픽 ${topicName} ${cutName} 답변 — 예상 질문과 모범답안 (IM·IH·AL 등급별)`,
+    description: `오픽 ${topicName} 주제 ${cutName} 질문 등급별(IM·IH·AL) 맞춤 답안. ${qa.question.en}`,
   };
 }
 
@@ -57,56 +56,13 @@ export default async function TopicCutPage({
         <p className="mt-1 text-[14px] text-muted-foreground">{qa.question.ko}</p>
       </div>
 
-      <div className="mt-6 rounded-xl border border-border bg-card p-6">
-        <div className="flex items-start justify-between gap-3">
-          <p className="text-[13px] text-muted-foreground">모범답안</p>
-          <SaveButton
-            id={`topic-qa-${qa.topic}-${qa.cut}`}
-            type="expression"
-            en={qa.answer}
-            ko={qa.question.ko}
-          />
-        </div>
-        <p className="mt-2 text-[16px] leading-relaxed">
-          {splitByExpressions(qa.answer, qa.keyExpressions).map((part, i) =>
-            qa.keyExpressions.includes(part) ? (
-              <strong key={i} className="font-semibold text-primary-press">
-                {part}
-              </strong>
-            ) : (
-              <span key={i}>{part}</span>
-            ),
-          )}
-        </p>
-        <p className="mt-3 border-t border-border pt-3 text-[14px] leading-relaxed text-muted-foreground">
-          {qa.answerKo}
-        </p>
-      </div>
-
-      <div className="mt-6 rounded-xl bg-cream p-6">
-        <p className="text-[14px] font-medium">암기하면 좋은 3문장</p>
-        <ul className="mt-2 flex flex-col gap-2">
-          {pickMemorizeSentences(qa.answer, qa.keyExpressions).map((s) => (
-            <li key={s} className="text-[14px] leading-relaxed">
-              {s}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="mt-6 rounded-xl bg-cream p-6">
-        <p className="text-[14px] font-medium">이 답변에 쓰인 핵심 표현</p>
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {qa.keyExpressions.map((e) => (
-            <li
-              key={e}
-              className="rounded-full border border-border bg-white px-3 py-1 text-[13px]"
-            >
-              {e}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <AnswerGradeViewer
+        id={`topic-qa-${qa.topic}-${qa.cut}`}
+        questionKo={qa.question.ko}
+        fullAnswerEn={qa.answer}
+        fullAnswerKo={qa.answerKo}
+        keyExpressions={qa.keyExpressions}
+      />
 
       <p className="mt-10 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
         답안은 학습용 초안이에요. 통째로 외우기보다 내 경험에 맞게 바꿔서 연습하세요.
