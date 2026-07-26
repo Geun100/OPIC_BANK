@@ -70,12 +70,13 @@ export default function Home() {
         <p className="mx-auto mb-5 w-fit rounded-full bg-primary-subdued/40 px-4 py-1 text-[12px] font-medium tracking-wide text-primary-press">
           OPIC Bank
         </p>
-        <h1 className="mx-auto max-w-2xl text-[40px] leading-[1.1] tracking-[-0.03em] sm:text-[52px]">
-          모든 오픽을 한곳에서.
-          <br />
-          Find What You Need. Speak Naturally.
+        <h1 className="mx-auto max-w-2xl text-[40px] leading-[1.1] tracking-[-0.03em] text-foreground sm:text-[52px]">
+          모든 오픽을 한곳에서
         </h1>
-        <p className="mx-auto mt-5 max-w-md text-[17px] text-muted-foreground">
+        <p className="mx-auto mt-4 max-w-md text-[15px] font-medium uppercase tracking-[0.08em] text-primary-press">
+          Find What You Need. Speak Naturally.
+        </p>
+        <p className="mx-auto mt-5 max-w-md text-[17px] font-normal text-secondary-foreground">
           필요한 메뉴 하나만 고르면, 그 안에서 바로 찾아볼 수 있어요.
         </p>
 

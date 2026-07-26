@@ -55,7 +55,7 @@
   --secondary: #f6f9fc;
   --secondary-foreground: #273951;
   --muted: #f6f9fc;
-  --muted-foreground: #64748d;
+  --muted-foreground: #55627a;
   --accent: #efedfe;
   --accent-foreground: #4434d4;
   --destructive: #ea2261;
@@ -103,17 +103,21 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-weight: 300;
+    font-weight: 400;
     font-feature-settings: 'ss01';
     letter-spacing: -0.01em;
     word-break: keep-all;
   }
   h1,
-  h2,
-  h3 {
-    font-weight: 300;
+  h2 {
+    font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1.15;
+  }
+  h3 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
   strong,
   b {
