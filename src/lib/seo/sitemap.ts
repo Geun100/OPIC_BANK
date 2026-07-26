@@ -24,6 +24,7 @@ const staticPages = [
   { url: '/expressions/patterns', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/expressions/emotions', priority: 0.7, changeFrequency: 'weekly' as const },
   { url: '/expressions/connectors', priority: 0.7, changeFrequency: 'weekly' as const },
+  { url: '/expressions/essentials', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/grade', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/tips', priority: 0.8, changeFrequency: 'weekly' as const },
   ...topicQAs.map((q) => ({

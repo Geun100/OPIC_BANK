@@ -694,6 +694,120 @@ export const expressionCategories: ExpressionCategory[] = [
       },
     ],
   },
+  {
+    slug: 'essentials',
+    name: '필수 기본 표현',
+    description:
+      '자기소개, 일상생활, 취미, 의견, 문제 해결 — 오픽 어디서나 쓰이는 뼈대 문장 5종. [ ] 자리에 내 이야기를 채워 넣으세요',
+    groups: [
+      {
+        title: '자기소개',
+        items: [
+          {
+            en: "Hi, my name is [name]. I'm from [city]. I work as a [job].",
+            ko: '안녕하세요, 제 이름은 [이름]입니다. 저는 [도시]에서 왔고, [직업]으로 일하고 있습니다.',
+            example: "Hi, my name is Jimin. I'm from Seoul. I work as a marketer.",
+          },
+          {
+            en: 'In my free time, I enjoy [hobby].',
+            ko: '여가 시간에는 [취미]를 즐깁니다.',
+            example: 'In my free time, I enjoy watching movies.',
+          },
+          {
+            en: "I'm passionate about [interest].",
+            ko: '저는 [관심사]에 열정을 가지고 있습니다.',
+            example: "I'm passionate about photography.",
+          },
+        ],
+      },
+      {
+        title: '일상생활',
+        items: [
+          {
+            en: 'I wake up at [time] and have [meal] for breakfast.',
+            ko: '저는 [시간]에 일어나서 [식사]를 아침으로 먹습니다.',
+            example: 'I wake up at 7 and have toast for breakfast.',
+          },
+          {
+            en: 'I usually go to work by [transportation].',
+            ko: '저는 보통 [교통수단]으로 출근합니다.',
+            example: 'I usually go to work by subway.',
+          },
+          {
+            en: 'After work, I like to relax by [activity].',
+            ko: '퇴근 후, 저는 [활동]을 하며 휴식을 취합니다.',
+            example: 'After work, I like to relax by watching a show.',
+          },
+        ],
+      },
+      {
+        title: '취미·관심사',
+        items: [
+          {
+            en: 'One of my hobbies is [hobby]. I find it really interesting because [reason].',
+            ko: '제 취미 중 하나는 [취미]입니다. [이유] 때문에 정말 흥미롭다고 생각합니다.',
+            example:
+              'One of my hobbies is jogging. I find it really interesting because it clears my head.',
+          },
+          {
+            en: "I'm very interested in [interest]. I spend a lot of time [activity].",
+            ko: '저는 [관심사]에 매우 관심이 많습니다. [활동]에 많은 시간을 보냅니다.',
+            example: "I'm very interested in music. I spend a lot of time making playlists.",
+          },
+          {
+            en: 'In my free time, I enjoy [activity] with my friends/family.',
+            ko: '여가 시간에는 친구/가족과 [활동]을 즐깁니다.',
+            example: 'In my free time, I enjoy going to cafés with my friends.',
+          },
+        ],
+      },
+      {
+        title: '의견 표현',
+        items: [
+          {
+            en: 'In my opinion, [subject] is [adjective] because [reason].',
+            ko: '제 의견으로는 [주제]는 [형용사]입니다. 그 이유는 [이유]입니다.',
+            example:
+              'In my opinion, working from home is convenient because it saves commuting time.',
+          },
+          {
+            en: 'I think [subject] is a great idea because [reason].',
+            ko: '저는 [주제]가 좋은 아이디어라고 생각합니다. 그 이유는 [이유]입니다.',
+            example:
+              'I think recycling programs are a great idea because they help the environment.',
+          },
+          {
+            en: 'Personally, I believe [subject] is important because [reason].',
+            ko: '개인적으로, 저는 [주제]가 중요하다고 믿습니다. 그 이유는 [이유]입니다.',
+            example:
+              'Personally, I believe exercise is important because it keeps me both physically and mentally healthy.',
+          },
+        ],
+      },
+      {
+        title: '문제 해결 표현',
+        items: [
+          {
+            en: 'If I were in that situation, I would [action].',
+            ko: '제가 그 상황이라면, 저는 [행동]할 것 같아요.',
+            example:
+              'If I were in that situation, I would apologize first and offer a replacement.',
+          },
+          {
+            en: 'The best way to solve this would be to [action].',
+            ko: '이걸 해결하는 가장 좋은 방법은 [행동]하는 거예요.',
+            example: 'The best way to solve this would be to contact customer service directly.',
+          },
+          {
+            en: "I would try to fix it by [action], and if that doesn't work, I would [backup action].",
+            ko: '저는 [행동]으로 해결하려고 할 거고, 그게 안 되면 [대안 행동]할 거예요.',
+            example:
+              "I would try to fix it by explaining the situation calmly, and if that doesn't work, I would ask for a refund.",
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export function getCategory(slug: string) {
