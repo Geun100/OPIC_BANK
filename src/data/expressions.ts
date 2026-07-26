@@ -103,7 +103,7 @@ export const expressionCategories: ExpressionCategory[] = [
         ],
       },
       {
-        title: '여행',
+        title: '국내여행',
         items: [
           {
             en: 'a memorable trip',
@@ -129,6 +129,56 @@ export const expressionCategories: ExpressionCategory[] = [
             en: 'breathtaking scenery',
             ko: '숨막히게 아름다운 풍경',
             example: 'The scenery from the top was breathtaking.',
+          },
+        ],
+      },
+      {
+        title: '해외여행',
+        items: [
+          {
+            en: 'a fairly short flight away',
+            ko: '비행으로 그렇게 오래 안 걸리는',
+            example: "It's a fairly short flight away, but it feels completely different.",
+          },
+          {
+            en: 'off the beaten path',
+            ko: '주요 관광지에서 벗어난',
+            example: 'We stayed in a small area off the beaten path.',
+          },
+          {
+            en: 'a language barrier',
+            ko: '언어 장벽',
+            example: 'Even with a language barrier, the local helped me out.',
+          },
+          {
+            en: 'feel like an adventure',
+            ko: '모험처럼 느껴지다',
+            example: 'Relying on basic phrases made the trip feel like an adventure.',
+          },
+        ],
+      },
+      {
+        title: '집에서 보내는 휴가',
+        items: [
+          {
+            en: 'slow down completely',
+            ko: '완전히 속도를 늦추다',
+            example: 'A staycation is a chance to slow down completely.',
+          },
+          {
+            en: 'without a strict schedule',
+            ko: '엄격한 일정 없이',
+            example: 'I plan a loose list of things to do without a strict schedule.',
+          },
+          {
+            en: 'sleep in',
+            ko: '늦잠을 자다',
+            example: 'I usually sleep in later than normal on a staycation.',
+          },
+          {
+            en: 'surprisingly restorative',
+            ko: '의외로 재충전이 되는',
+            example: 'Staycations end up feeling surprisingly restorative.',
           },
         ],
       },

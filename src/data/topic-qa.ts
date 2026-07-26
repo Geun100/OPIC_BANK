@@ -13,14 +13,16 @@ export type TopicKey =
   | 'shopping'
   | 'music'
   | 'camping'
-  | 'sports';
+  | 'sports'
+  | 'overseas'
+  | 'staycation';
 export type CutKey = 'description' | 'habit' | 'experience';
 
 export const topicInfo: Record<TopicKey, { name: string; slug: TopicKey }> = {
   home: { name: '집', slug: 'home' },
   cafe: { name: '카페', slug: 'cafe' },
   movie: { name: '영화', slug: 'movie' },
-  travel: { name: '여행', slug: 'travel' },
+  travel: { name: '국내여행', slug: 'travel' },
   exercise: { name: '운동', slug: 'exercise' },
   park: { name: '공원', slug: 'park' },
   performance: { name: '공연', slug: 'performance' },
@@ -29,6 +31,8 @@ export const topicInfo: Record<TopicKey, { name: string; slug: TopicKey }> = {
   music: { name: '음악 감상', slug: 'music' },
   camping: { name: '캠핑', slug: 'camping' },
   sports: { name: '스포츠 관람', slug: 'sports' },
+  overseas: { name: '해외여행', slug: 'overseas' },
+  staycation: { name: '집에서 보내는 휴가', slug: 'staycation' },
 };
 
 export const cutInfo: Record<CutKey, { name: string; slug: CutKey; hint: string }> = {
@@ -618,6 +622,84 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '생각해보니, 연장전까지 갔던 경기를 본 적이 있는데 그 내내 방 안의 긴장감이 계속 커졌어요. 끝날 때쯤엔 아무도 가만히 앉아있지 못할 정도로 강렬한 경험이었어요. 제일 기억에 남는 건 결승골이 들어간 순간인데, 다들 동시에 벌떡 일어나서 환호하기 시작했어요. 돌이켜보면 그게 제가 본 것 중 가장 흥미진진한 경기였던 것 같아요, 그렇게 마지막 순간까지 가는 경기는 좀처럼 보기 힘들거든요.',
     keyExpressions: ['Come to think of it', 'such an intense experience that', 'Looking back'],
+  },
+  {
+    topic: 'overseas',
+    cut: 'description',
+    question: {
+      ko: '기억에 남는 해외여행을 묘사해달라는 질문',
+      en: 'Describe a trip abroad that you remember well. Where did you go?',
+    },
+    answer:
+      "The most memorable overseas trip I took was to Japan a few years ago. What I liked most about it was how different the everyday scenery felt, even though it's a fairly short flight away. We stayed in a small area away from the main tourist spots, which made the trip feel a lot more relaxed. Honestly, trying local food I'd never had before was probably my favorite part of the whole trip. On top of that, just being somewhere where I had to rely on basic phrases and gestures made the experience feel a lot more like an adventure. That's mainly why, compared to domestic trips, overseas travel still feels the most refreshing to me.",
+    answerKo:
+      '제가 갔던 해외여행 중 가장 기억에 남는 건 몇 년 전 일본 여행이에요. 제일 좋았던 건 비행 시간이 그렇게 길지 않은데도 일상 풍경이 완전히 다르게 느껴진다는 거였어요. 주요 관광지에서 좀 떨어진 조용한 동네에 묵어서 여행이 훨씬 여유롭게 느껴졌어요. 솔직히 한 번도 안 먹어본 현지 음식을 먹어보는 게 여행에서 제일 좋았던 부분이었어요. 게다가 기본적인 표현이랑 손짓에 의존해야 하는 곳에 있다는 것 자체가 모험처럼 느껴지게 만들어줬어요. 그래서 국내 여행이랑 비교하면 해외여행이 저한테는 여전히 제일 신선하게 느껴지는 것 같아요.',
+    keyExpressions: ['On top of that', "That's mainly why", 'Compared to ...'],
+  },
+  {
+    topic: 'overseas',
+    cut: 'habit',
+    question: {
+      ko: '해외여행을 어떻게 준비하는지 묻는 질문',
+      en: 'How do you usually prepare for an overseas trip?',
+    },
+    answer:
+      "Before I go abroad, I tend to research the area pretty thoroughly, mostly so I don't waste time once I get there. I usually make a rough list of a few must-see places, but I try not to plan every single hour. I've made it a habit to learn a few basic phrases in the local language, since it honestly makes a big difference in how comfortable I feel. What I enjoy most is that period right before the trip when I'm putting the itinerary together — it's almost as exciting as the trip itself. As a result, the planning process has become something I genuinely look forward to.",
+    answerKo:
+      '해외에 가기 전에는 도착해서 시간 낭비하지 않으려고 그 지역을 꽤 꼼꼼히 조사하는 편이에요. 꼭 가야 할 곳 몇 군데는 대략 리스트로 만들지만, 시간 하나하나를 다 계획하진 않으려고 해요. 현지 언어로 기본적인 표현 몇 가지를 배우는 걸 습관으로 만들었는데, 그게 실제로 편안함에 큰 차이를 만들거든요. 제가 제일 좋아하는 건 여행 가기 직전, 일정을 짜는 그 시간인데, 거의 여행 자체만큼 설레요. 그러다 보니 계획하는 과정 자체를 진심으로 기대하게 됐어요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'overseas',
+    cut: 'experience',
+    question: {
+      ko: '해외여행 중 기억에 남는 경험',
+      en: 'Tell me about a memorable experience you had on an overseas trip.',
+    },
+    answer:
+      "Let me think about that for a second... Actually, I remember getting completely lost in a foreign city because I couldn't read any of the signs around me. It was such a stressful experience at first, since I had no idea how to ask for directions. But eventually a local noticed I was struggling and walked me most of the way, even though we didn't share a language. Looking back, that's actually one of my favorite travel memories, because it reminded me how kind strangers can be even when there's a language barrier.",
+    answerKo:
+      '잠깐 생각해볼게요... 외국 도시에서 표지판을 하나도 못 읽어서 완전히 길을 잃었던 적이 기억나요. 처음엔 길을 물어볼 방법도 몰라서 정말 스트레스 받는 경험이었어요. 근데 결국 현지인 한 분이 제가 헤매는 걸 보고 언어가 안 통하는데도 거의 다 데려다줬어요. 돌이켜보면 그게 제가 제일 좋아하는 여행 추억 중 하나예요, 언어 장벽이 있어도 낯선 사람이 얼마나 친절할 수 있는지 다시 느끼게 해줬거든요.',
+    keyExpressions: ['Let me think about that for a second', 'Looking back'],
+  },
+  {
+    topic: 'staycation',
+    cut: 'description',
+    question: {
+      ko: '집에서 보내는 휴가에 뭘 하는지 묻는 질문',
+      en: 'What do you like to do when you spend your vacation at home?',
+    },
+    answer:
+      "When I take a vacation but stay home, I usually turn it into a chance to slow down completely instead of rushing around like a normal weekend. What I like most about it is not having to set an alarm or stick to any kind of schedule for once. I usually spend the time catching up on shows, cooking meals I don't normally have time for, and just relaxing around the house. Honestly, avoiding the stress of packing and traveling is a big part of why I enjoy this kind of vacation. On top of that, I still get to feel like I'm on a break, just without the extra cost of a trip. That's mainly why a staycation has become one of my favorite ways to recharge.",
+    answerKo:
+      '휴가인데 집에 있을 땐, 보통 평범한 주말처럼 바쁘게 보내기보다 완전히 속도를 늦추는 기회로 삼아요. 제일 좋은 건 이번만큼은 알람을 안 맞추고 어떤 일정에도 안 맞춰도 된다는 거예요. 보통 밀린 드라마를 보거나, 평소엔 시간 없어서 못 해먹는 요리를 하면서 집에서 그냥 쉬어요. 솔직히 짐 싸고 이동하는 스트레스를 피할 수 있다는 게 이런 휴가를 좋아하는 큰 이유예요. 게다가 여행 갈 때 드는 추가 비용 없이도 여전히 휴가 기분을 느낄 수 있어요. 그래서 집에서 보내는 휴가가 재충전하는 제가 제일 좋아하는 방법 중 하나가 됐어요.',
+    keyExpressions: ['On top of that', "That's mainly why"],
+  },
+  {
+    topic: 'staycation',
+    cut: 'habit',
+    question: {
+      ko: '집에서 보내는 휴가를 어떻게 보내는지 묻는 질문',
+      en: 'How do you usually spend a staycation?',
+    },
+    answer:
+      "I tend to plan a loose list of things I want to do, like a few recipes to try or shows to catch up on, without turning it into a strict schedule. I usually sleep in later than normal, since not setting an alarm is honestly one of the best parts. I've made it a habit to treat myself to good food during this time, since I don't have to worry about a work schedule the next morning. What I enjoy most is just how unstructured the whole day feels, which is the exact opposite of my normal routine. As a result, staycations end up feeling surprisingly restorative, even though I never leave the house.",
+    answerKo:
+      '엄격한 일정으로 만들지 않고, 해보고 싶은 레시피나 밀린 드라마 같은 걸 느슨하게 리스트로 짜는 편이에요. 평소보다 늦게까지 자는 편인데, 알람을 안 맞추는 게 사실 제일 좋은 부분 중 하나예요. 다음 날 출근 걱정 없이 이 기간엔 맛있는 음식으로 스스로에게 보상하는 걸 습관으로 만들었어요. 제가 제일 좋아하는 건 하루 전체가 얼마나 구조 없이 흘러가는지인데, 평소 루틴이랑 정반대예요. 그러다 보니 집 밖에 한 번도 안 나가도 집에서 보내는 휴가가 의외로 재충전이 되는 것 같아요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'staycation',
+    cut: 'experience',
+    question: {
+      ko: '집휴가 중 기억에 남는 경험',
+      en: 'Tell me about a memorable staycation experience.',
+    },
+    answer:
+      "Come to think of it, I remember one staycation where I decided to cook a fairly complicated recipe I'd been wanting to try for a long time. It was such a messy experience at first, since I clearly underestimated how much time and cleanup it would take. But once it was finally done, it turned out to taste amazing, and I felt oddly proud of pulling it off. Looking back, that's probably one of my favorite staycation memories, mainly because it turned an ordinary day at home into something that actually felt like an accomplishment.",
+    answerKo:
+      '생각해보니, 오랫동안 해보고 싶었던 꽤 복잡한 레시피에 도전했던 어느 집휴가가 기억나요. 시간이랑 뒷정리가 얼마나 걸릴지 완전히 과소평가해서 처음엔 정말 엉망인 경험이었어요. 근데 다 끝나고 나니까 맛이 정말 좋아서 해냈다는 게 묘하게 뿌듯했어요. 돌이켜보면 그게 제가 제일 좋아하는 집휴가 추억 중 하나예요, 평범한 집에서의 하루를 진짜 성취처럼 느껴지게 만들어줬거든요.',
+    keyExpressions: ['Come to think of it', 'Looking back'],
   },
 ];
 
