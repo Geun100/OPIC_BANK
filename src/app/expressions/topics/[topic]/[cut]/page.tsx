@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { topicQAs, topicInfo, cutInfo, getTopicQA } from '@/data/topic-qa';
 import { SaveButton } from '@/components/save-button';
-import { splitByExpressions } from '@/lib/highlight';
+import { splitByExpressions, pickMemorizeSentences } from '@/lib/highlight';
 
 export function generateStaticParams() {
   return topicQAs.map((q) => ({ topic: q.topic, cut: q.cut }));
@@ -78,6 +78,20 @@ export default async function TopicCutPage({
             ),
           )}
         </p>
+        <p className="mt-3 border-t border-border pt-3 text-[14px] leading-relaxed text-muted-foreground">
+          {qa.answerKo}
+        </p>
+      </div>
+
+      <div className="mt-6 rounded-xl bg-cream p-6">
+        <p className="text-[14px] font-medium">암기하면 좋은 3문장</p>
+        <ul className="mt-2 flex flex-col gap-2">
+          {pickMemorizeSentences(qa.answer, qa.keyExpressions).map((s) => (
+            <li key={s} className="text-[14px] leading-relaxed">
+              {s}
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="mt-6 rounded-xl bg-cream p-6">

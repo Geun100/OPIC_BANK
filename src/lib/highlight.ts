@@ -10,3 +10,19 @@ export function splitByExpressions(text: string, expressions: string[]): string[
     .join('|');
   return text.split(new RegExp(`(${pattern})`, 'g'));
 }
+
+// 답변 문장 중 핵심 표현이 들어간 문장을 최대 3개 뽑아 "암기 추천 문장"으로 제공
+export function pickMemorizeSentences(answer: string, expressions: string[], max = 3): string[] {
+  const literal = expressions.filter((e) => !e.includes('...'));
+  const sentences = answer
+    .split(/(?<=[.?!])\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const picked: string[] = [];
+  for (const sentence of sentences) {
+    if (picked.length >= max) break;
+    if (literal.some((e) => sentence.includes(e))) picked.push(sentence);
+  }
+  return picked;
+}
