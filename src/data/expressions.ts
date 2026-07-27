@@ -1082,7 +1082,7 @@ export const expressionCategories: ExpressionCategory[] = [
             en: 'what I like most about',
             ko: '내가 ~에서 가장 좋아하는 것',
             example: 'What I like most about Christmas is the festive atmosphere.',
-            exampleKo: '내가 크리스마스에서 가장 좋아하는 것은 축제 같은 분위기다.',
+            exampleKo: '크리스마스에서 내가 가장 좋아하는 점은 축제 같은 분위기다.',
           },
           {
             en: 'take something seriously',
@@ -1165,7 +1165,7 @@ export const expressionCategories: ExpressionCategory[] = [
             en: 'Do you mind ~ing?',
             ko: '~해도 될까? (정중)',
             example: 'Do you mind opening the window?',
-            exampleKo: '창문 좀 열어도 될까요?',
+            exampleKo: '창문 좀 열어주시겠어요?',
           },
           {
             en: "I'm not sure if ~",
