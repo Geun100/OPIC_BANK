@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import Script from 'next/script';
 import { Inter, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
@@ -84,6 +85,18 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q65G6QQY4T"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Q65G6QQY4T');
+          `}
+        </Script>
         <AuthProvider>
           <Navbar />
           <main className="min-h-[70vh]">{children}</main>
