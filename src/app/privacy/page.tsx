@@ -16,8 +16,9 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-[18px] text-foreground">1. 수집하는 개인정보</h2>
           <p className="mt-2">
-            회원가입 시 이메일 주소를 수집하며, 그 외 서비스 이용 과정에서 별도의 개인정보를
-            수집하지 않습니다.
+            본 사이트는 별도의 회원가입·로그인 기능을 제공하지 않으며, 이름·이메일 등 개인정보를
+            직접 수집하지 않습니다. &quot;나만의 노트&quot; 기능에서 저장하는 표현·질문 데이터는
+            서버로 전송되지 않고 사용자의 브라우저(localStorage)에만 저장됩니다.
           </p>
         </section>
 
@@ -44,15 +45,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-[18px] text-foreground">3. 개인정보의 이용 목적</h2>
-          <p className="mt-2">
-            수집한 이메일은 회원 식별, 학습 노트 저장 등 서비스 제공 목적으로만 사용하며, 제3자에게
-            제공하지 않습니다.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="text-[18px] text-foreground">4. 문의</h2>
+          <h2 className="text-[18px] text-foreground">3. 문의</h2>
           <p className="mt-2">
             개인정보 관련 문의는{' '}
             <a href="/contact" className="text-primary hover:underline">
