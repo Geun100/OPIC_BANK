@@ -14,8 +14,8 @@ export default function ContactPage() {
         <p>콘텐츠 오류 제보, 저작권 관련 문의, 광고·제휴 문의 등은 아래 이메일로 보내주세요.</p>
         <p>
           이메일:{' '}
-          <a href="mailto:kdg040219@gmail.com" className="text-primary hover:underline">
-            kdg040219@gmail.com
+          <a href="mailto:hellohorong@gmail.com" className="text-primary hover:underline">
+            hellohorong@gmail.com
           </a>
         </p>
         <p>영업일 기준 2~3일 이내 답변드립니다.</p>

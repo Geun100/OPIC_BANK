@@ -10,7 +10,6 @@ export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-2xl px-5 py-16">
       <h1 className="text-[32px]">개인정보처리방침</h1>
-      <p className="mt-2 text-[13px] text-muted-foreground">최종 수정일: 2026년 7월 27일</p>
 
       <div className="mt-8 flex flex-col gap-8 text-[15px] leading-relaxed text-muted-foreground">
         <section>
