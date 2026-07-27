@@ -44,6 +44,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'f0YCW73pjR5LS_2OI2pl1DJGaZLbnCGm0RgKvkJb9eg',
+    other: {
+      'naver-site-verification': '85a7fe7c04457c4d17a53e93e16a720fec962a1b',
+    },
   },
 };
 
