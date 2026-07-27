@@ -20,7 +20,7 @@ export function SaveButton(props: Props) {
       type="button"
       aria-label={saved ? '노트에서 제거' : '노트에 저장'}
       onClick={() => setSaved(toggleNote(props))}
-      className="shrink-0 rounded-full p-1.5 transition-colors hover:bg-accent"
+      className="shrink-0 rounded-full p-1.5 transition-[background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-accent active:scale-90"
     >
       <Star
         className={saved ? 'size-4 fill-primary text-primary' : 'size-4 text-muted-foreground'}

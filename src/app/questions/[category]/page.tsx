@@ -143,7 +143,7 @@ export default async function QuestionCategoryPage({
                           <Link
                             key={cut}
                             href={`/questions/sudden/${suddenSlug}/${cut}`}
-                            className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                            className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-primary/40 hover:text-primary active:scale-95"
                           >
                             {suddenCutInfo[cut].name} 답변
                           </Link>
@@ -156,7 +156,7 @@ export default async function QuestionCategoryPage({
                           <Link
                             key={cut}
                             href={`/expressions/topics/${comboSlug}/${cut}`}
-                            className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                            className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-primary/40 hover:text-primary active:scale-95"
                           >
                             {cutInfo[cut].name} 답변
                           </Link>
@@ -171,7 +171,7 @@ export default async function QuestionCategoryPage({
                             <Link
                               key={q.scenario}
                               href={`/questions/roleplay/${roleplayType}/${q.scenario}`}
-                              className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                              className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-primary/40 hover:text-primary active:scale-95"
                             >
                               {q.scenarioName} 답변
                             </Link>

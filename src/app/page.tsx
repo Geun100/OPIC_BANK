@@ -85,7 +85,7 @@ export default function Home() {
             <Link
               key={m.href}
               href={m.href}
-              className="rounded-2xl border border-border bg-card p-6 text-left transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(0,55,112,0.08)]"
+              className="rounded-2xl border border-border bg-card p-6 text-left transition-[transform,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(0,55,112,0.08)] active:translate-y-0 active:scale-[0.98] active:duration-100"
             >
               <m.icon className="size-6 text-primary" />
               <p className="mt-4 text-[17px]">{m.title}</p>
