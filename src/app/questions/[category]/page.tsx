@@ -13,6 +13,7 @@ import { SaveButton } from '@/components/save-button';
 import { suddenCutInfo, type SuddenTopicKey } from '@/data/sudden-qa';
 import { cutInfo, type CutKey, type TopicKey } from '@/data/topic-qa';
 import { roleplayQAs, type RoleplayType } from '@/data/roleplay-qa';
+import { AdUnit } from '@/components/ads/AdUnit';
 
 const suddenSlugByName: Record<string, SuddenTopicKey> = {
   날씨: 'weather',
@@ -95,6 +96,9 @@ export async function generateMetadata({
   };
 }
 
+// AdSense 광고 단위 ID — 애드센스 승인 후 대시보드에서 발급받아 환경변수에 추가
+const AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_INFEED ?? '';
+
 export default async function QuestionCategoryPage({
   params,
 }: {
@@ -103,6 +107,15 @@ export default async function QuestionCategoryPage({
   const { category } = await params;
   const meta = categories[category as Category];
   if (!meta) notFound();
+
+  const listTopics =
+    category === 'combo'
+      ? comboTopics
+      : category === 'sudden'
+        ? suddenTopics
+        : category === 'roleplay'
+          ? roleplayTopics
+          : null;
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-16">
@@ -113,76 +126,78 @@ export default async function QuestionCategoryPage({
       <p className="mt-2 text-[15px] text-muted-foreground">{meta.desc}</p>
 
       <div className="mt-10 flex flex-col gap-8">
-        {(category === 'combo' || category === 'sudden' || category === 'roleplay') &&
-          (category === 'combo'
-            ? comboTopics
-            : category === 'sudden'
-              ? suddenTopics
-              : roleplayTopics
-          ).map((topic) => {
+        {listTopics &&
+          listTopics.map((topic, idx) => {
             const suddenSlug = category === 'sudden' ? suddenSlugByName[topic.name] : undefined;
             const comboSlug = category === 'combo' ? comboSlugByName[topic.name] : undefined;
             const roleplayType =
               category === 'roleplay' ? roleplaySlugByName[topic.name] : undefined;
             return (
-              <section key={topic.name} className="rounded-xl border border-border bg-card p-6">
-                <div className="flex items-center justify-between gap-3">
-                  <h2 className="text-[20px]">{topic.name}</h2>
-                  {suddenSlug && (
-                    <div className="flex gap-2">
-                      {(Object.keys(suddenCutInfo) as CutKey[]).map((cut) => (
-                        <Link
-                          key={cut}
-                          href={`/questions/sudden/${suddenSlug}/${cut}`}
-                          className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
-                        >
-                          {suddenCutInfo[cut].name} 답변
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                  {comboSlug && (
-                    <div className="flex gap-2">
-                      {(Object.keys(cutInfo) as CutKey[]).map((cut) => (
-                        <Link
-                          key={cut}
-                          href={`/expressions/topics/${comboSlug}/${cut}`}
-                          className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
-                        >
-                          {cutInfo[cut].name} 답변
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                  {roleplayType && (
-                    <div className="flex flex-wrap justify-end gap-2">
-                      {roleplayQAs
-                        .filter((q) => q.type === roleplayType)
-                        .map((q) => (
+              <>
+                <section key={topic.name} className="rounded-xl border border-border bg-card p-6">
+                  <div className="flex items-center justify-between gap-3">
+                    <h2 className="text-[20px]">{topic.name}</h2>
+                    {suddenSlug && (
+                      <div className="flex gap-2">
+                        {(Object.keys(suddenCutInfo) as CutKey[]).map((cut) => (
                           <Link
-                            key={q.scenario}
-                            href={`/questions/roleplay/${roleplayType}/${q.scenario}`}
+                            key={cut}
+                            href={`/questions/sudden/${suddenSlug}/${cut}`}
                             className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
                           >
-                            {q.scenarioName} 답변
+                            {suddenCutInfo[cut].name} 답변
                           </Link>
                         ))}
-                    </div>
-                  )}
-                </div>
-                {topic.note && <p className="mt-1 text-[13px] text-primary">{topic.note}</p>}
-                <ul className="mt-4 flex flex-col gap-3">
-                  {topic.questions.map((q) => (
-                    <li key={q.en} className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="text-[15px]">{q.en}</p>
-                        <p className="mt-0.5 text-[13px] text-muted-foreground">{q.ko}</p>
                       </div>
-                      <SaveButton id={q.en} type="question" en={q.en} ko={q.ko} />
-                    </li>
-                  ))}
-                </ul>
-              </section>
+                    )}
+                    {comboSlug && (
+                      <div className="flex gap-2">
+                        {(Object.keys(cutInfo) as CutKey[]).map((cut) => (
+                          <Link
+                            key={cut}
+                            href={`/expressions/topics/${comboSlug}/${cut}`}
+                            className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                          >
+                            {cutInfo[cut].name} 답변
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                    {roleplayType && (
+                      <div className="flex flex-wrap justify-end gap-2">
+                        {roleplayQAs
+                          .filter((q) => q.type === roleplayType)
+                          .map((q) => (
+                            <Link
+                              key={q.scenario}
+                              href={`/questions/roleplay/${roleplayType}/${q.scenario}`}
+                              className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                            >
+                              {q.scenarioName} 답변
+                            </Link>
+                          ))}
+                      </div>
+                    )}
+                  </div>
+                  {topic.note && <p className="mt-1 text-[13px] text-primary">{topic.note}</p>}
+                  <ul className="mt-4 flex flex-col gap-3">
+                    {topic.questions.map((q) => (
+                      <li key={q.en} className="flex items-start justify-between gap-3">
+                        <div>
+                          <p className="text-[15px]">{q.en}</p>
+                          <p className="mt-0.5 text-[13px] text-muted-foreground">{q.ko}</p>
+                        </div>
+                        <SaveButton id={q.en} type="question" en={q.en} ko={q.ko} />
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                {/* 3번째 주제 카드마다 광고 삽입 */}
+                {(idx + 1) % 3 === 0 && idx < listTopics.length - 1 && (
+                  <AdUnit key={`ad-${idx}`} slot={AD_SLOT} format="auto" />
+                )}
+              </>
             );
           })}
 
@@ -211,7 +226,10 @@ export default async function QuestionCategoryPage({
         )}
       </div>
 
-      <p className="mt-10 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
+      {/* 본문 끝 광고 — 콘텐츠 완독 후 자연스러운 전환 지점 */}
+      <AdUnit slot={AD_SLOT} format="auto" className="mt-8" />
+
+      <p className="mt-6 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
         질문은 공개된 수험 후기 기반으로 정리한 연습용 예시예요. 실제 시험 문항과 다를 수 있어요.
       </p>
     </div>

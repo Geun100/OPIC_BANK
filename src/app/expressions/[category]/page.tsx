@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { expressionCategories, getCategory } from '@/data/expressions';
 import { SaveButton } from '@/components/save-button';
 import { cutInfo, type CutKey, type TopicKey } from '@/data/topic-qa';
+import { AdUnit } from '@/components/ads/AdUnit';
 
 const topicSlugByTitle: Record<string, TopicKey> = {
   집: 'home',
@@ -43,6 +44,9 @@ export async function generateMetadata({
   };
 }
 
+// AdSense 광고 단위 ID — 애드센스 승인 후 대시보드에서 발급받아 환경변수에 추가
+const AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_INFEED ?? '';
+
 export default async function ExpressionCategoryPage({
   params,
 }: {
@@ -61,48 +65,58 @@ export default async function ExpressionCategoryPage({
       <p className="mt-2 text-[15px] text-muted-foreground">{cat.description}</p>
 
       <div className="mt-10 flex flex-col gap-8">
-        {cat.groups.map((g) => {
+        {cat.groups.map((g, idx) => {
           const topicSlug = topicSlugByTitle[g.title];
           return (
-            <section key={g.title} className="rounded-xl border border-border bg-card p-6">
-              <div className="flex items-center justify-between gap-3">
-                <h2 className="text-[20px]">{g.title}</h2>
-                {topicSlug && (
-                  <div className="flex gap-2">
-                    {(Object.keys(cutInfo) as CutKey[]).map((cut) => (
-                      <Link
-                        key={cut}
-                        href={`/expressions/topics/${topicSlug}/${cut}`}
-                        className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
-                      >
-                        {cutInfo[cut].name} 답변
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <ul className="mt-4 flex flex-col gap-4">
-                {g.items.map((item) => (
-                  <li key={item.en} className="flex items-start justify-between gap-3">
-                    <div>
-                      <p className="text-[16px] font-medium">{item.en}</p>
-                      <p className="mt-0.5 text-[13px] text-muted-foreground">{item.ko}</p>
-                      {item.example && (
-                        <p className="mt-1 text-[13px] italic text-secondary-foreground/70">
-                          {item.example}
-                        </p>
-                      )}
+            <>
+              <section key={g.title} className="rounded-xl border border-border bg-card p-6">
+                <div className="flex items-center justify-between gap-3">
+                  <h2 className="text-[20px]">{g.title}</h2>
+                  {topicSlug && (
+                    <div className="flex gap-2">
+                      {(Object.keys(cutInfo) as CutKey[]).map((cut) => (
+                        <Link
+                          key={cut}
+                          href={`/expressions/topics/${topicSlug}/${cut}`}
+                          className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                        >
+                          {cutInfo[cut].name} 답변
+                        </Link>
+                      ))}
                     </div>
-                    <SaveButton id={item.en} type="expression" en={item.en} ko={item.ko} />
-                  </li>
-                ))}
-              </ul>
-            </section>
+                  )}
+                </div>
+                <ul className="mt-4 flex flex-col gap-4">
+                  {g.items.map((item) => (
+                    <li key={item.en} className="flex items-start justify-between gap-3">
+                      <div>
+                        <p className="text-[16px] font-medium">{item.en}</p>
+                        <p className="mt-0.5 text-[13px] text-muted-foreground">{item.ko}</p>
+                        {item.example && (
+                          <p className="mt-1 text-[13px] italic text-secondary-foreground/70">
+                            {item.example}
+                          </p>
+                        )}
+                      </div>
+                      <SaveButton id={item.en} type="expression" en={item.en} ko={item.ko} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* 3번째 카드마다 광고 삽입 — 스크롤 흐름의 자연스러운 휴식 지점 */}
+              {(idx + 1) % 3 === 0 && idx < cat.groups.length - 1 && (
+                <AdUnit key={`ad-${idx}`} slot={AD_SLOT} format="auto" />
+              )}
+            </>
           );
         })}
       </div>
 
-      <p className="mt-10 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
+      {/* 본문 끝 광고 — 콘텐츠 완독 후 자연스러운 전환 지점 */}
+      <AdUnit slot={AD_SLOT} format="auto" className="mt-8" />
+
+      <p className="mt-6 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
         표현과 예문은 학습용 초안이에요. 시험에서 쓰기 전에 소리 내어 연습하며 내 문장으로 만드세요.
       </p>
     </div>
