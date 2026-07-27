@@ -34,6 +34,15 @@ export function Footer() {
           <Link href="/grade" className="hover:text-primary">
             AL·IH 표현집
           </Link>
+          <Link href="/about" className="hover:text-primary">
+            소개
+          </Link>
+          <Link href="/contact" className="hover:text-primary">
+            연락처
+          </Link>
+          <Link href="/privacy" className="hover:text-primary">
+            개인정보처리방침
+          </Link>
           <p className="mt-2">
             OPIc은 ACTFL의 상표입니다. 본 사이트는 비공식 학습 보조 자료를 제공하며, 시험 규정·일정
             등 공식 정보는 반드시 공식 홈페이지에서 확인하세요.

@@ -27,6 +27,9 @@ const staticPages = [
   { url: '/expressions/essentials', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/grade', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/tips', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/about', priority: 0.3, changeFrequency: 'yearly' as const },
+  { url: '/contact', priority: 0.3, changeFrequency: 'yearly' as const },
+  { url: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
   ...topicQAs.map((q) => ({
     url: `/expressions/topics/${q.topic}/${q.cut}`,
     priority: 0.7,
@@ -105,7 +108,7 @@ export const generateRobotsTxt = (): string => {
     {
       userAgent: '*',
       allow: ['/'],
-      disallow: ['/api/', '/admin/', '/_next/', '/static/', '/private/', '*.json', '*.xml'],
+      disallow: ['/api/', '/admin/', '/_next/', '/static/', '/private/', '*.json'],
     },
     {
       userAgent: 'Googlebot',
