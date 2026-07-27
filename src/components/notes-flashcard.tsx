@@ -13,12 +13,13 @@ export function NotesFlashcard({ items }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [mode, setMode] = useState<'ko-to-en' | 'en-to-ko'>('ko-to-en');
-  const [filterType, setFilterType] = useState<'all' | 'expression' | 'question'>('all');
+  const [filterType, setFilterType] = useState<'all' | 'expression' | 'question' | 'memo'>('all');
 
   useEffect(() => {
     let filtered = items;
     if (filterType === 'expression') filtered = items.filter((n) => n.type === 'expression');
     if (filterType === 'question') filtered = items.filter((n) => n.type === 'question');
+    if (filterType === 'memo') filtered = items.filter((n) => n.type === 'memo');
     setCardList(filtered);
     setCurrentIndex(0);
     setIsFlipped(false);
@@ -94,6 +95,17 @@ export function NotesFlashcard({ items }: Props) {
             }`}
           >
             질문 ({items.filter((n) => n.type === 'question').length})
+          </button>
+          <button
+            type="button"
+            onClick={() => setFilterType('memo')}
+            className={`rounded-md px-3 py-1 font-medium transition-colors ${
+              filterType === 'memo'
+                ? 'bg-background shadow-sm text-foreground'
+                : 'text-muted-foreground'
+            }`}
+          >
+            메모 ({items.filter((n) => n.type === 'memo').length})
           </button>
         </div>
 
