@@ -68,7 +68,7 @@ export default function Home() {
       />
       <div className="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
         <p className="mx-auto mb-5 w-fit rounded-full bg-primary-subdued/40 px-4 py-1 text-[12px] font-medium tracking-wide text-primary-press">
-          OPIC Bank (오픽뱅크)
+          OPIC Bank
         </p>
         <h1 className="mx-auto max-w-2xl text-[40px] leading-[1.1] tracking-[-0.03em] text-foreground sm:text-[52px]">
           모든 오픽을 한곳에서
