@@ -48,6 +48,11 @@ export const metadata: Metadata = {
       'naver-site-verification': '85a7fe7c04457c4d17a53e93e16a720fec962a1b',
     },
   },
+  alternates: {
+    types: {
+      'application/rss+xml': '/rss.xml',
+    },
+  },
 };
 
 export default function RootLayout({

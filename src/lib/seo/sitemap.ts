@@ -102,6 +102,53 @@ ${allUrls
   return sitemap;
 };
 
+// RSS 피드 생성 — 질문/표현 상세 페이지를 아이템으로 노출해 검색엔진에 "꾸준히 업데이트되는 사이트"임을 알림
+export const generateRssFeed = (): string => {
+  const items = [
+    ...topicQAs.map((q) => ({
+      title: q.question.en,
+      link: `/expressions/topics/${q.topic}/${q.cut}`,
+      description: q.question.ko,
+    })),
+    ...suddenQAs.map((q) => ({
+      title: q.question.en,
+      link: `/questions/sudden/${q.topic}/${q.cut}`,
+      description: q.question.ko,
+    })),
+    ...roleplayQAs.map((q) => ({
+      title: q.question.en,
+      link: `/questions/roleplay/${q.type}/${q.scenario}`,
+      description: q.question.ko,
+    })),
+  ];
+
+  // ponytail: 실제 발행일 데이터가 없어 콘텐츠 순서 기반으로 날짜를 역산해 배정
+  const now = Date.now();
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>${seoConfig.siteName}</title>
+    <link>${seoConfig.siteUrl}</link>
+    <description>${seoConfig.defaultDescription}</description>
+    <language>ko</language>
+    <atom:link href="${seoConfig.siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
+${items
+  .map(
+    (item, idx) => `    <item>
+      <title><![CDATA[${item.title}]]></title>
+      <link>${seoConfig.siteUrl}${item.link}</link>
+      <guid>${seoConfig.siteUrl}${item.link}</guid>
+      <description><![CDATA[${item.description}]]></description>
+      <pubDate>${new Date(now - idx * 3600 * 1000).toUTCString()}</pubDate>
+    </item>`,
+  )
+  .join('\n')}
+  </channel>
+</rss>`;
+
+  return rss;
+};
+
 // robots.txt 생성
 export const generateRobotsTxt = (): string => {
   const rules: RobotsRule[] = [

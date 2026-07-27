@@ -11,9 +11,9 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'OPIC Bank — 오픽 표현·질문 검색',
+  title: 'OPIC Bank(오픽뱅크) — 오픽 표현·질문 검색',
   description:
-    '오픽이 처음이라면 입문 가이드부터, 준비 중이라면 서베이 추천·질문·표현 라이브러리에서 필요한 것만 바로 찾아보세요.',
+    '오픽뱅크(OPIC Bank)는 오픽 예상 질문·모범답안·표현을 한곳에 모아둔 사이트입니다. 오픽이 처음이라면 입문 가이드부터, 준비 중이라면 서베이 추천·질문·표현 라이브러리에서 필요한 것만 바로 찾아보세요.',
 };
 
 const menus = [
@@ -68,7 +68,7 @@ export default function Home() {
       />
       <div className="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
         <p className="mx-auto mb-5 w-fit rounded-full bg-primary-subdued/40 px-4 py-1 text-[12px] font-medium tracking-wide text-primary-press">
-          OPIC Bank
+          OPIC Bank (오픽뱅크)
         </p>
         <h1 className="mx-auto max-w-2xl text-[40px] leading-[1.1] tracking-[-0.03em] text-foreground sm:text-[52px]">
           모든 오픽을 한곳에서

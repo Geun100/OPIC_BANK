@@ -7,7 +7,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-14 text-[13px] text-muted-foreground sm:grid-cols-3">
         <div>
           <p className="mb-2 text-[14px] text-foreground">
-            OPIC <span className="text-primary">Bank</span>
+            OPIC <span className="text-primary">Bank</span> (오픽뱅크)
           </p>
           <p>오픽에 필요한 모든 표현을 한곳에 모아둔 아카이브</p>
         </div>
