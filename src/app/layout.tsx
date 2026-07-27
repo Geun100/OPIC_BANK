@@ -5,7 +5,7 @@ import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Navbar } from '@/components/site/navbar';
 import { Footer } from '@/components/site/footer';
-import { structuredDataTemplates } from '@/lib/seo/config';
+import { structuredDataTemplates, seoConfig } from '@/lib/seo/config';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -19,12 +19,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(seoConfig.siteUrl),
   title: {
     default: 'OPIC Bank — 오픽 표현 아카이브',
     template: '%s | OPIC Bank',
   },
   description:
     '오픽에 필요한 모든 표현을 한곳에 모아둔 아카이브. 표현·필러·만능 문장·예상 질문을 검색하고 나만의 노트로 저장하세요.',
+  keywords: seoConfig.defaultKeywords,
+  openGraph: {
+    type: 'website',
+    locale: seoConfig.locale,
+    siteName: seoConfig.siteName,
+    title: 'OPIC Bank — 오픽 표현 아카이브',
+    description:
+      '오픽에 필요한 모든 표현을 한곳에 모아둔 아카이브. 표현·필러·만능 문장·예상 질문을 검색하고 나만의 노트로 저장하세요.',
+    url: seoConfig.siteUrl,
+  },
+  twitter: {
+    card: 'summary',
+    title: 'OPIC Bank — 오픽 표현 아카이브',
+    description:
+      '오픽에 필요한 모든 표현을 한곳에 모아둔 아카이브. 표현·필러·만능 문장·예상 질문을 검색하고 나만의 노트로 저장하세요.',
+  },
 };
 
 export default function RootLayout({
