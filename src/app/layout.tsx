@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
+
 import { Inter, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
@@ -47,11 +47,12 @@ export default function RootLayout({
             __html: JSON.stringify(structuredDataTemplates.website),
           }}
         />
-        <Script
+        {/* Google AdSense — head에 직접 삽입해야 구글 크롤러가 소스에서 인식 */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2077503952644064"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
       </head>
       <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
