@@ -15,7 +15,9 @@ export type TopicKey =
   | 'camping'
   | 'sports'
   | 'overseas'
-  | 'staycation';
+  | 'staycation'
+  | 'beach'
+  | 'furniture';
 export type CutKey = 'description' | 'habit' | 'experience';
 
 export const topicInfo: Record<TopicKey, { name: string; slug: TopicKey }> = {
@@ -33,6 +35,8 @@ export const topicInfo: Record<TopicKey, { name: string; slug: TopicKey }> = {
   sports: { name: '스포츠 관람', slug: 'sports' },
   overseas: { name: '해외여행', slug: 'overseas' },
   staycation: { name: '집에서 보내는 휴가', slug: 'staycation' },
+  beach: { name: '해변', slug: 'beach' },
+  furniture: { name: '가구·전자제품', slug: 'furniture' },
 };
 
 export const cutInfo: Record<CutKey, { name: string; slug: CutKey; hint: string }> = {
@@ -700,6 +704,84 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '생각해보니, 오랫동안 해보고 싶었던 꽤 복잡한 레시피에 도전했던 어느 집휴가가 기억나요. 시간이랑 뒷정리가 얼마나 걸릴지 완전히 과소평가해서 처음엔 정말 엉망인 경험이었어요. 근데 다 끝나고 나니까 맛이 정말 좋아서 해냈다는 게 묘하게 뿌듯했어요. 돌이켜보면 그게 제가 제일 좋아하는 집휴가 추억 중 하나예요, 평범한 집에서의 하루를 진짜 성취처럼 느껴지게 만들어줬거든요.',
     keyExpressions: ['Come to think of it', 'Looking back'],
+  },
+  {
+    topic: 'beach',
+    cut: 'description',
+    question: {
+      ko: '좋아하는 해변을 묘사해달라는 질문',
+      en: 'Describe your favorite beach. What does it look like?',
+    },
+    answer:
+      "My favorite beach is in Busan, close to where a lot of my friends live. What I like most about it is the long stretch of white sand, since it never feels too crowded even in summer. The water is usually calm and clear, so you can see quite far into it even from the shore. On top of that, there are a lot of cafes and restaurants right along the coast, so you don't have to go far for food. Honestly, the sound of the waves alone is enough to make me feel relaxed the moment I get there. That's mainly why I try to visit at least once every summer.",
+    answerKo:
+      '제가 제일 좋아하는 해변은 부산에 있는데, 친구들이 많이 사는 곳 근처예요. 제일 좋은 건 백사장이 길게 펼쳐져 있어서 여름에도 그렇게 붐비지 않는다는 거예요. 물이 보통 잔잔하고 맑아서 해변에서도 꽤 멀리까지 보여요. 게다가 해안가를 따라 카페랑 식당이 많아서 먹을 걸 찾으러 멀리 갈 필요가 없어요. 솔직히 파도 소리만 들어도 도착하는 순간 마음이 편안해져요. 그래서 매년 여름 적어도 한 번은 가려고 해요.',
+    keyExpressions: ['On top of that', "That's mainly why"],
+  },
+  {
+    topic: 'beach',
+    cut: 'habit',
+    question: {
+      ko: '해변에서 평소 뭘 하는지 묻는 질문',
+      en: 'How often do you go to the beach, and what do you usually do there?',
+    },
+    answer:
+      "I tend to go to the beach a few times during the summer, usually with friends rather than alone. I usually bring a mat and just relax near the water instead of swimming the whole time. I've made it a habit to pack simple snacks and drinks, since buying everything there can get expensive fast. What I enjoy most is just walking along the shore in the evening, when it's a lot less crowded. As a result, sunset walks have become my favorite part of any beach trip.",
+    answerKo:
+      '여름에 몇 번 정도 해변에 가는 편인데, 혼자보다는 보통 친구들이랑 같이 가요. 계속 수영하기보다는 돗자리를 챙겨서 물가 근처에서 그냥 쉬는 편이에요. 거기서 다 사면 금방 돈이 많이 나가서 간단한 간식이랑 음료를 챙기는 걸 습관으로 만들었어요. 제가 제일 좋아하는 건 사람이 훨씬 적은 저녁에 해변을 따라 걷는 거예요. 그러다 보니 노을 질 때 산책하는 게 해변 여행에서 제일 좋아하는 부분이 됐어요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'beach',
+    cut: 'experience',
+    question: {
+      ko: '해변에서의 기억에 남는 경험',
+      en: 'Tell me about a memorable experience at the beach.',
+    },
+    answer:
+      "Let me think about that for a second... Actually, I remember going to the beach with friends and getting caught in a sudden rainstorm right after we set everything up. It was such a frustrating experience at first, since we had just started relaxing. But instead of leaving, we ended up running under a nearby pavilion and just laughing about how fast everything changed. Looking back, that's actually one of my favorite beach memories, because it turned into a spontaneous, fun moment instead of ruining the day.",
+    answerKo:
+      '잠깐 생각해볼게요... 친구들이랑 해변에 갔는데 자리 잡자마자 갑자기 소나기가 내렸던 게 기억나요. 이제 막 쉬려던 참이라 처음엔 정말 답답한 경험이었어요. 근데 그냥 자리를 뜨는 대신 근처 정자로 뛰어가서 상황이 얼마나 빨리 바뀌었는지 얘기하며 웃었어요. 돌이켜보면 그게 제가 제일 좋아하는 해변 추억 중 하나예요, 하루를 망치는 대신 즉흥적이고 재밌는 순간이 됐거든요.',
+    keyExpressions: ['Let me think about that for a second', 'Looking back'],
+  },
+  {
+    topic: 'furniture',
+    cut: 'description',
+    question: {
+      ko: '집에 있는 가구/전자제품을 묻는 질문',
+      en: 'What kind of furniture or electronic devices do you have at home?',
+    },
+    answer:
+      "In my place, I mostly have simple, functional furniture rather than anything fancy, like a bed, a desk, and a small couch. As for electronics, I have a laptop, a TV, and a decent speaker system, since those are the things I actually use every day. What I like most about my setup is that everything is pretty minimal, so the space doesn't feel cluttered. On top of that, I try to keep cables and chargers organized, since a messy desk honestly stresses me out. That's mainly why my place looks fairly simple compared to some of my friends' rooms.",
+    answerKo:
+      '저희 집엔 화려한 가구보다는 침대, 책상, 작은 소파처럼 단순하고 실용적인 가구가 대부분이에요. 전자제품은 노트북, TV, 그리고 괜찮은 스피커 정도가 있는데, 실제로 매일 쓰는 것들이라서요. 제가 제일 좋아하는 건 다 미니멀해서 공간이 답답하지 않다는 거예요. 게다가 케이블이랑 충전기를 정리해두려고 하는 편인데, 지저분한 책상은 솔직히 스트레스거든요. 그래서 제 방이 친구들 방보다 꽤 단순해 보이는 편이에요.',
+    keyExpressions: ['On top of that', "That's mainly why"],
+  },
+  {
+    topic: 'furniture',
+    cut: 'habit',
+    question: {
+      ko: '제일 좋아하는 가구/기기를 묻는 질문',
+      en: 'Tell me about your favorite piece of furniture or device. Why is it important to you?',
+    },
+    answer:
+      "My favorite piece of furniture is honestly just the couch in my living room, since it's where I spend most of my downtime. I tend to use it for pretty much everything, from watching shows to just relaxing after work. I've made it a habit to keep a blanket and a small side table right next to it, so I don't have to get up for small things. What I enjoy most is that it's become the one spot in my place where I feel completely comfortable. As a result, it's honestly the piece of furniture I'd miss the most if I ever moved.",
+    answerKo:
+      '솔직히 제가 제일 좋아하는 가구는 그냥 거실 소파인데, 여유 시간 대부분을 거기서 보내거든요. 드라마 볼 때부터 퇴근 후 그냥 쉴 때까지 거의 다 거기서 하는 편이에요. 사소한 것 때문에 일어나지 않아도 되게 담요랑 작은 사이드 테이블을 바로 옆에 두는 걸 습관으로 만들었어요. 제가 제일 좋아하는 건 그게 집에서 완전히 편안함을 느끼는 유일한 자리가 됐다는 거예요. 그러다 보니 나중에 이사를 가더라도 제일 그리워할 가구가 아마 그거일 거예요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'furniture',
+    cut: 'experience',
+    question: {
+      ko: '새로 살 기기가 있다면 뭘지 묻는 질문',
+      en: 'If you had to buy a new device, what would it be and why?',
+    },
+    answer:
+      "If I had to buy a new device right now, I'd probably get a better pair of headphones, since I use mine almost every day for work and music. The ones I have now are honestly getting pretty old, and the sound quality has gotten noticeably worse. I think good headphones make a bigger difference in daily life than people expect, especially if you spend a lot of time listening to things. Looking back at how much I already rely on them, it just makes sense to upgrade sooner rather than later.",
+    answerKo:
+      '지금 당장 새 전자제품을 사야 한다면, 아마 더 좋은 헤드폰을 살 것 같아요, 일할 때랑 음악 들을 때 거의 매일 쓰거든요. 지금 쓰는 건 솔직히 꽤 오래돼서 음질이 눈에 띄게 나빠졌어요. 좋은 헤드폰이 사람들이 생각하는 것보다 일상에 더 큰 차이를 만드는 것 같아요, 특히 뭔가를 듣는 데 시간을 많이 쓴다면요. 이미 얼마나 의존하고 있는지 생각해보면, 미루기보다 빨리 바꾸는 게 맞는 것 같아요.',
+    keyExpressions: ['Looking back'],
   },
 ];
 

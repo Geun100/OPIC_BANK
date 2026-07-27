@@ -11,7 +11,7 @@ import {
 } from '@/data/questions';
 import { SaveButton } from '@/components/save-button';
 import { suddenCutInfo, type SuddenTopicKey } from '@/data/sudden-qa';
-import type { CutKey } from '@/data/topic-qa';
+import { cutInfo, type CutKey, type TopicKey } from '@/data/topic-qa';
 import { roleplayQAs, type RoleplayType } from '@/data/roleplay-qa';
 
 const suddenSlugByName: Record<string, SuddenTopicKey> = {
@@ -21,6 +21,29 @@ const suddenSlugByName: Record<string, SuddenTopicKey> = {
   '인터넷·기술': 'internet',
   건강: 'health',
   약속: 'appointments',
+  은행: 'bank',
+  '휴일·명절': 'holiday',
+  패션: 'fashion',
+  산업: 'industry',
+};
+
+const comboSlugByName: Record<string, TopicKey> = {
+  집: 'home',
+  카페: 'cafe',
+  '영화 보기': 'movie',
+  '공원 가기': 'park',
+  '여행 (국내)': 'travel',
+  '걷기·조깅': 'exercise',
+  '음악 감상': 'music',
+  '공연 보기': 'performance',
+  '콘서트 보기': 'concert',
+  쇼핑하기: 'shopping',
+  캠핑: 'camping',
+  '스포츠 관람': 'sports',
+  해외여행: 'overseas',
+  '집에서 보내는 휴가': 'staycation',
+  '해변 가기': 'beach',
+  '가구·전자제품': 'furniture',
 };
 
 const roleplaySlugByName: Record<string, RoleplayType> = {
@@ -98,6 +121,7 @@ export default async function QuestionCategoryPage({
               : roleplayTopics
           ).map((topic) => {
             const suddenSlug = category === 'sudden' ? suddenSlugByName[topic.name] : undefined;
+            const comboSlug = category === 'combo' ? comboSlugByName[topic.name] : undefined;
             const roleplayType =
               category === 'roleplay' ? roleplaySlugByName[topic.name] : undefined;
             return (
@@ -113,6 +137,19 @@ export default async function QuestionCategoryPage({
                           className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
                         >
                           {suddenCutInfo[cut].name} 답변
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                  {comboSlug && (
+                    <div className="flex gap-2">
+                      {(Object.keys(cutInfo) as CutKey[]).map((cut) => (
+                        <Link
+                          key={cut}
+                          href={`/expressions/topics/${comboSlug}/${cut}`}
+                          className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground hover:border-primary/40 hover:text-primary"
+                        >
+                          {cutInfo[cut].name} 답변
                         </Link>
                       ))}
                     </div>

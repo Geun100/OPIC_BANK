@@ -384,6 +384,46 @@ export const expressionCategories: ExpressionCategory[] = [
           },
         ],
       },
+      {
+        title: '해변',
+        items: [
+          {
+            en: 'a long stretch of white sand',
+            ko: '길게 펼쳐진 백사장',
+            example: 'The beach has a long stretch of white sand.',
+          },
+          {
+            en: 'calm and clear',
+            ko: '잔잔하고 맑은',
+            example: 'The water is usually calm and clear.',
+          },
+          {
+            en: 'right along the coast',
+            ko: '해안가를 따라',
+            example: 'There are cafes right along the coast.',
+          },
+        ],
+      },
+      {
+        title: '가구·전자제품',
+        items: [
+          {
+            en: 'simple, functional furniture',
+            ko: '단순하고 실용적인 가구',
+            example: 'I mostly have simple, functional furniture.',
+          },
+          {
+            en: 'keep cables organized',
+            ko: '케이블을 정리해두다',
+            example: 'I try to keep cables and chargers organized.',
+          },
+          {
+            en: "the one spot I'd miss the most",
+            ko: '제일 그리워할 자리',
+            example: "It's the piece of furniture I'd miss the most.",
+          },
+        ],
+      },
     ],
   },
   {

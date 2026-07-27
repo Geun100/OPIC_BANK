@@ -9,7 +9,11 @@ export type SuddenTopicKey =
   | 'transportation'
   | 'internet'
   | 'health'
-  | 'appointments';
+  | 'appointments'
+  | 'bank'
+  | 'holiday'
+  | 'fashion'
+  | 'industry';
 
 export const suddenTopicInfo: Record<SuddenTopicKey, { name: string; slug: SuddenTopicKey }> = {
   weather: { name: '날씨', slug: 'weather' },
@@ -18,6 +22,10 @@ export const suddenTopicInfo: Record<SuddenTopicKey, { name: string; slug: Sudde
   internet: { name: '인터넷·기술', slug: 'internet' },
   health: { name: '건강', slug: 'health' },
   appointments: { name: '약속', slug: 'appointments' },
+  bank: { name: '은행', slug: 'bank' },
+  holiday: { name: '휴일·명절', slug: 'holiday' },
+  fashion: { name: '패션', slug: 'fashion' },
+  industry: { name: '산업', slug: 'industry' },
 };
 
 export const suddenCutInfo: Record<CutKey, { name: string; hint: string }> = {
@@ -272,6 +280,159 @@ export const suddenQAs: SuddenQA[] = [
       'such an ... experience that',
       'Looking back',
     ],
+  },
+  {
+    topic: 'bank',
+    cut: 'description',
+    question: {
+      ko: '일반적인 은행의 모습을 묻는 질문',
+      en: 'Describe what a typical bank in your country looks like.',
+    },
+    answer:
+      "A typical bank in my country usually has a waiting area with a ticket machine, since most places operate on a number system rather than just lining up. There are usually several teller windows, along with a few separate desks for things like loans or account openings. What's more, most banks now have ATMs available even outside their operating hours, which makes simple tasks a lot more convenient. On top of that, digital banking apps have become so common that fewer people actually need to visit in person these days. That's mainly why banks these days feel a lot quieter than they used to.",
+    answerKo:
+      '저희 나라의 일반적인 은행은 보통 번호표 기계가 있는 대기 공간이 있는데, 대부분 그냥 줄을 서기보다는 번호 시스템으로 운영돼요. 보통 창구가 여러 개 있고, 대출이나 계좌 개설 같은 걸 위한 별도 데스크도 몇 개 있어요. 게다가 요즘은 영업시간 외에도 이용할 수 있는 ATM이 있는 은행이 많아서 간단한 업무가 훨씬 편리해졌어요. 게다가 모바일 뱅킹 앱이 워낙 흔해져서 요즘은 직접 방문할 필요가 없는 사람도 많아요. 그래서 요즘 은행이 예전보다 훨씬 조용해진 것 같아요.',
+    keyExpressions: ["What's more", 'On top of that', "That's mainly why"],
+  },
+  {
+    topic: 'bank',
+    cut: 'habit',
+    question: {
+      ko: '마지막으로 은행 간 목적을 묻는 질문',
+      en: 'Tell me about the last time you went to a bank. What was the purpose?',
+    },
+    answer:
+      "The last time I went to a bank in person was actually to open a new account, since that's one of the few things you still can't fully do online. I tend to avoid visiting in person whenever possible, mainly because I can handle most things through the app now. I've made it a habit to check the app first before deciding whether an in-person visit is actually necessary. What I remember most about that visit is how quick it actually was, since I had booked a time slot in advance. As a result, I probably won't need to go back in person for a while.",
+    answerKo:
+      '제가 마지막으로 은행에 직접 간 건 새 계좌를 개설하려고 갔던 건데, 그게 아직 온라인으로 완전히 안 되는 몇 안 되는 일 중 하나거든요. 가능하면 직접 방문은 피하는 편인데, 요즘은 앱으로 대부분 처리할 수 있어서요. 직접 가야 할 필요가 진짜 있는지 결정하기 전에 먼저 앱부터 확인하는 걸 습관으로 만들었어요. 그때 제일 기억에 남는 건 미리 시간을 예약해둬서 실제로 정말 빨리 끝났다는 거예요. 그러다 보니 당분간은 다시 직접 갈 필요가 없을 것 같아요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'As a result'],
+  },
+  {
+    topic: 'bank',
+    cut: 'experience',
+    question: {
+      ko: '외국인에게 계좌 개설 과정을 설명하는 질문',
+      en: 'Imagine a foreigner asks you how to open a bank account. How would you explain the process?',
+    },
+    answer:
+      "If a foreigner asked me that, I'd probably tell them to bring their passport or residence card first, since most banks require some form of ID to even start. I'd explain that they'll usually need to take a number and wait, then talk to a teller who will walk them through the paperwork. On top of that, I'd mention that some banks require a Korean phone number linked to the account, which can be a bit confusing for newcomers. Honestly, I'd probably suggest going with a Korean friend the first time, just to make the process smoother.",
+    answerKo:
+      '외국인이 저한테 그걸 물어본다면, 대부분 은행이 신분증부터 요구하니까 여권이나 외국인등록증을 먼저 챙기라고 할 것 같아요. 보통 번호표를 뽑고 기다렸다가 창구 직원이 서류 작성을 도와줄 거라고 설명해줄 것 같아요. 게다가 어떤 은행은 계좌랑 연결된 한국 전화번호를 요구하는데, 그게 처음 온 사람한테는 좀 헷갈릴 수 있다고 말해줄 것 같아요. 솔직히 처음엔 한국인 친구랑 같이 가는 걸 추천할 것 같아요, 과정이 더 수월하게요.',
+    keyExpressions: ['On top of that'],
+  },
+  {
+    topic: 'holiday',
+    cut: 'description',
+    question: {
+      ko: '기념하는 명절/휴일을 묻는 질문',
+      en: 'Tell me about a holiday or special day you celebrate.',
+    },
+    answer:
+      "One of the biggest holidays we celebrate is Chuseok, which is a bit like a harvest festival where families get together. What I like most about it is that almost everyone travels back to see their family, so the whole country feels different for a few days. We usually have a big meal together with traditional food, and some families still do ancestral rites in the morning. On top of that, kids often get money from relatives, which honestly used to be my favorite part growing up. That's mainly why Chuseok still feels special to me even now.",
+    answerKo:
+      '저희가 챙기는 큰 명절 중 하나는 추석인데, 가족들이 모이는 일종의 수확 축제 같은 거예요. 제일 좋은 건 거의 다들 가족을 보러 고향에 내려가서 며칠 동안 나라 전체가 다르게 느껴진다는 거예요. 보통 전통 음식으로 다 같이 큰 식사를 하고, 어떤 집은 아침에 아직 차례를 지내기도 해요. 게다가 아이들은 보통 친척들한테 용돈을 받는데, 솔직히 어릴 땐 그게 제일 좋았던 부분이었어요. 그래서 지금도 추석은 저한테 여전히 특별하게 느껴져요.',
+    keyExpressions: ['On top of that', "That's mainly why"],
+  },
+  {
+    topic: 'holiday',
+    cut: 'habit',
+    question: {
+      ko: '명절에 사람들이 하는 것을 묻는 질문',
+      en: 'Describe what people usually do during that holiday.',
+    },
+    answer:
+      "During Chuseok, people usually spend a few days traveling back to their hometowns, which honestly means the highways get incredibly crowded. I tend to leave really early in the morning just to avoid the worst of the traffic. I've made it a habit to help prepare food with my family the day before, since it's actually one of the few times everyone cooks together. What I enjoy most is just sitting around after the meal, catching up with relatives I don't see very often. As a result, Chuseok has become less about the food itself and more about that time together.",
+    answerKo:
+      '추석 동안엔 보통 며칠 동안 고향으로 내려가는데, 솔직히 그래서 고속도로가 엄청 막혀요. 최악의 정체를 피하려고 아침 정말 일찍 출발하는 편이에요. 하루 전날 가족이랑 같이 음식 준비하는 걸 습관으로 만들었는데, 사실 다 같이 요리하는 몇 안 되는 시간 중 하나거든요. 제가 제일 좋아하는 건 식사 끝나고 다들 둘러앉아서 자주 못 보는 친척들이랑 밀린 얘기 나누는 거예요. 그러다 보니 추석이 이제 음식 자체보다는 그렇게 같이 보내는 시간에 더 가까워졌어요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'holiday',
+    cut: 'experience',
+    question: {
+      ko: '외국인에게 한국 명절을 설명하는 질문',
+      en: 'Imagine you are explaining a Korean holiday to a foreigner. What would you say?',
+    },
+    answer:
+      "If I had to explain Chuseok to a foreigner, I'd probably compare it to Thanksgiving, since both are about family and giving thanks for the harvest. I'd explain that the date changes every year because it follows the lunar calendar, which can be confusing at first. On top of that, I'd mention that traffic gets really bad around that time, since almost the entire country is traveling at once. Looking back, I think the easiest way to describe it is just 'the one time of year everyone goes home.'",
+    answerKo:
+      "외국인한테 추석을 설명해야 한다면, 아마 추수감사절이랑 비교할 것 같아요, 둘 다 가족이랑 수확에 대한 감사가 중심이니까요. 날짜가 매년 바뀌는 이유는 음력을 따르기 때문이라고 설명할 것 같은데, 처음엔 좀 헷갈릴 수 있어요. 게다가 그 시기엔 거의 전 국민이 동시에 이동해서 교통이 정말 심해진다고 말해줄 것 같아요. 돌이켜보면 제일 쉬운 설명은 그냥 '1년 중 다들 고향에 가는 그 시기'인 것 같아요.",
+    keyExpressions: ['On top of that', 'Looking back'],
+  },
+  {
+    topic: 'fashion',
+    cut: 'description',
+    question: { ko: '평소 옷차림을 묻는 질문', en: 'What kind of clothes do you usually wear?' },
+    answer:
+      "I usually go for simple, comfortable clothes, like basic t-shirts, jeans, and sneakers, rather than anything too flashy. What I like most about this style is that it's easy to mix and match, so I don't have to think too hard about outfits. On top of that, neutral colors like black, white, and beige make up most of my closet, since they go with almost everything. Honestly, comfort matters more to me than trends, especially since I'm usually out and about most of the day. That's mainly why my style has stayed pretty consistent over the past few years.",
+    answerKo:
+      '저는 보통 너무 화려하기보다는 기본 티셔츠, 청바지, 운동화처럼 단순하고 편한 옷을 입는 편이에요. 이 스타일에서 제일 좋은 건 이것저것 잘 섞을 수 있어서 옷 조합을 너무 고민 안 해도 된다는 거예요. 게다가 검정, 흰색, 베이지 같은 무채색이 옷장 대부분을 차지하는데, 거의 다 잘 어울리거든요. 솔직히 저한테는 트렌드보다 편안함이 더 중요해요, 특히 하루 종일 밖에 있는 편이라서요. 그래서 제 스타일이 몇 년째 꽤 일관되게 유지되고 있어요.',
+    keyExpressions: ['On top of that', "That's mainly why"],
+  },
+  {
+    topic: 'fashion',
+    cut: 'habit',
+    question: {
+      ko: '좋아하거나 싫어하는 패션 트렌드를 묻는 질문',
+      en: 'Describe a fashion trend that you like or dislike.',
+    },
+    answer:
+      "One fashion trend I've noticed a lot lately is oversized clothing, like baggy jeans and big hoodies, which honestly wasn't really my style at first. I tend to prefer more fitted clothes, so it took me a while to warm up to it. I've made it a habit to try just one oversized piece at a time instead of changing my whole wardrobe at once. What I enjoy most now is actually how comfortable oversized clothes are, especially for casual days. As a result, I've slowly ended up incorporating more of it into my closet than I expected.",
+    answerKo:
+      '요즘 많이 눈에 띄는 패션 트렌드 하나는 배기진이나 큰 후드티 같은 오버사이즈 스타일인데, 솔직히 처음엔 제 스타일이 아니었어요. 좀 더 핏 되는 옷을 선호하는 편이라 익숙해지는 데 시간이 좀 걸렸어요. 옷장을 한 번에 다 바꾸기보다 오버사이즈 아이템을 하나씩만 시도해보는 걸 습관으로 만들었어요. 지금 제일 좋아하는 건 오버사이즈 옷이 특히 캐주얼한 날에 얼마나 편한지예요. 그러다 보니 예상보다 옷장에 그런 스타일이 조금씩 늘어나게 됐어요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'fashion',
+    cut: 'experience',
+    question: {
+      ko: '외국인에게 추천할 한국 패션을 묻는 질문',
+      en: 'If you had to recommend Korean fashion to a foreigner, what would it be?',
+    },
+    answer:
+      "If I had to recommend Korean fashion to a foreigner, I'd probably point them toward the layered, minimalist streetwear you see a lot in Seoul. What stands out most is how effortless it looks, even though a lot of thought usually goes into the color coordination. On top of that, I'd suggest checking out areas like Hongdae or Seongsu, since a lot of smaller local brands sell pieces you won't find anywhere else. Looking back, I think that mix of simplicity and detail is what makes Korean fashion feel different from other styles.",
+    answerKo:
+      '외국인한테 한국 패션을 추천해야 한다면, 서울에서 많이 보이는 레이어드 미니멀 스트리트웨어를 추천할 것 같아요. 제일 눈에 띄는 건 색 조합에 신경을 많이 쓰는데도 힘 안 준 것처럼 보인다는 거예요. 게다가 홍대나 성수 같은 지역을 가보라고 추천할 것 같은데, 다른 데서는 못 보는 작은 로컬 브랜드가 많거든요. 돌이켜보면 그 단순함이랑 디테일의 조합이 한국 패션을 다른 스타일이랑 다르게 느껴지게 만드는 것 같아요.',
+    keyExpressions: ['On top of that', 'Looking back'],
+  },
+  {
+    topic: 'industry',
+    cut: 'description',
+    question: {
+      ko: '인기 있는 산업을 묻는 질문',
+      en: 'What industries are popular in your country?',
+    },
+    answer:
+      "In my country, technology and electronics are probably some of the biggest industries, especially with a few major companies leading globally. What's more, entertainment has grown a lot recently, with music and shows becoming popular well beyond our borders. On top of that, manufacturing, especially cars and shipbuilding, still plays a huge role in the economy even though it's less talked about. Honestly, I think the tech and entertainment industries get the most attention just because they're the most visible internationally. That's mainly why people abroad often think of those two first when they think of our economy.",
+    answerKo:
+      '저희 나라에서는 기술이랑 전자산업이 아마 제일 큰 산업 중 하나일 텐데, 특히 몇몇 대기업이 세계적으로 앞서가고 있어요. 게다가 최근엔 엔터테인먼트 산업도 많이 성장해서 음악이랑 방송이 국경을 넘어 인기를 얻고 있어요. 게다가 제조업, 특히 자동차랑 조선업도 덜 언급되지만 경제에서 여전히 큰 역할을 하고 있어요. 솔직히 기술이랑 엔터테인먼트 산업이 국제적으로 제일 눈에 띄어서 관심을 제일 많이 받는 것 같아요. 그래서 해외에서는 저희 경제 하면 그 두 가지를 먼저 떠올리는 경우가 많아요.',
+    keyExpressions: ["What's more", 'On top of that', "That's mainly why"],
+  },
+  {
+    topic: 'industry',
+    cut: 'habit',
+    question: {
+      ko: '산업이 일상에 미치는 영향을 묻는 질문',
+      en: "How do these industries affect people's everyday lives in your country?",
+    },
+    answer:
+      "I think the tech industry affects daily life the most, since so many of the apps and devices we use every day come from companies based here. I tend to notice it mostly through how connected everything feels, from banking to shopping to just talking to friends. I've made it a habit to pay attention to which companies make the products I use, mostly out of curiosity. What I enjoy most is seeing how quickly new products go from just an idea to something everyone actually uses. As a result, I feel like I have a front-row seat to how fast this industry moves.",
+    answerKo:
+      '기술 산업이 일상에 제일 큰 영향을 미치는 것 같아요, 매일 쓰는 앱이나 기기 상당수가 여기 있는 회사에서 나오거든요. 은행 업무부터 쇼핑, 친구랑 얘기하는 것까지 모든 게 얼마나 연결돼 있는지를 통해 주로 느끼는 편이에요. 그냥 궁금해서 제가 쓰는 제품을 어느 회사가 만드는지 신경 쓰는 걸 습관으로 만들었어요. 제가 제일 좋아하는 건 새 제품이 그냥 아이디어에서 다들 실제로 쓰는 것까지 얼마나 빨리 가는지 보는 거예요. 그러다 보니 이 산업이 얼마나 빨리 움직이는지 제일 앞자리에서 보는 느낌이에요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'what I enjoy most is', 'As a result'],
+  },
+  {
+    topic: 'industry',
+    cut: 'experience',
+    question: {
+      ko: '산업의 변화를 묻는 질문',
+      en: "Tell me about a change you've noticed in an industry in your country.",
+    },
+    answer:
+      "Let me think about that for a second... Actually, one change I've really noticed is how much the entertainment industry has grown internationally over the past several years. It was such a gradual shift that I almost didn't notice it happening until I saw how popular it had become abroad. What I remember most is realizing that friends from other countries suddenly knew way more about our music and shows than I expected. Looking back, it's honestly a bit surreal to see something that used to feel local become known worldwide.",
+    answerKo:
+      '잠깐 생각해볼게요... 제가 정말 많이 느낀 변화 하나는 지난 몇 년 동안 엔터테인먼트 산업이 국제적으로 얼마나 성장했는지예요. 너무 점진적으로 바뀌어서 해외에서 얼마나 인기 있는지 보기 전까지는 거의 눈치도 못 챘어요. 제일 기억에 남는 건 다른 나라 친구들이 예상보다 훨씬 더 우리 음악이랑 방송을 많이 안다는 걸 깨달았을 때예요. 돌이켜보면 예전엔 로컬처럼 느껴졌던 게 전 세계적으로 알려지는 걸 보는 게 솔직히 좀 신기해요.',
+    keyExpressions: ['Let me think about that for a second', 'Looking back'],
   },
 ];
 
