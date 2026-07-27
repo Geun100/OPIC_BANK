@@ -26,8 +26,8 @@ export default function PrivacyPage() {
           <p className="mt-2">
             본 사이트는 Google AdSense를 통해 광고를 게재하며, Google을 비롯한 제3자 공급업체가
             쿠키를 사용해 사용자의 이전 방문 기록을 기반으로 광고를 게재할 수 있습니다. Google의
-            광고 쿠키 사용으로 인해 Google과 그 파트너는 본 사이트 및 다른 사이트 방문 기록을
-            토대로 광고를 제공할 수 있습니다.
+            광고 쿠키 사용으로 인해 Google과 그 파트너는 본 사이트 및 다른 사이트 방문 기록을 토대로
+            광고를 제공할 수 있습니다.
           </p>
           <p className="mt-2">
             사용자는{' '}
