@@ -25,6 +25,7 @@ const staticPages = [
   { url: '/expressions/emotions', priority: 0.7, changeFrequency: 'weekly' as const },
   { url: '/expressions/connectors', priority: 0.7, changeFrequency: 'weekly' as const },
   { url: '/expressions/essentials', priority: 0.8, changeFrequency: 'weekly' as const },
+  { url: '/expressions/everyday', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/grade', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/tips', priority: 0.8, changeFrequency: 'weekly' as const },
   { url: '/about', priority: 0.3, changeFrequency: 'yearly' as const },

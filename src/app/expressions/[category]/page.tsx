@@ -97,6 +97,11 @@ export default async function ExpressionCategoryPage({
                             {item.example}
                           </p>
                         )}
+                        {item.exampleKo && (
+                          <p className="mt-0.5 text-[12px] text-muted-foreground">
+                            {item.exampleKo}
+                          </p>
+                        )}
                       </div>
                       <SaveButton id={item.en} type="expression" en={item.en} ko={item.ko} />
                     </li>
