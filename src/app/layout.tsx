@@ -42,6 +42,9 @@ export const metadata: Metadata = {
     description:
       '오픽에 필요한 모든 표현을 한곳에 모아둔 아카이브. 표현·필러·만능 문장·예상 질문을 검색하고 나만의 노트로 저장하세요.',
   },
+  verification: {
+    google: 'f0YCW73pjR5LS_2OI2pl1DJGaZLbnCGm0RgKvkJb9eg',
+  },
 };
 
 export default function RootLayout({
