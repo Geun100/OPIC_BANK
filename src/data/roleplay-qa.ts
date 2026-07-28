@@ -44,10 +44,15 @@ export const roleplayQAs: RoleplayQA[] = [
       en: 'Your friend just bought a new smartphone. Call your friend and ask three or four questions about it.',
     },
     answer:
-      "Hey, I heard you just got a new phone! I have a few questions about it, if that's okay. First of all, which brand is it, and why did you choose that one over the others? Also, how much did it end up costing you, since I've been thinking about upgrading mine too. On top of that, how's the camera quality? I've heard a lot of newer phones have really improved cameras. Oh, and one more thing — does the battery last a full day for you, because that's honestly my biggest concern with my current phone.",
+      "Hey, I heard you just got a new phone! I have a few questions about it, if that's okay. First of all, which brand is it, and why did you choose that one over the others? Also, how much did it end up costing you, since I've been thinking about upgrading mine too. Is it possible to try it out sometime before I decide on mine? On top of that, how's the camera quality? I've heard a lot of newer phones have really improved cameras. Oh, and one more thing — does the battery last a full day for you, because that's honestly my biggest concern with my current phone.",
     answerKo:
-      '야, 새 폰 샀다며! 괜찮으면 몇 가지 물어봐도 돼? 우선 어느 브랜드고, 다른 것 대신 왜 그걸 골랐어? 그리고 얼마 줬어, 나도 폰 바꿀까 생각 중이었거든. 그리고 카메라 화질은 어때? 요즘 폰들은 카메라가 많이 좋아졌다고 들었거든. 아 그리고 하나 더 — 배터리는 하루 종일 가? 솔직히 지금 내 폰에서 제일 걱정되는 부분이 그거라서.',
-    keyExpressions: ['First of all', 'On top of that', 'Oh, and one more thing'],
+      '야, 새 폰 샀다며! 괜찮으면 몇 가지 물어봐도 돼? 우선 어느 브랜드고, 다른 것 대신 왜 그걸 골랐어? 그리고 얼마 줬어, 나도 폰 바꿀까 생각 중이었거든. 나도 결정하기 전에 한번 써봐도 될까? 그리고 카메라 화질은 어때? 요즘 폰들은 카메라가 많이 좋아졌다고 들었거든. 아 그리고 하나 더 — 배터리는 하루 종일 가? 솔직히 지금 내 폰에서 제일 걱정되는 부분이 그거라서.',
+    keyExpressions: [
+      'First of all',
+      'On top of that',
+      'Oh, and one more thing',
+      'Is it possible to',
+    ],
   },
   {
     type: 'request',
@@ -72,10 +77,16 @@ export const roleplayQAs: RoleplayQA[] = [
       en: 'You are planning a trip. Call a travel agency and ask three or four questions about the package.',
     },
     answer:
-      "Hi, I'm looking into your travel packages and had a few questions. First, what exactly is included in the package, like flights, hotel, and meals? Also, is there any flexibility with the travel dates, since my schedule might change slightly? On top of that, what's your cancellation policy in case something comes up unexpectedly? That's pretty much everything I wanted to check before booking.",
+      "Hi, I'm looking into your travel packages and had a few questions. First, what exactly is included in the package, like flights, hotel, and meals? Also, is there any flexibility with the travel dates, since my schedule might change slightly? Do you have any recommendations for the best time of year to go? On top of that, what's your cancellation policy in case something comes up unexpectedly? That's pretty much everything I wanted to check before booking.",
     answerKo:
-      '안녕하세요, 여행 상품을 알아보고 있는데 몇 가지 궁금한 게 있어서요. 우선 항공권, 호텔, 식사처럼 패키지에 정확히 뭐가 포함되나요? 그리고 제 일정이 조금 바뀔 수도 있는데 여행 날짜 조정이 가능한가요? 그리고 갑자기 일이 생겼을 때 취소 정책은 어떻게 되나요? 예약 전에 확인하고 싶었던 건 이 정도예요.',
-    keyExpressions: ['First', 'Also', 'On top of that', "That's pretty much"],
+      '안녕하세요, 여행 상품을 알아보고 있는데 몇 가지 궁금한 게 있어서요. 우선 항공권, 호텔, 식사처럼 패키지에 정확히 뭐가 포함되나요? 그리고 제 일정이 조금 바뀔 수도 있는데 여행 날짜 조정이 가능한가요? 가기 제일 좋은 시기로 추천해주실 만한 게 있나요? 그리고 갑자기 일이 생겼을 때 취소 정책은 어떻게 되나요? 예약 전에 확인하고 싶었던 건 이 정도예요.',
+    keyExpressions: [
+      'First',
+      'Also',
+      'On top of that',
+      "That's pretty much",
+      'Do you have any recommendations?',
+    ],
   },
   {
     type: 'problem',
@@ -106,13 +117,14 @@ export const roleplayQAs: RoleplayQA[] = [
       en: 'You cannot make it to the appointment. Call and explain why, then suggest alternatives.',
     },
     answer:
-      "Hi, I'm calling about my appointment today, but something urgent came up and I'm not going to be able to make it. I'm really sorry for the short notice. Would it be possible to reschedule for later this week instead? If that doesn't work, I could also come in early next week, whichever is more convenient for you. I just wanted to let you know as soon as possible instead of just not showing up.",
+      "Hi, I'm calling about my appointment today, but something urgent came up and I'm not going to be able to make it. I'm really sorry for the short notice. That's why I wanted to call as early as I possibly could. Would it be possible to reschedule for later this week instead? If that doesn't work, I could also come in early next week, whichever is more convenient for you. I just wanted to let you know as soon as possible instead of just not showing up.",
     answerKo:
-      '안녕하세요, 오늘 예약 때문에 전화드렸는데 급한 일이 생겨서 못 갈 것 같아요. 갑자기 말씀드려서 정말 죄송해요. 혹시 이번 주 나중으로 일정을 옮길 수 있을까요? 그게 안 되면 다음 주 초도 괜찮은데, 편하신 쪽으로 말씀해주세요. 그냥 안 나타나는 것보다는 최대한 빨리 알려드리고 싶었어요.',
+      '안녕하세요, 오늘 예약 때문에 전화드렸는데 급한 일이 생겨서 못 갈 것 같아요. 갑자기 말씀드려서 정말 죄송해요. 그래서 최대한 빨리 전화드리고 싶었어요. 혹시 이번 주 나중으로 일정을 옮길 수 있을까요? 그게 안 되면 다음 주 초도 괜찮은데, 편하신 쪽으로 말씀해주세요. 그냥 안 나타나는 것보다는 최대한 빨리 알려드리고 싶었어요.',
     keyExpressions: [
       "I'm really sorry for the short notice",
       'Would it be possible to',
       "If that doesn't work",
+      "That's why",
     ],
   },
   {
@@ -124,13 +136,14 @@ export const roleplayQAs: RoleplayQA[] = [
       en: 'The tickets you booked have a problem. Explain the situation and give some options to resolve it.',
     },
     answer:
-      "Hi, I think there's a problem with the tickets I booked — it looks like the date on my confirmation doesn't match what I originally selected. Could you check that for me? If it turns out to be a mistake on your end, I'd really appreciate it if you could switch it to the correct date at no extra charge. Or, if that's not possible, a refund would also work for me. I just want to make sure this gets sorted out before the day of the event.",
+      "Hi, I think there's a problem with the tickets I booked — it looks like the date on my confirmation doesn't match what I originally selected. Could you check that for me? I've made an effort to keep all my booking confirmations, so I can send you mine if that helps. If it turns out to be a mistake on your end, I'd really appreciate it if you could switch it to the correct date at no extra charge. Or, if that's not possible, a refund would also work for me. I just want to make sure this gets sorted out before the day of the event.",
     answerKo:
-      '안녕하세요, 제가 예매한 티켓에 문제가 있는 것 같아요 — 확인서에 있는 날짜가 제가 원래 선택했던 날짜랑 다른 것 같아요. 확인 좀 해주실 수 있나요? 혹시 그쪽 실수라면 추가 비용 없이 정확한 날짜로 바꿔주시면 정말 감사하겠어요. 아니면 그게 안 되면 환불도 괜찮아요. 행사 당일 전에는 꼭 이 문제가 해결됐으면 해서요.',
+      '안녕하세요, 제가 예매한 티켓에 문제가 있는 것 같아요 — 확인서에 있는 날짜가 제가 원래 선택했던 날짜랑 다른 것 같아요. 확인 좀 해주실 수 있나요? 예약 확인 메일을 다 챙겨두려고 노력해와서, 필요하시면 제 것도 보내드릴 수 있어요. 혹시 그쪽 실수라면 추가 비용 없이 정확한 날짜로 바꿔주시면 정말 감사하겠어요. 아니면 그게 안 되면 환불도 괜찮아요. 행사 당일 전에는 꼭 이 문제가 해결됐으면 해서요.',
     keyExpressions: [
       'Could you check that for me',
       'If it turns out to be',
       "Or, if that's not possible",
+      'make an effort',
     ],
   },
   {
@@ -142,13 +155,14 @@ export const roleplayQAs: RoleplayQA[] = [
       en: 'Have you ever had a problem with something you bought or borrowed? Tell me what happened and how you solved it.',
     },
     answer:
-      "Actually, yes, I have a pretty vivid memory of this happening with a laptop I borrowed from a friend a while back. The charger stopped working out of nowhere, and I was pretty worried about how to handle it. What I ended up doing was buying a replacement charger right away and explaining the situation honestly. Looking back, being upfront about it immediately was definitely the right move, because my friend appreciated that I didn't try to hide it.",
+      "Actually, yes, I have a pretty vivid memory of this happening with a laptop I borrowed from a friend a while back. The charger stopped working out of nowhere, and I was pretty worried about how to handle it. I can really relate to anyone who's dealt with a similar hassle over something borrowed. What I ended up doing was buying a replacement charger right away and explaining the situation honestly. Looking back, being upfront about it immediately was definitely the right move, because my friend appreciated that I didn't try to hide it.",
     answerKo:
-      '네, 사실 예전에 친구한테 빌린 노트북으로 비슷한 일이 있었던 게 꽤 생생하게 기억나요. 갑자기 충전기가 안 되는 거예요, 어떻게 해야 할지 꽤 걱정했었죠. 결국 제가 한 건 바로 충전기를 새로 사고 상황을 솔직하게 설명한 거였어요. 돌이켜보면 바로 솔직하게 말한 게 확실히 옳은 선택이었어요, 친구도 제가 숨기려 하지 않은 걸 고마워했거든요.',
+      '네, 사실 예전에 친구한테 빌린 노트북으로 비슷한 일이 있었던 게 꽤 생생하게 기억나요. 갑자기 충전기가 안 되는 거예요, 어떻게 해야 할지 꽤 걱정했었죠. 빌린 물건으로 비슷한 곤란을 겪어본 사람이라면 누구든 정말 공감할 것 같아요. 결국 제가 한 건 바로 충전기를 새로 사고 상황을 솔직하게 설명한 거였어요. 돌이켜보면 바로 솔직하게 말한 게 확실히 옳은 선택이었어요, 친구도 제가 숨기려 하지 않은 걸 고마워했거든요.',
     keyExpressions: [
       'I actually have a pretty vivid memory of this',
       'What I ended up doing was',
       'Looking back',
+      'can relate to',
     ],
   },
   {
@@ -160,10 +174,15 @@ export const roleplayQAs: RoleplayQA[] = [
       en: 'Tell me about a time you had to cancel or change plans at the last minute.',
     },
     answer:
-      'Let me think about that for a second... Actually, I remember having to cancel a weekend trip with friends at the last minute because I suddenly got sick. It was such a frustrating experience because we had already booked everything in advance. I called them right away to explain and apologize, and thankfully they were able to reschedule the trip for a few weeks later. Looking back, I was relieved they understood, and it taught me to always let people know as early as possible whenever plans have to change.',
+      'Let me think about that for a second... Actually, I remember having to cancel a weekend trip with friends at the last minute because I suddenly got sick. It was such a frustrating experience because we had already booked everything in advance. I get stressed out canceling on people last minute, but honesty always seems to help. I called them right away to explain and apologize, and thankfully they were able to reschedule the trip for a few weeks later. Looking back, I was relieved they understood, and it taught me to always let people know as early as possible whenever plans have to change.',
     answerKo:
-      '잠깐 생각해볼게요... 갑자기 아파서 친구들이랑 계획했던 주말 여행을 막판에 취소해야 했던 적이 기억나요. 이미 예약을 다 해둔 상태라 정말 답답한 경험이었어요. 바로 전화해서 설명하고 사과했는데, 다행히 몇 주 뒤로 여행을 다시 잡을 수 있었어요. 돌이켜보면 다들 이해해줘서 다행이었고, 계획이 바뀔 땐 항상 최대한 빨리 알려야 한다는 걸 배웠어요.',
-    keyExpressions: ['Let me think about that for a second', 'frustrating', 'Looking back'],
+      '잠깐 생각해볼게요... 갑자기 아파서 친구들이랑 계획했던 주말 여행을 막판에 취소해야 했던 적이 기억나요. 이미 예약을 다 해둔 상태라 정말 답답한 경험이었어요. 막판에 취소하면 스트레스 받는데, 솔직하게 말하면 항상 도움이 되는 것 같아요. 바로 전화해서 설명하고 사과했는데, 다행히 몇 주 뒤로 여행을 다시 잡을 수 있었어요. 돌이켜보면 다들 이해해줘서 다행이었고, 계획이 바뀔 땐 항상 최대한 빨리 알려야 한다는 걸 배웠어요.',
+    keyExpressions: [
+      'Let me think about that for a second',
+      'frustrating',
+      'Looking back',
+      'get stressed out',
+    ],
   },
 ];
 
