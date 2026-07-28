@@ -58,10 +58,10 @@ export const roleplayQAs: RoleplayQA[] = [
       en: 'You want to see a doctor. Call the clinic and ask questions to make an appointment.',
     },
     answer:
-      "Hi, I'd like to make an appointment to see a doctor, if possible. Could you tell me what times are available this week? Also, do I need to bring anything specific, like my insurance card or previous medical records? On top of that, about how long is the wait usually, since I have a pretty tight schedule today. Thanks, I'll go ahead and confirm once I hear back from you.",
+      "Hi, I'm calling to make an appointment to see a doctor, if possible. Could you tell me what times are available this week? Also, do I need to bring anything specific, like my insurance card or previous medical records? On top of that, about how long is the wait usually, since I have a pretty tight schedule today. Thanks, I'll go ahead and confirm once I hear back from you.",
     answerKo:
-      '안녕하세요, 가능하면 진료 예약을 하고 싶어서요. 이번 주에 가능한 시간 좀 알려주실 수 있나요? 그리고 보험증이나 예전 진료기록처럼 따로 챙겨가야 할 게 있을까요? 그리고 오늘 일정이 좀 빡빡한데 보통 대기 시간이 얼마나 되나요? 감사합니다, 답변 주시면 바로 확정할게요.',
-    keyExpressions: ['if possible', 'Also', 'On top of that'],
+      '안녕하세요, 가능하면 진료 예약을 하려고 전화드렸어요. 이번 주에 가능한 시간 좀 알려주실 수 있나요? 그리고 보험증이나 예전 진료기록처럼 따로 챙겨가야 할 게 있을까요? 그리고 오늘 일정이 좀 빡빡한데 보통 대기 시간이 얼마나 되나요? 감사합니다, 답변 주시면 바로 확정할게요.',
+    keyExpressions: ['if possible', 'Also', 'On top of that', "I'm calling to"],
   },
   {
     type: 'request',
@@ -86,7 +86,7 @@ export const roleplayQAs: RoleplayQA[] = [
       en: 'You broke the smartphone you borrowed from your friend. Explain the situation and offer two or three solutions.',
     },
     answer:
-      "Hey, so I have to tell you something, and I'm really sorry about this. I accidentally dropped your phone earlier and the screen cracked. I know this is frustrating, so let me suggest a few things. First, I can pay for the full repair cost at the store near my place. Or, if you'd prefer, I could just buy you a replacement screen protector and case for now while we figure out the repair. Actually, another option is that I lend you my old phone temporarily until yours gets fixed. Whatever works best for you, I really want to make this right.",
+      "Hey, I have something to tell you, and I'm really sorry about this. I accidentally dropped your phone earlier and the screen cracked. I know this is frustrating, so let me suggest a few things. First, I can pay for the full repair cost at the store near my place. Or, if you'd prefer, I could just buy you a replacement screen protector and case for now while we figure out the repair. Actually, another option is that I lend you my old phone temporarily until yours gets fixed. Whatever works best for you, I really want to make this right.",
     answerKo:
       '저기, 할 말이 있는데 정말 미안해. 아까 실수로 네 폰을 떨어뜨려서 화면에 금이 갔어. 짜증 날 거 아는데, 몇 가지 방법을 제안해볼게. 우선 우리 집 근처 매장에서 수리비 전액을 내가 낼게. 아니면 원한다면, 수리하는 동안 일단 액정 보호필름이랑 케이스를 새로 사줄 수도 있어. 아니면 다른 방법으로, 네 폰 고칠 때까지 내 예전 폰을 잠깐 빌려줄 수도 있고. 뭐가 제일 낫든, 정말 제대로 해결하고 싶어.',
     keyExpressions: [
@@ -94,6 +94,7 @@ export const roleplayQAs: RoleplayQA[] = [
       'First',
       "Or, if you'd prefer",
       'Whatever works best for you',
+      'I have something to tell you',
     ],
   },
   {

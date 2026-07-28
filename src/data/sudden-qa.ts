@@ -52,10 +52,16 @@ export const suddenQAs: SuddenQA[] = [
       en: 'How is the weather in your country? Describe the four seasons.',
     },
     answer:
-      "In my country, we have four pretty distinct seasons. Spring is usually mild and a bit windy, and that's when the flowers start blooming everywhere. Summer gets really hot and humid, so most people try to stay indoors during the day. Fall is probably my favorite season, since the weather is cool and comfortable, and the leaves change color beautifully. Winter can get quite cold, especially in December and January, and it sometimes snows in certain areas. Compared to other countries, I'd say the seasons here are pretty extreme, since summer and winter are almost opposite in temperature. That's mainly why people always talk about the weather here — it changes so much throughout the year.",
+      "In my country, we have four pretty distinct seasons. Spring is usually mild and a bit windy, and that's when the flowers start blooming everywhere. Summer gets really hot and humid, so most people try to stay indoors during the day. Honestly, I get frustrated when the humidity makes it feel even hotter than it actually is. Fall is probably my favorite season, since the weather is cool and comfortable, and the leaves change color beautifully. Winter can get quite cold, especially in December and January, and it sometimes snows in certain areas. Compared to other countries, I'd say the seasons here are pretty extreme, since summer and winter are almost opposite in temperature. That's mainly why people always talk about the weather here — it changes so much throughout the year.",
     answerKo:
-      '저희 나라는 사계절이 꽤 뚜렷해요. 봄은 보통 온화하고 바람이 좀 부는데, 그때 여기저기서 꽃이 피기 시작해요. 여름은 정말 덥고 습해서 대부분 낮에는 실내에 있으려고 해요. 가을은 아마 제가 제일 좋아하는 계절인데, 날씨가 선선하고 쾌적하고 단풍도 예쁘게 물들거든요. 겨울은 특히 12월, 1월엔 꽤 추워지고 어떤 지역은 눈도 와요. 다른 나라랑 비교하면 여름이랑 겨울 기온이 거의 반대라 여기 계절은 꽤 극단적인 편인 것 같아요. 그래서 여기 사람들이 날씨 얘기를 그렇게 많이 하는 거예요, 1년 동안 정말 많이 변하거든요.',
-    keyExpressions: ['mild', 'humid', 'Compared to ...', "That's mainly why"],
+      '저희 나라는 사계절이 꽤 뚜렷해요. 봄은 보통 온화하고 바람이 좀 부는데, 그때 여기저기서 꽃이 피기 시작해요. 여름은 정말 덥고 습해서 대부분 낮에는 실내에 있으려고 해요. 솔직히 습도 때문에 실제보다 더 덥게 느껴지면 답답함을 느껴요. 가을은 아마 제가 제일 좋아하는 계절인데, 날씨가 선선하고 쾌적하고 단풍도 예쁘게 물들거든요. 겨울은 특히 12월, 1월엔 꽤 추워지고 어떤 지역은 눈도 와요. 다른 나라랑 비교하면 여름이랑 겨울 기온이 거의 반대라 여기 계절은 꽤 극단적인 편인 것 같아요. 그래서 여기 사람들이 날씨 얘기를 그렇게 많이 하는 거예요, 1년 동안 정말 많이 변하거든요.',
+    keyExpressions: [
+      'mild',
+      'humid',
+      'Compared to ...',
+      "That's mainly why",
+      'get frustrated when',
+    ],
   },
   {
     topic: 'weather',
@@ -233,10 +239,15 @@ export const suddenQAs: SuddenQA[] = [
       en: 'Tell me about a time you were sick or injured.',
     },
     answer:
-      "Let me think about that for a second... Actually, I remember spraining my ankle pretty badly while jogging a couple of years ago. It was such a frustrating experience because I couldn't exercise properly for almost a month afterward. What I remember most is how much I missed just being able to walk normally, since I usually took that for granted. Looking back, it actually taught me to stretch properly before exercising, which I make sure to do every time now.",
+      "Let me think about that for a second... Actually, I remember spraining my ankle pretty badly while jogging a couple of years ago. I wasn't expecting to be out of commission for that long, but it took almost a month to fully recover. It was such a frustrating experience because I couldn't exercise properly for almost a month afterward. What I remember most is how much I missed just being able to walk normally, since I usually took that for granted. Looking back, it actually taught me to stretch properly before exercising, which I make sure to do every time now.",
     answerKo:
-      '잠깐 생각해볼게요... 몇 년 전 조깅하다가 발목을 꽤 심하게 삔 적이 있어요. 그 후로 거의 한 달 동안 제대로 운동을 못 해서 정말 답답한 경험이었어요. 제일 기억에 남는 건 평소엔 당연하게 여겼던 정상적으로 걷는 것조차 그리워졌다는 거예요. 돌이켜보면 오히려 운동 전에 제대로 스트레칭하는 법을 배웠고, 지금은 매번 꼭 챙겨서 해요.',
-    keyExpressions: ['Let me think about that for a second', 'frustrating', 'Looking back'],
+      '잠깐 생각해볼게요... 몇 년 전 조깅하다가 발목을 꽤 심하게 삔 적이 있어요. 그렇게 오래 못 움직일 줄은 몰랐는데, 완전히 회복하는 데 거의 한 달이 걸렸어요. 그 후로 거의 한 달 동안 제대로 운동을 못 해서 정말 답답한 경험이었어요. 제일 기억에 남는 건 평소엔 당연하게 여겼던 정상적으로 걷는 것조차 그리워졌다는 거예요. 돌이켜보면 오히려 운동 전에 제대로 스트레칭하는 법을 배웠고, 지금은 매번 꼭 챙겨서 해요.',
+    keyExpressions: [
+      'Let me think about that for a second',
+      'frustrating',
+      'Looking back',
+      "wasn't expecting to",
+    ],
   },
   {
     topic: 'appointments',
@@ -302,10 +313,10 @@ export const suddenQAs: SuddenQA[] = [
       en: 'Tell me about the last time you went to a bank. What was the purpose?',
     },
     answer:
-      "The last time I went to a bank in person was actually to open a new account, since that's one of the few things you still can't fully do online. I tend to avoid visiting in person whenever possible, mainly because I can handle most things through the app now. I've made it a habit to check the app first before deciding whether an in-person visit is actually necessary. What I remember most about that visit is how quick it actually was, since I had booked a time slot in advance. As a result, I probably won't need to go back in person for a while.",
+      "The last time I went to a bank in person was actually to open a new account, since that's one of the few things you still can't fully do online. I tend to avoid visiting in person whenever possible, mainly because I can handle most things through the app now. I rarely have time to visit during regular business hours, so I've made it a habit to check the app first before deciding whether an in-person visit is actually necessary. What I remember most about that visit is how quick it actually was, since I had booked a time slot in advance. As a result, I probably won't need to go back in person for a while.",
     answerKo:
-      '제가 마지막으로 은행에 직접 간 건 새 계좌를 개설하려고 갔던 건데, 그게 아직 온라인으로 완전히 안 되는 몇 안 되는 일 중 하나거든요. 가능하면 직접 방문은 피하는 편인데, 요즘은 앱으로 대부분 처리할 수 있어서요. 직접 가야 할 필요가 진짜 있는지 결정하기 전에 먼저 앱부터 확인하는 걸 습관으로 만들었어요. 그때 제일 기억에 남는 건 미리 시간을 예약해둬서 실제로 정말 빨리 끝났다는 거예요. 그러다 보니 당분간은 다시 직접 갈 필요가 없을 것 같아요.',
-    keyExpressions: ['I tend to', "I've made it a habit to", 'As a result'],
+      '제가 마지막으로 은행에 직접 간 건 새 계좌를 개설하려고 갔던 건데, 그게 아직 온라인으로 완전히 안 되는 몇 안 되는 일 중 하나거든요. 가능하면 직접 방문은 피하는 편인데, 요즘은 앱으로 대부분 처리할 수 있어서요. 정규 영업시간에 갈 시간이 거의 없어서, 직접 가야 할 필요가 진짜 있는지 결정하기 전에 먼저 앱부터 확인하는 걸 습관으로 만들었어요. 그때 제일 기억에 남는 건 미리 시간을 예약해둬서 실제로 정말 빨리 끝났다는 거예요. 그러다 보니 당분간은 다시 직접 갈 필요가 없을 것 같아요.',
+    keyExpressions: ['I tend to', "I've made it a habit to", 'As a result', 'rarely have time to'],
   },
   {
     topic: 'bank',

@@ -72,6 +72,7 @@ export const topicQAs: TopicQA[] = [
       'fully furnished',
       'unwind after a long day',
       'Compared to ...',
+      'what I like most about',
     ],
   },
   {
@@ -113,15 +114,16 @@ export const topicQAs: TopicQA[] = [
     cut: 'description',
     question: { ko: '자주 가는 카페를 묘사해달라는 질문', en: 'Describe a café you often visit.' },
     answer:
-      "There's a small café near my house that I go to pretty often. It has a really cozy vibe, with warm lighting and soft music playing in the background. The place isn't too big, but that's actually what makes it feel more comfortable, if that makes sense. I'm a regular there, so the staff already know what I usually order. Honestly, the smell of freshly brewed coffee the moment you walk in is what I like most about it. On top of that, they have a few seats right by the window, which is where I always try to sit if it's available. What's more, the owner is really friendly, so it almost feels like visiting a friend's place rather than just a café. It's the kind of place where you just want to sit down and stay for a while.",
+      "There's a small café near my house that I go to pretty often. It has a really cozy vibe, with warm lighting and soft music playing in the background. The place isn't too big, but that's actually what makes it feel more comfortable, if that makes sense. I'm a regular there, so the staff already know what I usually order. Honestly, the smell of freshly brewed coffee the moment you walk in is what I like most about it. On top of that, they have a few seats right by the window, which is where I always try to sit if it's available. I've been really into their seasonal drinks lately, so I usually end up trying whatever new menu they have. What's more, the owner is really friendly, so it almost feels like visiting a friend's place rather than just a café. It's the kind of place where you just want to sit down and stay for a while.",
     answerKo:
-      '집 근처에 자주 가는 작은 카페가 있어요. 따뜻한 조명이랑 잔잔한 음악이 흘러서 분위기가 정말 아늑해요. 공간이 크진 않은데, 오히려 그래서 더 편안하게 느껴지는 것 같아요. 거기 단골이라 직원분들이 제가 뭘 주문하는지 이미 알고 있어요. 솔직히 들어가는 순간 나는 갓 내린 커피 향이 제가 제일 좋아하는 부분이에요. 게다가 창가 쪽에 자리가 몇 개 있는데 비어있으면 항상 거기 앉으려고 해요. 사장님도 정말 친절해서 그냥 카페가 아니라 친구 집에 놀러 가는 느낌이 들 정도예요. 그냥 앉아서 오래 머물고 싶어지는 그런 곳이에요.',
+      '집 근처에 자주 가는 작은 카페가 있어요. 따뜻한 조명이랑 잔잔한 음악이 흘러서 분위기가 정말 아늑해요. 공간이 크진 않은데, 오히려 그래서 더 편안하게 느껴지는 것 같아요. 거기 단골이라 직원분들이 제가 뭘 주문하는지 이미 알고 있어요. 솔직히 들어가는 순간 나는 갓 내린 커피 향이 제가 제일 좋아하는 부분이에요. 게다가 창가 쪽에 자리가 몇 개 있는데 비어있으면 항상 거기 앉으려고 해요. 요즘은 계절 한정 음료에 푹 빠져 있어서 새 메뉴가 나오면 꼭 한번 시켜보게 돼요. 사장님도 정말 친절해서 그냥 카페가 아니라 친구 집에 놀러 가는 느낌이 들 정도예요. 그냥 앉아서 오래 머물고 싶어지는 그런 곳이에요.',
     keyExpressions: [
       'have a cozy vibe',
       'be a regular (at)',
       'freshly brewed coffee',
       'if that makes sense',
       "What's more",
+      "I've been really into",
     ],
   },
   {
@@ -169,15 +171,16 @@ export const topicQAs: TopicQA[] = [
       en: 'What kind of movies do you like?',
     },
     answer:
-      "I'm a huge fan of action movies, but I also enjoy watching thrillers every now and then. What I like most about action movies is that they keep me on the edge of my seat the whole time. I usually watch them either at home or at the theater, depending on how big the movie is. Honestly, if there's a good plot twist, that's what makes a movie really worth watching for me. There's this one movie I highly recommend to almost everyone I know, because it blew my mind the first time I watched it. Not only was the story well written, but the acting was also incredible, which is rare for this genre. That's mainly why I keep going back to action movies over anything else.",
+      "I'm a huge fan of action movies, but I also enjoy watching thrillers every now and then. I'm all about movies that keep me guessing until the very last scene. What I like most about action movies is that they keep me on the edge of my seat the whole time. I usually watch them either at home or at the theater, depending on how big the movie is. Honestly, if there's a good plot twist, that's what makes a movie really worth watching for me. There's this one movie I highly recommend to almost everyone I know, because it blew my mind the first time I watched it. Not only was the story well written, but the acting was also incredible, which is rare for this genre. That's mainly why I keep going back to action movies over anything else.",
     answerKo:
-      '저는 액션 영화의 열렬한 팬인데, 가끔 스릴러도 즐겨 봐요. 액션 영화에서 제일 좋아하는 건 처음부터 끝까지 손에 땀을 쥐게 한다는 점이에요. 영화 규모에 따라 집에서 보기도 하고 영화관에서 보기도 해요. 솔직히 반전이 좋으면 그게 저한테는 영화를 볼 만한 가치가 있게 만드는 요소예요. 제가 주변 사람들한테 거의 다 강력 추천하는 영화가 하나 있는데, 처음 봤을 때 정말 놀랐거든요. 스토리도 잘 짜여있었고 연기도 훌륭했는데, 이 장르에서는 흔치 않은 일이에요. 그래서 제가 다른 무엇보다 액션 영화를 계속 찾게 되는 거예요.',
+      '저는 액션 영화의 열렬한 팬인데, 가끔 스릴러도 즐겨 봐요. 저는 마지막 장면까지 계속 궁금하게 만드는 영화를 정말 좋아해요. 액션 영화에서 제일 좋아하는 건 처음부터 끝까지 손에 땀을 쥐게 한다는 점이에요. 영화 규모에 따라 집에서 보기도 하고 영화관에서 보기도 해요. 솔직히 반전이 좋으면 그게 저한테는 영화를 볼 만한 가치가 있게 만드는 요소예요. 제가 주변 사람들한테 거의 다 강력 추천하는 영화가 하나 있는데, 처음 봤을 때 정말 놀랐거든요. 스토리도 잘 짜여있었고 연기도 훌륭했는데, 이 장르에서는 흔치 않은 일이에요. 그래서 제가 다른 무엇보다 액션 영화를 계속 찾게 되는 거예요.',
     keyExpressions: [
       'a huge fan of',
       'keep me on the edge of my seat',
       'the plot twist',
       'highly recommend',
       'Not only ... but also ...',
+      'be all about',
     ],
   },
   {
@@ -225,15 +228,16 @@ export const topicQAs: TopicQA[] = [
       en: 'Describe a trip that was memorable to you.',
     },
     answer:
-      "The most memorable trip I took was to Jeju Island a couple of years ago. What I liked most about it was the breathtaking scenery, especially the coastline near the beach. It wasn't a packed schedule trip, if that makes sense — we mostly just walked around and soaked up the atmosphere. We also found a small restaurant off the beaten path that turned out to be one of the best meals of the trip. What's more, the weather was perfect the whole time, which honestly made a huge difference. Overall, it was the kind of trip where I could really recharge my batteries, and I still think about it whenever I need a break.",
+      "The most memorable trip I took was to Jeju Island a couple of years ago. What I liked most about it was the breathtaking scenery, especially the coastline near the beach. It wasn't a packed schedule trip, if that makes sense — we mostly just walked around and soaked up the atmosphere. We also found a small restaurant off the beaten path that turned out to be one of the best meals of the trip. The downside of traveling during peak season is the crowds, but we went in early spring, so most places were fairly quiet. What's more, the weather was perfect the whole time, which honestly made a huge difference. Overall, it was the kind of trip where I could really recharge my batteries, and I still think about it whenever I need a break.",
     answerKo:
-      '제가 갔던 여행 중 가장 기억에 남는 건 몇 년 전 제주도 여행이에요. 제일 좋았던 건 숨막히게 아름다운 풍경, 특히 해변 근처 해안선이었어요. 빡빡한 일정은 아니었고, 그냥 여기저기 걸어다니면서 분위기를 만끽했어요. 잘 알려지지 않은 작은 식당도 발견했는데 여행 중 최고의 식사 중 하나였어요. 게다가 내내 날씨도 완벽해서 그게 큰 차이를 만들었어요. 전체적으로 정말 재충전이 되는 여행이었고, 쉬고 싶을 때마다 아직도 그 여행이 생각나요.',
+      '제가 갔던 여행 중 가장 기억에 남는 건 몇 년 전 제주도 여행이에요. 제일 좋았던 건 숨막히게 아름다운 풍경, 특히 해변 근처 해안선이었어요. 빡빡한 일정은 아니었고, 그냥 여기저기 걸어다니면서 분위기를 만끽했어요. 잘 알려지지 않은 작은 식당도 발견했는데 여행 중 최고의 식사 중 하나였어요. 성수기 여행의 단점은 사람이 너무 많다는 건데, 저희는 초봄에 가서 대부분 장소가 꽤 한산했어요. 게다가 내내 날씨도 완벽해서 그게 큰 차이를 만들었어요. 전체적으로 정말 재충전이 되는 여행이었고, 쉬고 싶을 때마다 아직도 그 여행이 생각나요.',
     keyExpressions: [
       'a memorable trip',
       'soak up the atmosphere',
       'off the beaten path',
       'recharge my batteries',
       "What's more",
+      'the downside of',
     ],
   },
   {
@@ -281,10 +285,16 @@ export const topicQAs: TopicQA[] = [
       en: 'What kind of exercise do you usually do?',
     },
     answer:
-      "I mostly just go jogging or walking around my neighborhood to keep myself in shape. It's nothing too intense, if that makes sense — I like exercising at my own pace rather than pushing myself too hard. Usually I go early in the morning or in the evening, whenever I have some free time. Honestly, it's not really about building muscle for me, it's more about clearing my head after a long day. On top of that, I sometimes bring a friend along, which makes the whole thing feel less like exercise and more like just spending time together.",
+      "I mostly just go jogging or walking around my neighborhood to keep myself in shape. It's nothing too intense, if that makes sense — I like exercising at my own pace rather than pushing myself too hard. Usually I go early in the morning or in the evening, whenever I have some free time. These days I always try to make time for a short walk, even on my busiest days, since skipping it for too long makes me feel sluggish. Honestly, it's not really about building muscle for me, it's more about clearing my head after a long day. On top of that, I sometimes bring a friend along, which makes the whole thing feel less like exercise and more like just spending time together.",
     answerKo:
-      '저는 주로 몸 관리를 위해 동네에서 조깅이나 걷기를 해요. 그렇게 강도 높은 건 아니고, 무리하기보다는 제 페이스대로 운동하는 걸 좋아해요. 보통 시간이 날 때 이른 아침이나 저녁에 나가요. 솔직히 저한테는 근육을 키우는 게 목적이 아니라 긴 하루 끝에 머리를 식히는 게 더 큰 목적이에요. 게다가 가끔은 친구랑 같이 하는데, 그러면 운동이라기보다 그냥 같이 시간을 보내는 느낌이 들어요.',
-    keyExpressions: ['keep myself in shape', 'at my own pace', 'clear my head', 'On top of that'],
+      '저는 주로 몸 관리를 위해 동네에서 조깅이나 걷기를 해요. 그렇게 강도 높은 건 아니고, 무리하기보다는 제 페이스대로 운동하는 걸 좋아해요. 보통 시간이 날 때 이른 아침이나 저녁에 나가요. 요즘은 아무리 바빠도 짧게라도 걷는 시간을 꼭 만들려고 하는데, 너무 오래 거르면 몸이 처지는 느낌이 들거든요. 솔직히 저한테는 근육을 키우는 게 목적이 아니라 긴 하루 끝에 머리를 식히는 게 더 큰 목적이에요. 게다가 가끔은 친구랑 같이 하는데, 그러면 운동이라기보다 그냥 같이 시간을 보내는 느낌이 들어요.',
+    keyExpressions: [
+      'keep myself in shape',
+      'at my own pace',
+      'clear my head',
+      'On top of that',
+      'make time for',
+    ],
   },
   {
     topic: 'exercise',
@@ -327,14 +337,15 @@ export const topicQAs: TopicQA[] = [
     cut: 'description',
     question: { ko: '자주 가는 공원을 묘사해달라는 질문', en: 'Describe a park you often visit.' },
     answer:
-      "There's a park close to my house that I visit pretty often, especially in the evenings. It's full of lush green trees, so it feels really refreshing just to walk through it. The park isn't too crowded on weekdays, so it's actually a great place to escape the hustle and bustle of the city. Honestly, what I like most is the bench near the pond, where I usually sit for a while before heading back home. What's more, there's a small path around the pond that's perfect for a short stroll after dinner.",
+      "There's a park close to my house that I visit pretty often, especially in the evenings. It's full of lush green trees, so it feels really refreshing just to walk through it. The park isn't too crowded on weekdays, so it's actually a great place to escape the hustle and bustle of the city. Honestly, what I like most is the bench near the pond, where I usually sit for a while before heading back home. I make an effort to go at least a few times a week, rain or shine, because it's become such a good reset for me. What's more, there's a small path around the pond that's perfect for a short stroll after dinner.",
     answerKo:
-      '집 근처에 제가 자주, 특히 저녁에 가는 공원이 있어요. 울창한 나무들이 가득해서 걷기만 해도 정말 상쾌해요. 평일엔 그렇게 붐비지 않아서 도시의 번잡함에서 벗어나기에 좋은 곳이에요. 솔직히 제가 제일 좋아하는 건 연못 근처 벤치인데, 집에 가기 전에 거기서 잠깐 앉아있곤 해요. 게다가 연못 주변에 작은 산책로가 있는데 저녁 먹고 잠깐 산책하기에 딱이에요.',
+      '집 근처에 제가 자주, 특히 저녁에 가는 공원이 있어요. 울창한 나무들이 가득해서 걷기만 해도 정말 상쾌해요. 평일엔 그렇게 붐비지 않아서 도시의 번잡함에서 벗어나기에 좋은 곳이에요. 솔직히 제가 제일 좋아하는 건 연못 근처 벤치인데, 집에 가기 전에 거기서 잠깐 앉아있곤 해요. 날씨가 어떻든 일주일에 몇 번은 가려고 노력하는데, 저한테는 정말 좋은 재충전 시간이 됐거든요. 게다가 연못 주변에 작은 산책로가 있는데 저녁 먹고 잠깐 산책하기에 딱이에요.',
     keyExpressions: [
       'lush green trees',
       'escape the hustle and bustle',
       'take a stroll',
       "What's more",
+      'make an effort',
     ],
   },
   {
@@ -470,10 +481,16 @@ export const topicQAs: TopicQA[] = [
       en: 'What kind of shopping do you usually do?',
     },
     answer:
-      "I mostly enjoy clothes shopping, but I also like just window shopping even when I'm not planning to buy anything. What I like most about it is browsing around without any pressure to purchase something right away. I usually go to shopping malls rather than online, mainly because I like trying things on before I decide. Honestly, finding a great deal on something I actually needed is probably my favorite part of the whole experience. That's mainly why I enjoy shopping so much, even on days when I don't end up buying anything.",
+      "I mostly enjoy clothes shopping, but I also like just window shopping even when I'm not planning to buy anything. What I like most about it is browsing around without any pressure to purchase something right away. I usually go to shopping malls rather than online, mainly because I like trying things on before I decide. I can't stand shopping when it's too crowded, so I usually go on weekday afternoons when malls are quieter. Honestly, finding a great deal on something I actually needed is probably my favorite part of the whole experience. That's mainly why I enjoy shopping so much, even on days when I don't end up buying anything.",
     answerKo:
-      '저는 주로 옷 쇼핑을 즐기는데, 딱히 살 게 없어도 그냥 아이쇼핑하는 것도 좋아해요. 제일 좋아하는 건 당장 뭘 사야 한다는 부담 없이 그냥 둘러보는 거예요. 결정하기 전에 입어보는 걸 좋아해서 온라인보다는 보통 쇼핑몰에 가요. 솔직히 제가 정말 필요했던 걸 저렴하게 잘 사는 게 쇼핑에서 제일 좋아하는 부분인 것 같아요. 그래서 아무것도 안 사는 날에도 쇼핑을 그렇게 즐기는 거예요.',
-    keyExpressions: ['window shopping', 'browse around', 'a great deal', 'try something on'],
+      '저는 주로 옷 쇼핑을 즐기는데, 딱히 살 게 없어도 그냥 아이쇼핑하는 것도 좋아해요. 제일 좋아하는 건 당장 뭘 사야 한다는 부담 없이 그냥 둘러보는 거예요. 결정하기 전에 입어보는 걸 좋아해서 온라인보다는 보통 쇼핑몰에 가요. 너무 붐비는 건 못 참아서 사람이 적은 평일 오후에 주로 가는 편이에요. 솔직히 제가 정말 필요했던 걸 저렴하게 잘 사는 게 쇼핑에서 제일 좋아하는 부분인 것 같아요. 그래서 아무것도 안 사는 날에도 쇼핑을 그렇게 즐기는 거예요.',
+    keyExpressions: [
+      'window shopping',
+      'browse around',
+      'a great deal',
+      'try something on',
+      "can't stand",
+    ],
   },
   {
     topic: 'shopping',
@@ -557,10 +574,10 @@ export const topicQAs: TopicQA[] = [
       en: 'Can you describe what camping is usually like for you? Where do you usually go?',
     },
     answer:
-      "I usually go camping at a campsite near a lake or in the mountains, not too far from the city. What I like most about it is how quiet everything feels at night, especially compared to how loud the city usually is. We normally set up a tent, build a small fire, and just relax around it until late. Honestly, the smell of the campfire and the sound of nature around us is what makes the whole experience feel so different from everyday life. On top of that, seeing the stars clearly at night is something you just can't get in the city. That's mainly why camping feels like such a refreshing escape whenever I go.",
+      "I usually go camping at a campsite near a lake or in the mountains, not too far from the city. What I like most about it is how quiet everything feels at night, especially compared to how loud the city usually is. We normally set up a tent, build a small fire, and just relax around it until late. Honestly, the smell of the campfire and the sound of nature around us is what makes the whole experience feel so different from everyday life — it actually reminds me of trips with my family growing up. On top of that, seeing the stars clearly at night is something you just can't get in the city. That's mainly why camping feels like such a refreshing escape whenever I go.",
     answerKo:
-      '저는 보통 도시에서 그렇게 멀지 않은 호숫가나 산 근처 캠핑장으로 캠핑을 가요. 제가 제일 좋아하는 건 밤이 되면 모든 게 정말 조용해진다는 건데, 평소 도시가 얼마나 시끄러운지랑 비교하면 특히 그래요. 보통 텐트를 치고 작은 모닥불을 피운 다음 늦게까지 그 주변에서 쉬어요. 솔직히 모닥불 냄새랑 주변 자연의 소리가 일상이랑 완전히 다른 느낌을 만들어줘요. 게다가 밤에 별이 선명하게 보이는 것도 도시에서는 볼 수 없는 거예요. 그래서 캠핑 갈 때마다 정말 상쾌한 도피처처럼 느껴지는 거예요.',
-    keyExpressions: ['set up a tent', 'On top of that', "That's mainly why"],
+      '저는 보통 도시에서 그렇게 멀지 않은 호숫가나 산 근처 캠핑장으로 캠핑을 가요. 제가 제일 좋아하는 건 밤이 되면 모든 게 정말 조용해진다는 건데, 평소 도시가 얼마나 시끄러운지랑 비교하면 특히 그래요. 보통 텐트를 치고 작은 모닥불을 피운 다음 늦게까지 그 주변에서 쉬어요. 솔직히 모닥불 냄새랑 주변 자연의 소리가 일상이랑 완전히 다른 느낌을 만들어주는데, 사실 어릴 때 가족이랑 갔던 여행이 생각나기도 해요. 게다가 밤에 별이 선명하게 보이는 것도 도시에서는 볼 수 없는 거예요. 그래서 캠핑 갈 때마다 정말 상쾌한 도피처처럼 느껴지는 거예요.',
+    keyExpressions: ['set up a tent', 'On top of that', "That's mainly why", 'reminds me of'],
   },
   {
     topic: 'camping',
@@ -674,10 +691,10 @@ export const topicQAs: TopicQA[] = [
       en: 'What do you like to do when you spend your vacation at home?',
     },
     answer:
-      "When I take a vacation but stay home, I usually turn it into a chance to slow down completely instead of rushing around like a normal weekend. What I like most about it is not having to set an alarm or stick to any kind of schedule for once. I usually spend the time catching up on shows, cooking meals I don't normally have time for, and just relaxing around the house. Honestly, avoiding the stress of packing and traveling is a big part of why I enjoy this kind of vacation. On top of that, I still get to feel like I'm on a break, just without the extra cost of a trip. That's mainly why a staycation has become one of my favorite ways to recharge.",
+      "When I take a vacation but stay home, I usually turn it into a chance to slow down completely instead of rushing around like a normal weekend. What I like most about it is not having to set an alarm or stick to any kind of schedule for once. I usually spend the time catching up on shows, cooking meals I don't normally have time for, and just relaxing around the house. Honestly, it's common to see me still in pajamas at 2 pm during a staycation, and I'm totally fine with that. On top of that, I still get to feel like I'm on a break, just without the extra cost of a trip. That's mainly why a staycation has become one of my favorite ways to recharge.",
     answerKo:
-      '휴가인데 집에 있을 땐, 보통 평범한 주말처럼 바쁘게 보내기보다 완전히 속도를 늦추는 기회로 삼아요. 제일 좋은 건 이번만큼은 알람을 안 맞추고 어떤 일정에도 안 맞춰도 된다는 거예요. 보통 밀린 드라마를 보거나, 평소엔 시간 없어서 못 해먹는 요리를 하면서 집에서 그냥 쉬어요. 솔직히 짐 싸고 이동하는 스트레스를 피할 수 있다는 게 이런 휴가를 좋아하는 큰 이유예요. 게다가 여행 갈 때 드는 추가 비용 없이도 여전히 휴가 기분을 느낄 수 있어요. 그래서 집에서 보내는 휴가가 재충전하는 제가 제일 좋아하는 방법 중 하나가 됐어요.',
-    keyExpressions: ['On top of that', "That's mainly why"],
+      '휴가인데 집에 있을 땐, 보통 평범한 주말처럼 바쁘게 보내기보다 완전히 속도를 늦추는 기회로 삼아요. 제일 좋은 건 이번만큼은 알람을 안 맞추고 어떤 일정에도 안 맞춰도 된다는 거예요. 보통 밀린 드라마를 보거나, 평소엔 시간 없어서 못 해먹는 요리를 하면서 집에서 그냥 쉬어요. 솔직히 오후 2시까지도 잠옷 차림으로 있는 게 흔한 일인데, 그래도 전혀 상관없어요. 게다가 여행 갈 때 드는 추가 비용 없이도 여전히 휴가 기분을 느낄 수 있어요. 그래서 집에서 보내는 휴가가 재충전하는 제가 제일 좋아하는 방법 중 하나가 됐어요.',
+    keyExpressions: ['On top of that', "That's mainly why", "it's common to see"],
   },
   {
     topic: 'staycation',
@@ -752,10 +769,10 @@ export const topicQAs: TopicQA[] = [
       en: 'What kind of furniture or electronic devices do you have at home?',
     },
     answer:
-      "In my place, I mostly have simple, functional furniture rather than anything fancy, like a bed, a desk, and a small couch. As for electronics, I have a laptop, a TV, and a decent speaker system, since those are the things I actually use every day. What I like most about my setup is that everything is pretty minimal, so the space doesn't feel cluttered. On top of that, I try to keep cables and chargers organized, since a messy desk honestly stresses me out. That's mainly why my place looks fairly simple compared to some of my friends' rooms.",
+      "In my place, I mostly have simple, functional furniture rather than anything fancy, like a bed, a desk, and a small couch. As for electronics, I have a laptop, a TV, and a decent speaker system, since those are the things I actually use every day. Honestly, my laptop is something I can't live without at this point, since I use it for everything from work to just relaxing. What I like most about my setup is that everything is pretty minimal, so the space doesn't feel cluttered. On top of that, I try to keep cables and chargers organized, since a messy desk honestly stresses me out. That's mainly why my place looks fairly simple compared to some of my friends' rooms.",
     answerKo:
-      '저희 집엔 화려한 가구보다는 침대, 책상, 작은 소파처럼 단순하고 실용적인 가구가 대부분이에요. 전자제품은 노트북, TV, 그리고 괜찮은 스피커 정도가 있는데, 실제로 매일 쓰는 것들이라서요. 제가 제일 좋아하는 건 다 미니멀해서 공간이 답답하지 않다는 거예요. 게다가 케이블이랑 충전기를 정리해두려고 하는 편인데, 지저분한 책상은 솔직히 스트레스거든요. 그래서 제 방이 친구들 방보다 꽤 단순해 보이는 편이에요.',
-    keyExpressions: ['On top of that', "That's mainly why"],
+      '저희 집엔 화려한 가구보다는 침대, 책상, 작은 소파처럼 단순하고 실용적인 가구가 대부분이에요. 전자제품은 노트북, TV, 그리고 괜찮은 스피커 정도가 있는데, 실제로 매일 쓰는 것들이라서요. 솔직히 노트북은 이제 없이는 못 살 정도인데, 일할 때부터 그냥 쉴 때까지 다 이걸로 하거든요. 제가 제일 좋아하는 건 다 미니멀해서 공간이 답답하지 않다는 거예요. 게다가 케이블이랑 충전기를 정리해두려고 하는 편인데, 지저분한 책상은 솔직히 스트레스거든요. 그래서 제 방이 친구들 방보다 꽤 단순해 보이는 편이에요.',
+    keyExpressions: ['On top of that', "That's mainly why", "can't live without"],
   },
   {
     topic: 'furniture',
