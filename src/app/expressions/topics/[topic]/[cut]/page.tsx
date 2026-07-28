@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { topicQAs, topicInfo, cutInfo, getTopicQA } from '@/data/topic-qa';
+import { topicQAs, topicInfo, cutInfo, getTopicQA, type CutKey } from '@/data/topic-qa';
 import { AnswerGradeViewer } from '@/components/answer-grade-viewer';
 
 export function generateStaticParams() {
@@ -50,7 +50,24 @@ export default async function TopicCutPage({
       </h1>
       <p className="mt-2 text-[15px] text-muted-foreground">{cutInfo[qa.cut].hint}</p>
 
-      <div className="mt-8 rounded-xl border border-border bg-card p-6">
+      {/* 같은 주제의 다른 컷(묘사/습관/경험)으로 바로 이동 */}
+      <div className="mt-6 flex gap-2">
+        {(Object.keys(cutInfo) as CutKey[]).map((c) => (
+          <Link
+            key={c}
+            href={`/expressions/topics/${qa.topic}/${c}`}
+            className={`rounded-full border px-4 py-1.5 text-[13px] font-medium transition-colors ${
+              c === qa.cut
+                ? 'border-primary bg-primary text-primary-foreground'
+                : 'border-border text-muted-foreground hover:border-primary/40 hover:text-primary'
+            }`}
+          >
+            {cutInfo[c].name}
+          </Link>
+        ))}
+      </div>
+
+      <div className="mt-6 rounded-xl border border-border bg-card p-6">
         <p className="text-[13px] text-muted-foreground">예상 질문</p>
         <p className="mt-1 text-[18px] font-medium">{qa.question.en}</p>
         <p className="mt-1 text-[14px] text-muted-foreground">{qa.question.ko}</p>
