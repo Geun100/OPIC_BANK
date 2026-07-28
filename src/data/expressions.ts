@@ -1380,3 +1380,15 @@ export const expressionCategories: ExpressionCategory[] = [
 export function getCategory(slug: string) {
   return expressionCategories.find((c) => c.slug === slug);
 }
+
+// 답안 하이라이트 표현 클릭 시 뜻 툴팁에 쓸 용도 — 표현 라이브러리 전체에서 en 기준으로 뜻을 찾음
+export function findExpressionMeaning(en: string): string | undefined {
+  const target = en.toLowerCase().trim();
+  for (const category of expressionCategories) {
+    for (const group of category.groups) {
+      const match = group.items.find((item) => item.en.toLowerCase().trim() === target);
+      if (match) return match.ko;
+    }
+  }
+  return undefined;
+}

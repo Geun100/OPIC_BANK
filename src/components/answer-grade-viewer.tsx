@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { SaveButton } from '@/components/save-button';
 import { splitByExpressions, pickMemorizeSentences } from '@/lib/highlight';
 import { GRADE_TIER_INFO, getGradeTailoredAnswer, type GradeTier } from '@/lib/grade-answers';
+import { findExpressionMeaning } from '@/data/expressions';
 
 type AnswerGradeViewerProps = {
   id: string;
@@ -21,6 +22,7 @@ export function AnswerGradeViewer({
   keyExpressions,
 }: AnswerGradeViewerProps) {
   const [activeGrade, setActiveGrade] = useState<GradeTier>('IH');
+  const [openExpr, setOpenExpr] = useState<string | null>(null);
 
   const info = GRADE_TIER_INFO[activeGrade];
   const tailored = getGradeTailoredAnswer(fullAnswerEn, fullAnswerKo, activeGrade);
@@ -97,15 +99,30 @@ export function AnswerGradeViewer({
         </div>
 
         <p className="mt-3 text-[16px] leading-relaxed">
-          {splitByExpressions(tailored.answerEn, keyExpressions).map((part, i) =>
-            keyExpressions.some((e) => e.toLowerCase() === part.toLowerCase()) ? (
-              <strong key={i} className="font-semibold text-primary-press">
-                {part}
-              </strong>
-            ) : (
-              <span key={i}>{part}</span>
-            ),
-          )}
+          {splitByExpressions(tailored.answerEn, keyExpressions).map((part, i) => {
+            const isExpr = keyExpressions.some((e) => e.toLowerCase() === part.toLowerCase());
+            if (!isExpr) return <span key={i}>{part}</span>;
+
+            const meaning = findExpressionMeaning(part);
+            const isOpen = openExpr === `${i}-${part}`;
+
+            return (
+              <span key={i} className="relative">
+                <button
+                  type="button"
+                  onClick={() => setOpenExpr(isOpen ? null : `${i}-${part}`)}
+                  className="font-semibold text-primary-press underline decoration-dotted underline-offset-4"
+                >
+                  {part}
+                </button>
+                {isOpen && (
+                  <span className="absolute left-1/2 top-full z-10 mt-1 w-max max-w-[220px] -translate-x-1/2 rounded-lg bg-brand-dark px-3 py-1.5 text-[12px] font-normal text-white shadow-lg">
+                    {meaning ?? '뜻 정보 없음'}
+                  </span>
+                )}
+              </span>
+            );
+          })}
         </p>
 
         <p className="mt-4 border-t border-border pt-3 text-[14px] leading-relaxed text-muted-foreground">
