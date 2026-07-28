@@ -185,14 +185,16 @@ export function AnswerGradeViewer({
       <div className="rounded-xl bg-cream p-6">
         <p className="text-[14px] font-medium">이 답변에 쓰인 핵심 표현</p>
         <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {(activeExpressions.length > 0 ? activeExpressions : keyExpressions).map((e) => (
-            <li key={e} className="rounded-lg border border-border bg-white px-3 py-2">
-              <p className="text-[13px] font-semibold text-primary-press">{e}</p>
-              <p className="mt-0.5 text-[12px] text-muted-foreground">
-                {findExpressionMeaning(e) ?? '뜻 정보 없음'}
-              </p>
-            </li>
-          ))}
+          {(activeExpressions.length > 0 ? activeExpressions : keyExpressions)
+            .filter((e) => !e.includes('...'))
+            .map((e) => (
+              <li key={e} className="rounded-lg border border-border bg-white px-3 py-2">
+                <p className="text-[13px] font-semibold text-primary-press">{e}</p>
+                <p className="mt-0.5 text-[12px] text-muted-foreground">
+                  {findExpressionMeaning(e) ?? '뜻 정보 없음'}
+                </p>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

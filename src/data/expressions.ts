@@ -557,6 +557,28 @@ export const expressionCategories: ExpressionCategory[] = [
           { en: 'It makes me feel really happy.', ko: '그건 나를 정말 행복하게 만든다.' },
         ],
       },
+      {
+        title: '습관·전환 자주 쓰는 표현',
+        items: [
+          { en: 'make it a habit to', ko: '~하는 걸 습관으로 만들다' },
+          { en: "I've made it a habit to", ko: '~하는 걸 습관으로 만들었다' },
+          { en: 'such an intense experience that', ko: '너무 강렬한 경험이라서 ~' },
+          { en: 'make it a routine to', ko: '~하는 걸 루틴으로 만들다' },
+          { en: "That's mainly why", ko: '그래서 주로 ~' },
+          { en: 'What strikes me most is', ko: '제가 가장 인상 깊게 느끼는 건' },
+          { en: 'At the same time', ko: '동시에' },
+          { en: 'if possible', ko: '가능하다면' },
+          { en: 'Also', ko: '또한' },
+          { en: 'if that makes sense', ko: '무슨 말인지 아시겠지만' },
+          { en: 'it turned out that', ko: '알고 보니 ~였다' },
+          { en: 'mild', ko: '온화한' },
+          { en: 'humid', ko: '습한' },
+          { en: 'get tickets', ko: '티켓을 구하다' },
+          { en: 'an impulse buy', ko: '충동구매' },
+          { en: 'discover new artists', ko: '새로운 아티스트를 발견하다' },
+          { en: 'What I ended up doing was', ko: '결국 제가 한 건' },
+        ],
+      },
     ],
   },
   {
@@ -1371,6 +1393,15 @@ export const expressionCategories: ExpressionCategory[] = [
             ko: '우리 일정을 다시 잡아야 할 것 같아.',
           },
           { en: 'How about next weekend?', ko: '다음 주말은 어때요?' },
+          { en: "I'm really sorry about this", ko: '이거 정말 미안해' },
+          { en: "I'm really sorry for the short notice", ko: '급하게 말해서 정말 미안해' },
+          { en: "Or, if you'd prefer", ko: '아니면, 원한다면' },
+          { en: 'Whatever works best for you', ko: '뭐가 제일 낫든' },
+          { en: 'Would it be possible to', ko: '~하는 게 가능할까요' },
+          { en: "If that doesn't work", ko: '그게 안 되면' },
+          { en: 'Could you check that for me', ko: '그거 좀 확인해 주실 수 있나요' },
+          { en: 'If it turns out to be', ko: '만약 ~라면' },
+          { en: "Or, if that's not possible", ko: '아니면, 그게 안 된다면' },
         ],
       },
     ],
@@ -1382,12 +1413,39 @@ export function getCategory(slug: string) {
 }
 
 // 답안 하이라이트 표현 클릭 시 뜻 툴팁에 쓸 용도 — 표현 라이브러리 전체에서 en 기준으로 뜻을 찾음
+// "First of all" vs "First of all / To begin with", "As a result" vs "As a result, ..." 같은
+// 표기 차이를 흡수하기 위해 뒤쪽 콤마·말줄임표·슬래시 대안을 잘라내고 비교
+function normalizeExpr(s: string): string {
+  return s
+    .toLowerCase()
+    .split('/')[0]
+    .replace(/\.{3}$/, '')
+    .replace(/,\s*$/, '')
+    .trim();
+}
+
 export function findExpressionMeaning(en: string): string | undefined {
-  const target = en.toLowerCase().trim();
+  const target = normalizeExpr(en);
   for (const category of expressionCategories) {
     for (const group of category.groups) {
-      const match = group.items.find((item) => item.en.toLowerCase().trim() === target);
-      if (match) return match.ko;
+      const exact = group.items.find((item) => normalizeExpr(item.en) === target);
+      if (exact) return exact.ko;
+    }
+  }
+  for (const category of expressionCategories) {
+    for (const group of category.groups) {
+      const partial = group.items.find((item) => normalizeExpr(item.en).startsWith(target));
+      if (partial) return partial.ko;
+    }
+  }
+  // "wasn't expecting to" vs library의 "I wasn't expecting to" 같은 인칭대명사 생략 케이스
+  for (const category of expressionCategories) {
+    for (const group of category.groups) {
+      const loose = group.items.find((item) => {
+        const libExpr = normalizeExpr(item.en);
+        return libExpr.includes(target) || target.includes(libExpr);
+      });
+      if (loose) return loose.ko;
     }
   }
   return undefined;
