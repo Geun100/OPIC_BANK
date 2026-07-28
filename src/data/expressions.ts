@@ -444,6 +444,17 @@ export const expressionCategories: ExpressionCategory[] = [
             en: 'I actually have a pretty vivid memory of this.',
             ko: '이건 꽤 생생하게 기억나요 (경험 답변 도입에 최적)',
           },
+          {
+            en: 'This question is so my thing.',
+            ko: '이 질문은 나랑 정말 잘 맞는 주제다 (관심 있는 주제일 때)',
+          },
+        ],
+      },
+      {
+        title: '좋아하는 것 표현',
+        items: [
+          { en: 'I am a big fan of...', ko: '나는 ~의 완전 팬이다' },
+          { en: "I've been really into...", ko: '나 요즘 ~에 푹 빠져 있다' },
         ],
       },
       {
@@ -541,6 +552,9 @@ export const expressionCategories: ExpressionCategory[] = [
             ko: '그래서 제가 좋아하는 거예요 (이유로 마무리)',
           },
           { en: 'Anyway, long story short...', ko: '어쨌든 요약하자면...' },
+          { en: "That's why I like them.", ko: '그래서 나는 그들이 좋다.' },
+          { en: 'It just relieves my stress.', ko: '그건 내 스트레스를 해소해 준다.' },
+          { en: 'It makes me feel really happy.', ko: '그건 나를 정말 행복하게 만든다.' },
         ],
       },
     ],
@@ -735,6 +749,15 @@ export const expressionCategories: ExpressionCategory[] = [
             en: "So I think I'd better move on to the next question.",
             ko: '다음 질문으로 넘어가는 게 좋겠어요 (한 문제는 이렇게 패스해도 IH 달성 후기가 있어요)',
           },
+        ],
+      },
+      {
+        title: '고득점 복문 — 주어+동사 문장 연결',
+        items: [
+          { en: 'There was a time when...', ko: '~했던 적이 있다' },
+          { en: 'The best thing is that...', ko: '가장 좋은 점은 ~라는 것이다' },
+          { en: 'What I love the most is that...', ko: '내가 가장 좋아하는 부분은 ~라는 것이다' },
+          { en: 'The reason is that...', ko: '그 이유는 ~이기 때문이다' },
         ],
       },
     ],
@@ -1309,6 +1332,45 @@ export const expressionCategories: ExpressionCategory[] = [
           { en: "I get what you're saying, but", ko: '무슨 말인지는 알겠는데' },
           { en: 'Personally,', ko: '개인적으로,' },
           { en: 'In my case,', ko: '제 경우에는,' },
+        ],
+      },
+      {
+        title: '롤플레이 — 전화·요청 (11번 문제)',
+        items: [
+          { en: "I'm calling to...", ko: '~하려고 전화했다' },
+          { en: "I'm thinking about...", ko: '~할까 생각 중이다' },
+          { en: "I'm planning to...", ko: '~할 계획이다' },
+          { en: 'Is it possible to...', ko: '~하는 것이 가능한가요?' },
+          { en: 'Could you...?', ko: '~해주실 수 있나요?' },
+          { en: 'Do I need to...', ko: '~해야 하나요? (의무 문의)' },
+          { en: 'Should I...?', ko: '~해야 할까요? (의무 문의)' },
+        ],
+      },
+      {
+        title: '롤플레이 — 정보 문의',
+        items: [
+          { en: 'Do you have any recommendations?', ko: '추천해주실 만한 게 있나요?' },
+          { en: 'How much does that cost?', ko: '그거 얼마인가요?' },
+          { en: 'Is there parking around?', ko: '주변에 주차장이 있나요?' },
+          { en: 'What are your business hours?', ko: '영업시간이 어떻게 되나요?' },
+          { en: 'Could you text me the details?', ko: '자세한 내용을 문자로 보내주실 수 있나요?' },
+        ],
+      },
+      {
+        title: '롤플레이 — 문제 발생·일정 변경 (12번 문제)',
+        items: [
+          { en: 'I have something to tell you.', ko: '할 말이 좀 있어.' },
+          { en: "I don't think I can make it.", ko: '(약속 장소에) 못 갈 것 같아.' },
+          {
+            en: "I won't be able to make it.",
+            ko: '(상대적으로 격식 있게) 갈 수 없을 것 같습니다.',
+          },
+          { en: 'Something came up.', ko: '갑자기 무슨 일이 생겼다.' },
+          {
+            en: 'I think we need to reschedule our plan.',
+            ko: '우리 일정을 다시 잡아야 할 것 같아.',
+          },
+          { en: 'How about next weekend?', ko: '다음 주말은 어때요?' },
         ],
       },
     ],
