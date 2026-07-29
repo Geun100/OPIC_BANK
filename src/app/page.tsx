@@ -27,7 +27,7 @@ const menus = [
     href: '/survey',
     icon: ListChecks,
     title: '서베이 추천',
-    desc: '목표 등급·성향에 맞는 서베이 조합 추천받기',
+    desc: '목표 등급·성향에 맞는 조합 추천 + 맞춤 GPT 학습 프롬프트까지 받기',
   },
   {
     href: '/questions',

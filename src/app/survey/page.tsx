@@ -17,6 +17,10 @@ export default function SurveyPage() {
         오픽은 시험 범위를 내가 정하는 시험이에요. 백그라운드 서베이에서 무엇을 고르느냐가 시험의
         절반을 결정해요. 세 번의 선택으로 나에게 유리한 조합을 찾아보세요.
       </p>
+      <p className="mt-2 text-[14px] text-muted-foreground">
+        추천이 끝나면 그 조합으로 바로 연습할 수 있는{' '}
+        <strong className="text-foreground">GPT 학습 프롬프트</strong>도 복사해 드려요.
+      </p>
       <div className="mt-10">
         <SurveyWizard />
       </div>
