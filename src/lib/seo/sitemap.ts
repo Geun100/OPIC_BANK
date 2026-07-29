@@ -192,7 +192,6 @@ export const generateRobotsTxt = (): string => {
 
   // 사이트맵 URL 추가
   robotsTxt += `Sitemap: ${seoConfig.siteUrl}/sitemap.xml\n`;
-  robotsTxt += `Sitemap: ${seoConfig.siteUrl}/sitemap-news.xml\n`;
 
   return robotsTxt;
 };
