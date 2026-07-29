@@ -3,6 +3,7 @@
 
 import { useState } from 'react';
 import { Check, Copy, RotateCcw } from 'lucide-react';
+import { splitSentences } from '@/lib/highlight';
 import {
   goalTierInfo,
   recommend,
@@ -131,7 +132,7 @@ export function SurveyWizard() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="rounded-xl bg-brand-dark p-6 text-white">
+      <div className="rounded-xl bg-brand-dark p-4 sm:p-6 text-white">
         <p className="text-[12px] tracking-widest text-primary-subdued">추천 결과</p>
         <h2 className="mt-1 text-[22px]">
           {info.label} 목표 · {place === 'indoor' ? '실내형' : '야외형'} ·{' '}
@@ -142,9 +143,11 @@ export function SurveyWizard() {
           <br />
           {info.keyPoint}
         </p>
-        <p className="mt-3 border-t border-white/15 pt-3 text-[13px] leading-relaxed text-white/80">
-          {info.strategy}
-        </p>
+        <div className="mt-3 space-y-2 border-t border-white/15 pt-3 text-[13px] leading-relaxed text-white/80">
+          {splitSentences(info.strategy).map((sentence, i) => (
+            <p key={i}>{sentence}</p>
+          ))}
+        </div>
       </div>
 
       <div className="rounded-xl bg-cream p-5">
@@ -162,7 +165,7 @@ export function SurveyWizard() {
         <h3 className="mb-3 text-[18px]">서베이에서 이렇게 선택하세요</h3>
         <div className="flex flex-col gap-3">
           {picks.map((p) => (
-            <div key={p.category} className="rounded-xl border border-border bg-card p-5">
+            <div key={p.category} className="rounded-xl border border-border bg-card p-4 sm:p-5">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-[12px] text-muted-foreground">{p.category}</p>
@@ -170,7 +173,11 @@ export function SurveyWizard() {
                 </div>
                 <Check className="mt-1 size-4 shrink-0 text-primary" />
               </div>
-              <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground">{p.reason}</p>
+              <div className="mt-2 space-y-1 text-[13px] leading-relaxed text-muted-foreground">
+                {splitSentences(p.reason).map((sentence, i) => (
+                  <p key={i}>{sentence}</p>
+                ))}
+              </div>
             </div>
           ))}
         </div>

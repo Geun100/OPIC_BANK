@@ -13,6 +13,7 @@ import { SaveButton } from '@/components/save-button';
 import { suddenCutInfo, type SuddenTopicKey } from '@/data/sudden-qa';
 import { cutInfo, type CutKey, type TopicKey } from '@/data/topic-qa';
 import { roleplayQAs, type RoleplayType } from '@/data/roleplay-qa';
+import { splitSentences } from '@/lib/highlight';
 import { AdUnit } from '@/components/ads/AdUnit';
 
 const suddenSlugByName: Record<string, SuddenTopicKey> = {
@@ -203,9 +204,13 @@ export default async function QuestionCategoryPage({
 
         {category === 'trends' &&
           trendNotes.map((n) => (
-            <section key={n.title} className="rounded-xl border border-border bg-card p-6">
+            <section key={n.title} className="rounded-xl border border-border bg-card p-4 sm:p-6">
               <h2 className="text-[18px]">{n.title}</h2>
-              <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">{n.body}</p>
+              <div className="mt-2 space-y-2 text-[14px] leading-relaxed text-muted-foreground">
+                {splitSentences(n.body).map((sentence, i) => (
+                  <p key={i}>{sentence}</p>
+                ))}
+              </div>
             </section>
           ))}
 

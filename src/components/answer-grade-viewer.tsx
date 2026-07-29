@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
 import { SaveButton } from '@/components/save-button';
-import { splitByExpressions, pickMemorizeSentences } from '@/lib/highlight';
+import { splitByExpressions, pickMemorizeSentences, splitSentences } from '@/lib/highlight';
 import { GRADE_TIER_INFO, getGradeTailoredAnswer, type GradeTier } from '@/lib/grade-answers';
 import { findExpressionMeaning } from '@/data/expressions';
 
@@ -52,7 +52,7 @@ export function AnswerGradeViewer({
       const isOpen = openExpr === exprKey;
 
       return (
-        <span key={i} className="relative">
+        <span key={i}>
           <button
             type="button"
             onClick={() => setOpenExpr(isOpen ? null : exprKey)}
@@ -61,7 +61,7 @@ export function AnswerGradeViewer({
             {part}
           </button>
           {isOpen && (
-            <span className="absolute left-1/2 top-full z-10 mt-1 w-max max-w-[220px] -translate-x-1/2 rounded-lg bg-brand-dark px-3 py-1.5 text-[12px] font-normal text-white shadow-lg">
+            <span className="mx-1 inline-block rounded-md bg-brand-dark px-2 py-0.5 text-[12px] font-normal text-white">
               {meaning ?? '뜻 정보 없음'}
             </span>
           )}
@@ -116,7 +116,7 @@ export function AnswerGradeViewer({
       </div>
 
       {/* 모범 답안 카드 */}
-      <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
+      <div className="rounded-xl border border-border bg-card p-4 sm:p-6 shadow-sm">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2">
             <p className="text-[13px] text-muted-foreground">모범답안</p>
@@ -134,13 +134,17 @@ export function AnswerGradeViewer({
           />
         </div>
 
-        <p className="mt-3 text-[16px] leading-relaxed">
-          {renderHighlighted(tailored.answerEn, 'answer')}
-        </p>
+        <div className="mt-3 space-y-2 text-[16px] leading-relaxed">
+          {splitSentences(tailored.answerEn).map((sentence, i) => (
+            <p key={i}>{renderHighlighted(sentence, `answer-${i}`)}</p>
+          ))}
+        </div>
 
-        <p className="mt-4 border-t border-border pt-3 text-[14px] leading-relaxed text-muted-foreground">
-          {tailored.answerKo}
-        </p>
+        <div className="mt-4 space-y-2 border-t border-border pt-3 text-[14px] leading-relaxed text-muted-foreground">
+          {splitSentences(tailored.answerKo).map((sentence, i) => (
+            <p key={i}>{sentence}</p>
+          ))}
+        </div>
       </div>
 
       {/* 암기하면 좋은 문장 */}
