@@ -8,6 +8,7 @@ import {
   Search,
   Award,
   NotebookPen,
+  Target,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -66,7 +67,7 @@ export default function Home() {
             'radial-gradient(ellipse 55% 50% at 15% 20%, #f5e9d4 0%, transparent 55%), radial-gradient(ellipse 55% 55% at 50% 5%, #b9b9f9 0%, transparent 60%), radial-gradient(ellipse 60% 55% at 85% 20%, #665efd 0%, transparent 55%), radial-gradient(ellipse 45% 40% at 98% 45%, #ea2261 0%, transparent 50%)',
         }}
       />
-      <div className="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
+      <div className="mx-auto max-w-5xl px-5 pb-20 pt-16 text-center sm:pt-24">
         <p className="mx-auto mb-5 w-fit rounded-full bg-primary-subdued/40 px-4 py-1 text-[12px] font-medium tracking-wide text-primary-press">
           OPIC Bank
         </p>
@@ -77,18 +78,16 @@ export default function Home() {
           Find What You Need. Speak Naturally.
         </p>
         <p className="mx-auto mt-5 max-w-md text-[17px] font-normal text-secondary-foreground">
-          필요한 메뉴 하나만 고르면, 그 안에서 바로 찾아볼 수 있어요.
+          목표 등급 하나만 고르면, 나에게 맞는 학습 경로를 추천해 드려요.
         </p>
 
         <Link
           href="/survey"
-          className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-full bg-primary px-7 py-4 text-[17px] font-medium text-primary-foreground transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,55,112,0.16)] active:translate-y-0 active:scale-[0.98] active:duration-100"
+          className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-full bg-primary px-7 py-4 text-[17px] font-medium text-primary-foreground shadow-[0_8px_20px_rgba(83,58,253,0.22)] transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(83,58,253,0.3)] active:translate-y-0 active:scale-[0.98] active:duration-100"
         >
-          🎯 오늘 공부 시작
+          <Target className="size-[18px]" strokeWidth={2} />
+          오늘 공부 시작
         </Link>
-        <p className="mt-3 text-[13px] text-muted-foreground">
-          목표 등급만 고르면 나에게 맞는 추천을 바로 받아요.
-        </p>
 
         <div className="mt-16">
           <p className="text-[13px] text-muted-foreground">더 둘러보기</p>
