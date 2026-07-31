@@ -80,18 +80,31 @@ export default function Home() {
           필요한 메뉴 하나만 고르면, 그 안에서 바로 찾아볼 수 있어요.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {menus.map((m) => (
-            <Link
-              key={m.href}
-              href={m.href}
-              className="rounded-2xl border border-border bg-card p-6 text-left transition-[transform,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(0,55,112,0.08)] active:translate-y-0 active:scale-[0.98] active:duration-100"
-            >
-              <m.icon className="size-6 text-primary" />
-              <p className="mt-4 text-[17px]">{m.title}</p>
-              <p className="mt-1 text-[13px] text-muted-foreground">{m.desc}</p>
-            </Link>
-          ))}
+        <Link
+          href="/survey"
+          className="mx-auto mt-8 flex w-fit items-center gap-2 rounded-full bg-primary px-7 py-4 text-[17px] font-medium text-primary-foreground transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,55,112,0.16)] active:translate-y-0 active:scale-[0.98] active:duration-100"
+        >
+          🎯 오늘 공부 시작
+        </Link>
+        <p className="mt-3 text-[13px] text-muted-foreground">
+          목표 등급만 고르면 나에게 맞는 추천을 바로 받아요.
+        </p>
+
+        <div className="mt-16">
+          <p className="text-[13px] text-muted-foreground">더 둘러보기</p>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {menus.map((m) => (
+              <Link
+                key={m.href}
+                href={m.href}
+                className="rounded-xl border border-border bg-card p-4 text-left transition-[transform,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_24px_rgba(0,55,112,0.08)] active:translate-y-0 active:scale-[0.98] active:duration-100"
+              >
+                <m.icon className="size-5 text-primary" />
+                <p className="mt-3 text-[15px]">{m.title}</p>
+                <p className="mt-1 text-[12px] text-muted-foreground">{m.desc}</p>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>
