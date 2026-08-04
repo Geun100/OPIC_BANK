@@ -487,6 +487,10 @@ export const expressionCategories: ExpressionCategory[] = [
             example: 'It was, you know, a really great experience.',
           },
           { en: 'Basically...', ko: '기본적으로/한마디로...' },
+          {
+            en: 'What you have to realize is that...',
+            ko: '당신이 알아야 할 건 뭐냐면...',
+          },
         ],
       },
       {
@@ -498,6 +502,70 @@ export const expressionCategories: ExpressionCategory[] = [
             en: 'Let me see...',
             ko: '어디 보자, 그러니까',
             example: 'Let me see... I think it was about two years ago.',
+          },
+        ],
+      },
+      {
+        title: '오해 방지·전제 깔기',
+        items: [
+          { en: "Don't get me wrong.", ko: '오해는 하지 마세요.' },
+          {
+            en: "Just because [A], doesn't mean [B].",
+            ko: '[A]라고 해서 [B]라는 뜻은 아니에요.',
+            example: "Just because I live alone doesn't mean I'm always lonely.",
+          },
+          { en: "I can't say for certain, but...", ko: '확실하게 말할 수는 없지만...' },
+        ],
+      },
+      {
+        title: '사실·진실을 강조할 때',
+        items: [
+          { en: "Well, here's the thing.", ko: '자, 핵심은 이거예요.' },
+          { en: 'As a matter of fact, / In fact,', ko: '사실은 / 실제로는' },
+          {
+            en: 'Believe it or not,',
+            ko: '믿기 힘드시겠지만,',
+            example: 'Believe it or not, it was my first time trying it.',
+          },
+        ],
+      },
+      {
+        title: '과거를 회상할 때',
+        items: [
+          { en: 'If memory serves me right,', ko: '제 기억이 맞다면,' },
+          { en: 'Looking back,', ko: '돌이켜보면,' },
+          {
+            en: 'When I was in my [student] days,',
+            ko: '제가 [학생] 시절이었을 때,',
+            example: 'When I was in my college days, I used to go there every week.',
+          },
+        ],
+      },
+      {
+        title: '갑작스러운 사건·반전을 말할 때',
+        items: [
+          { en: 'All of a sudden, / Out of nowhere,', ko: '갑자기 / 느닷없이' },
+          { en: 'As luck would have it,', ko: '운 없게도 / 하필이면' },
+          {
+            en: 'Talk about being caught off guard!',
+            ko: '진짜 방심하다가 불시에 당한 거죠!',
+          },
+        ],
+      },
+      {
+        title: '감정 상태를 강조할 때',
+        items: [
+          {
+            en: 'I was in total panic.',
+            ko: '완전 멘붕 그 자체였죠.',
+          },
+          {
+            en: 'It was just awesome!',
+            ko: '진짜 대박이었어요!',
+          },
+          {
+            en: 'It really made my day.',
+            ko: '그날 하루가 완전히 좋아질 정도였어요.',
           },
         ],
       },
@@ -530,6 +598,8 @@ export const expressionCategories: ExpressionCategory[] = [
             ko: '약간, 어느 정도',
             example: 'It was kind of expensive, but worth it.',
           },
+          { en: 'To tell you the truth,', ko: '사실대로 말씀드리자면,' },
+          { en: 'I gotta tell you,', ko: '솔직히 말하자면 / 진짜 말씀드리는데,' },
         ],
       },
       {
@@ -555,6 +625,10 @@ export const expressionCategories: ExpressionCategory[] = [
           { en: "That's why I like them.", ko: '그래서 나는 그들이 좋다.' },
           { en: 'It just relieves my stress.', ko: '그건 내 스트레스를 해소해 준다.' },
           { en: 'It makes me feel really happy.', ko: '그건 나를 정말 행복하게 만든다.' },
+          { en: 'The bottom line is,', ko: '결론부터 말하자면,' },
+          { en: 'So, what it boils down to is...', ko: '결국 핵심이 뭐냐면...' },
+          { en: 'Would that make sense?', ko: '이해나 설명이 좀 되셨나요?' },
+          { en: 'I guess that answers your question!', ko: '이 정도면 질문에 답이 된 것 같네요!' },
         ],
       },
       {
