@@ -6,5 +6,6 @@ export const navLinks = [
   { href: '/expressions', label: '표현 라이브러리' },
   { href: '/tips', label: '오픽 TIP' },
   { href: '/grade', label: 'AL·IH 표현집' },
+  { href: '/mp-worksheet', label: 'MP 워크시트' },
   { href: '/notes', label: '나만의 노트' },
 ];
