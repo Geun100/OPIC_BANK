@@ -31,6 +31,32 @@ const EMPTY_FORM: FormState = {
   keywords: '',
 };
 
+// MP/Reason·Detail/Feeling 한 줄을 라벨 배지 + 텍스트로 보여주는 행
+function StepRow({
+  label,
+  tone,
+  text,
+}: {
+  label: string;
+  tone: 'primary' | 'neutral';
+  text: string;
+}) {
+  return (
+    <div className="flex gap-2.5">
+      <span
+        className={`h-fit shrink-0 rounded-md px-2 py-0.5 text-[11px] font-medium ${
+          tone === 'primary'
+            ? 'bg-primary text-primary-foreground'
+            : 'bg-muted text-muted-foreground'
+        }`}
+      >
+        {label}
+      </span>
+      <p className="text-[13.5px] leading-relaxed text-foreground">{text}</p>
+    </div>
+  );
+}
+
 export default function MPWorksheetPage() {
   const [entries, setEntries] = useState<MPWorksheetEntry[]>([]);
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
@@ -99,32 +125,42 @@ export default function MPWorksheetPage() {
           {mpWorksheetExamples.map((ex) => (
             <details
               key={ex.topic}
-              className="rounded-xl border border-border bg-card p-4 open:pb-5"
+              className="group rounded-xl border border-border bg-card open:shadow-sm"
             >
-              <summary className="cursor-pointer text-[15px] font-medium">{ex.topicName}</summary>
-              <div className="mt-3 flex flex-col gap-2 text-[13px]">
-                <p>
-                  <span className="text-muted-foreground">MP </span>
-                  {ex.mp}
-                </p>
-                <p>
-                  <span className="text-muted-foreground">Reason·Detail </span>
-                  {ex.reasonDetail}
-                </p>
-                <p>
-                  <span className="text-muted-foreground">Feeling </span>
-                  {ex.feeling}
-                </p>
-                <div className="mt-1 rounded-lg bg-muted p-3">
-                  {ex.sentences.map((s, i) => (
-                    <p key={i} className="text-[13px]">
-                      {s}
-                    </p>
+              <summary className="flex cursor-pointer items-center justify-between px-4 py-3.5 text-[15px] font-medium marker:content-none">
+                {ex.topicName}
+                <span className="text-muted-foreground transition-transform group-open:rotate-90">
+                  ›
+                </span>
+              </summary>
+              <div className="flex flex-col gap-3 border-t border-border px-4 pb-4 pt-4">
+                <StepRow label="MP" tone="primary" text={ex.mp} />
+                <StepRow label="Reason·Detail" tone="neutral" text={ex.reasonDetail} />
+                <StepRow label="Feeling" tone="neutral" text={ex.feeling} />
+
+                <div className="mt-1 rounded-lg border border-border/70 bg-muted/60 p-3.5">
+                  <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                    영어 문장
+                  </p>
+                  <div className="flex flex-col gap-1.5">
+                    {ex.sentences.map((s, i) => (
+                      <p key={i} className="text-[13.5px] leading-relaxed text-foreground">
+                        {s}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {ex.keywords.map((k) => (
+                    <span
+                      key={k}
+                      className="rounded-full bg-primary-subdued/40 px-2.5 py-1 text-[12px] text-primary-press"
+                    >
+                      {k}
+                    </span>
                   ))}
                 </div>
-                <p className="text-[12px] text-muted-foreground">
-                  핵심 키워드: {ex.keywords.join(', ')}
-                </p>
               </div>
             </details>
           ))}
@@ -232,36 +268,43 @@ export default function MPWorksheetPage() {
                   </button>
                 </div>
               </div>
-              <div className="mt-3 flex flex-col gap-1.5 text-[13px]">
-                <p>
-                  <span className="text-muted-foreground">MP </span>
-                  {entry.mp}
-                </p>
+              <div className="mt-3 flex flex-col gap-3">
+                <StepRow label="MP" tone="primary" text={entry.mp} />
                 {entry.reasonDetail && (
-                  <p>
-                    <span className="text-muted-foreground">Reason·Detail </span>
-                    {entry.reasonDetail}
-                  </p>
+                  <StepRow label="Reason·Detail" tone="neutral" text={entry.reasonDetail} />
                 )}
-                {entry.feeling && (
-                  <p>
-                    <span className="text-muted-foreground">Feeling </span>
-                    {entry.feeling}
-                  </p>
-                )}
+                {entry.feeling && <StepRow label="Feeling" tone="neutral" text={entry.feeling} />}
                 {entry.sentences && (
-                  <div className="mt-1 rounded-lg bg-muted p-3">
-                    {entry.sentences.split('\n').map((s, i) =>
-                      s.trim() ? (
-                        <p key={i} className="text-[13px]">
-                          {s}
-                        </p>
-                      ) : null,
-                    )}
+                  <div className="rounded-lg border border-border/70 bg-muted/60 p-3.5">
+                    <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                      영어 문장
+                    </p>
+                    <div className="flex flex-col gap-1.5">
+                      {entry.sentences.split('\n').map((s, i) =>
+                        s.trim() ? (
+                          <p key={i} className="text-[13.5px] leading-relaxed text-foreground">
+                            {s}
+                          </p>
+                        ) : null,
+                      )}
+                    </div>
                   </div>
                 )}
                 {entry.keywords && (
-                  <p className="text-[12px] text-muted-foreground">핵심 키워드: {entry.keywords}</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {entry.keywords
+                      .split(',')
+                      .map((k) => k.trim())
+                      .filter(Boolean)
+                      .map((k) => (
+                        <span
+                          key={k}
+                          className="rounded-full bg-primary-subdued/40 px-2.5 py-1 text-[12px] text-primary-press"
+                        >
+                          {k}
+                        </span>
+                      ))}
+                  </div>
                 )}
               </div>
             </div>
