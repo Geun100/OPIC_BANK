@@ -31,17 +31,43 @@ export default function ExpressionsIndex() {
         ))}
       </div>
 
-      <div className="mt-10 flex flex-col items-start gap-2 rounded-xl border border-border bg-card p-6">
+      <div className="mt-10 rounded-xl border border-border bg-card p-6">
         <p className="text-[14px] text-muted-foreground">종이로 정리해서 보고 싶다면</p>
-        <iframe
-          src="https://coupa.ng/co9X4j"
-          width="120"
-          height="240"
-          frameBorder="0"
-          scrolling="no"
-          referrerPolicy="unsafe-url"
-        />
-        <p className="text-[11px] text-muted-foreground">
+        <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <iframe
+            src="https://coupa.ng/co9X4j"
+            width="120"
+            height="240"
+            frameBorder="0"
+            scrolling="no"
+            referrerPolicy="unsafe-url"
+          />
+          <iframe
+            src="https://coupa.ng/co92Bx"
+            width="120"
+            height="240"
+            frameBorder="0"
+            scrolling="no"
+            referrerPolicy="unsafe-url"
+          />
+          <iframe
+            src="https://coupa.ng/co92Du"
+            width="120"
+            height="240"
+            frameBorder="0"
+            scrolling="no"
+            referrerPolicy="unsafe-url"
+          />
+          <iframe
+            src="https://coupa.ng/co92Fb"
+            width="120"
+            height="240"
+            frameBorder="0"
+            scrolling="no"
+            referrerPolicy="unsafe-url"
+          />
+        </div>
+        <p className="mt-4 text-[11px] text-muted-foreground">
           이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
         </p>
       </div>

@@ -72,23 +72,6 @@ export default function GuideIndex() {
           </Link>
         </div>
       </div>
-
-      <div className="mt-10 flex flex-col items-start gap-2 rounded-xl border border-border bg-card p-6">
-        <p className="text-[14px] text-muted-foreground">
-          시험에 필요한 걸 한 번에 준비하고 싶다면
-        </p>
-        <iframe
-          src="https://coupa.ng/co92Du"
-          width="120"
-          height="240"
-          frameBorder="0"
-          scrolling="no"
-          referrerPolicy="unsafe-url"
-        />
-        <p className="text-[11px] text-muted-foreground">
-          이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.
-        </p>
-      </div>
     </div>
   );
 }
