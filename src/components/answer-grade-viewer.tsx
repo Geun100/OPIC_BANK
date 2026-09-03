@@ -17,65 +17,26 @@ type AnswerGradeViewerProps = {
   brainstorm?: BrainstormStep[];
 };
 
-// 브레인스토밍 키워드에서 앵커 단어를 뽑을 때 걸러낼 흔한 단어
-const BRAINSTORM_STOP = new Set([
-  'about',
-  'after',
-  'again',
-  'along',
-  'always',
-  'around',
-  'because',
-  'been',
-  'before',
-  'being',
-  'could',
-  'during',
-  'every',
-  'from',
-  'have',
-  'here',
-  'into',
-  'just',
-  'like',
-  'made',
-  'make',
-  'many',
-  'means',
-  'more',
-  'most',
-  'much',
-  'only',
-  'over',
-  'part',
-  'place',
-  'really',
-  'since',
-  'some',
-  'someone',
-  'something',
-  'than',
-  'that',
-  'them',
-  'then',
-  'there',
-  'these',
-  'they',
-  'thing',
-  'things',
-  'this',
-  'through',
-  'usually',
-  'very',
-  'were',
-  'what',
-  'when',
-  'which',
-  'while',
-  'with',
-  'would',
-  'your',
-]);
+// 브레인스토밍 단계(답→이유→부연→예시→마무리)별 색상 — 답변을 단계 흐름으로 구획
+const BEAT_TONES = [
+  { wrap: 'border-sky-400 bg-sky-50/60', chip: 'bg-sky-100 text-sky-700', dot: 'bg-sky-400' },
+  {
+    wrap: 'border-emerald-400 bg-emerald-50/60',
+    chip: 'bg-emerald-100 text-emerald-700',
+    dot: 'bg-emerald-400',
+  },
+  {
+    wrap: 'border-amber-400 bg-amber-50/60',
+    chip: 'bg-amber-100 text-amber-700',
+    dot: 'bg-amber-400',
+  },
+  {
+    wrap: 'border-violet-400 bg-violet-50/60',
+    chip: 'bg-violet-100 text-violet-700',
+    dot: 'bg-violet-400',
+  },
+  { wrap: 'border-rose-400 bg-rose-50/60', chip: 'bg-rose-100 text-rose-700', dot: 'bg-rose-400' },
+];
 
 export function AnswerGradeViewer({
   id,
@@ -109,49 +70,27 @@ export function AnswerGradeViewer({
   );
   const otherExpressions = litExpressions.filter((e) => !coveredExpr.has(e.toLowerCase()));
 
-  // 브레인스토밍 각 단계에서 앵커 단어 1개(가장 긴 의미 단어)를 뽑아 답변에서 색으로 표시
-  const brainstormAnchors: { word: string; label: string }[] = [];
-  const seenAnchor = new Set<string>();
-  for (const step of brainstorm ?? []) {
-    const pick = (step.en.toLowerCase().match(/[a-z]+/g) ?? [])
-      .filter((w) => w.length >= 4 && !BRAINSTORM_STOP.has(w))
-      .sort((a, b) => b.length - a.length)[0];
-    if (pick && !seenAnchor.has(pick)) {
-      seenAnchor.add(pick);
-      brainstormAnchors.push({ word: pick, label: step.label });
-    }
-  }
-  const anchorRe =
-    brainstormAnchors.length > 0
-      ? new RegExp(`\\b(${brainstormAnchors.map((a) => a.word).join('|')})\\b`, 'gi')
+  // 모범답안 문장을 브레인스토밍 단계 수만큼 순서대로 구획 (답변은 브레인스토밍 흐름대로 쓰여 있음)
+  const enSentences = splitSentences(tailored.answerEn);
+  const koSentences = splitSentences(tailored.answerKo);
+  const steps = brainstorm ?? [];
+  const beatGroups =
+    steps.length > 0
+      ? steps
+          .map((step, i) => {
+            const from = Math.floor((i * enSentences.length) / steps.length);
+            const to = Math.floor(((i + 1) * enSentences.length) / steps.length);
+            const koFrom = Math.floor((i * koSentences.length) / steps.length);
+            const koTo = Math.floor(((i + 1) * koSentences.length) / steps.length);
+            return {
+              step,
+              tone: BEAT_TONES[i % BEAT_TONES.length],
+              en: enSentences.slice(from, to),
+              ko: koSentences.slice(koFrom, koTo),
+            };
+          })
+          .filter((g) => g.en.length > 0)
       : null;
-
-  // 표현이 아닌 텍스트 조각 안에서 브레인스토밍 앵커 단어를 초록색으로 표시
-  const renderPlain = (part: string, keyPrefix: string) => {
-    if (!anchorRe) return part;
-    return part.split(anchorRe).map((chunk, j) => {
-      const anchor = brainstormAnchors.find((a) => a.word === chunk.toLowerCase());
-      if (!anchor) return <span key={j}>{chunk}</span>;
-      const k = `${keyPrefix}-bs-${j}`;
-      const isOpen = openExpr === k;
-      return (
-        <span key={j}>
-          <button
-            type="button"
-            onClick={() => setOpenExpr(isOpen ? null : k)}
-            className="rounded bg-emerald-50 px-0.5 font-medium text-emerald-700"
-          >
-            {chunk}
-          </button>
-          {isOpen && (
-            <span className="mx-1 inline-block rounded-md bg-emerald-700 px-2 py-0.5 text-[12px] font-normal text-white">
-              브레인스토밍 · {anchor.label}
-            </span>
-          )}
-        </span>
-      );
-    });
-  };
 
   const copyMemorizeSentences = async () => {
     await navigator.clipboard.writeText(memorizeSentences.join('\n'));
@@ -163,7 +102,7 @@ export function AnswerGradeViewer({
   const renderHighlighted = (text: string, keyPrefix: string) =>
     splitByExpressions(text, keyExpressions).map((part, i) => {
       const isExpr = keyExpressions.some((e) => e.toLowerCase() === part.toLowerCase());
-      if (!isExpr) return <span key={i}>{renderPlain(part, `${keyPrefix}-${i}`)}</span>;
+      if (!isExpr) return <span key={i}>{part}</span>;
 
       const meaning = findExpressionMeaning(part);
       const exprKey = `${keyPrefix}-${i}-${part}`;
@@ -259,34 +198,55 @@ export function AnswerGradeViewer({
           />
         </div>
 
-        <div className="mt-3 space-y-2 text-[16px] leading-relaxed">
-          {splitSentences(tailored.answerEn).map((sentence, i) => (
-            <p key={i}>{renderHighlighted(sentence, `answer-${i}`)}</p>
-          ))}
-        </div>
-
-        <p className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted-foreground">
-          <span>
-            <span className="font-semibold text-primary-press underline decoration-dotted">
-              밑줄
-            </span>{' '}
-            핵심 표현
-          </span>
-          {brainstormAnchors.length > 0 && (
-            <span>
-              <span className="rounded bg-emerald-50 px-0.5 font-medium text-emerald-700">
-                초록
+        {beatGroups ? (
+          <>
+            <p className="mt-3 text-[11px] text-muted-foreground">
+              답변이 브레인스토밍 흐름(답 → 이유 → 부연 → 예시 → 마무리)대로 색으로 나뉘어 있어요.
+            </p>
+            <div className="mt-2 flex flex-col gap-2.5">
+              {beatGroups.map((g, gi) => (
+                <div key={gi} className={`rounded-lg border-l-4 p-3 ${g.tone.wrap}`}>
+                  <span
+                    className={`inline-block rounded px-1.5 py-0.5 text-[10px] font-semibold ${g.tone.chip}`}
+                  >
+                    {g.step.label} · {g.step.en}
+                  </span>
+                  <div className="mt-1.5 space-y-1 text-[16px] leading-relaxed">
+                    {g.en.map((s, i) => (
+                      <p key={i}>{renderHighlighted(s, `answer-${gi}-${i}`)}</p>
+                    ))}
+                  </div>
+                  {g.ko.length > 0 && (
+                    <div className="mt-1.5 space-y-1 text-[13px] leading-relaxed text-muted-foreground">
+                      {g.ko.map((s, i) => (
+                        <p key={i}>{s}</p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-[11px] text-muted-foreground">
+              <span className="font-semibold text-primary-press underline decoration-dotted">
+                밑줄
               </span>{' '}
-              브레인스토밍 키워드
-            </span>
-          )}
-        </p>
-
-        <div className="mt-4 space-y-2 border-t border-border pt-3 text-[14px] leading-relaxed text-muted-foreground">
-          {splitSentences(tailored.answerKo).map((sentence, i) => (
-            <p key={i}>{sentence}</p>
-          ))}
-        </div>
+              핵심 표현
+            </p>
+          </>
+        ) : (
+          <>
+            <div className="mt-3 space-y-2 text-[16px] leading-relaxed">
+              {enSentences.map((sentence, i) => (
+                <p key={i}>{renderHighlighted(sentence, `answer-${i}`)}</p>
+              ))}
+            </div>
+            <div className="mt-4 space-y-2 border-t border-border pt-3 text-[14px] leading-relaxed text-muted-foreground">
+              {koSentences.map((sentence, i) => (
+                <p key={i}>{sentence}</p>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
       {/* 암기하면 좋은 문장 + 문장별 핵심 표현 */}
