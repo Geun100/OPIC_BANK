@@ -1,6 +1,8 @@
 // 롤플레이 유형×시나리오별 모범답안 데이터 — questions.ts의 roleplayTopics 질문을 그대로 재사용
 // ⚠️ 답안은 학습용 초안이며 오픽 경험자 검증 필요 (LEARNING.md 참고)
 
+import type { BrainstormStep } from './topic-qa';
+
 export type RoleplayType = 'request' | 'problem' | 'experience';
 
 export const roleplayTypeInfo: Record<
@@ -32,6 +34,7 @@ export type RoleplayQA = {
   answer: string;
   answerKo: string;
   keyExpressions: string[];
+  brainstorm?: BrainstormStep[];
 };
 
 export const roleplayQAs: RoleplayQA[] = [
@@ -53,6 +56,13 @@ export const roleplayQAs: RoleplayQA[] = [
       'Oh, and one more thing',
       'Is it possible to',
     ],
+    brainstorm: [
+      { label: '도입', en: 'got a new phone', ko: '새 폰 샀다며' },
+      { label: '질문1', en: 'which brand, why', ko: '브랜드·이유' },
+      { label: '질문2', en: 'price', ko: '가격' },
+      { label: '질문3', en: 'camera quality', ko: '카메라' },
+      { label: '마무리', en: 'battery life', ko: '배터리' },
+    ],
   },
   {
     type: 'request',
@@ -67,6 +77,13 @@ export const roleplayQAs: RoleplayQA[] = [
     answerKo:
       '안녕하세요, 가능하면 진료 예약을 하려고 전화드렸어요. 이번 주에 가능한 시간 좀 알려주실 수 있나요? 그리고 보험증이나 예전 진료기록처럼 따로 챙겨가야 할 게 있을까요? 그리고 오늘 일정이 좀 빡빡한데 보통 대기 시간이 얼마나 되나요? 감사합니다, 답변 주시면 바로 확정할게요.',
     keyExpressions: ['if possible', 'Also', 'On top of that', "I'm calling to"],
+    brainstorm: [
+      { label: '도입', en: 'making an appointment', ko: '예약' },
+      { label: '질문1', en: 'times this week', ko: '이번 주 시간' },
+      { label: '질문2', en: 'what to bring', ko: '준비물' },
+      { label: '질문3', en: 'wait time', ko: '대기 시간' },
+      { label: '마무리', en: 'confirm after', ko: '나중에 확정' },
+    ],
   },
   {
     type: 'request',
@@ -86,6 +103,13 @@ export const roleplayQAs: RoleplayQA[] = [
       'On top of that',
       "That's pretty much",
       'Do you have any recommendations?',
+    ],
+    brainstorm: [
+      { label: '도입', en: 'travel packages', ko: '여행 상품' },
+      { label: '질문1', en: "what's included", ko: '포함 내역' },
+      { label: '질문2', en: 'date flexibility', ko: '날짜 조정' },
+      { label: '질문3', en: 'best season', ko: '좋은 시기' },
+      { label: '마무리', en: 'cancellation policy', ko: '취소 정책' },
     ],
   },
   {
@@ -107,6 +131,13 @@ export const roleplayQAs: RoleplayQA[] = [
       'Whatever works best for you',
       'I have something to tell you',
     ],
+    brainstorm: [
+      { label: '도입', en: 'sorry, bad news', ko: '미안, 나쁜 소식' },
+      { label: '상황', en: 'cracked your screen', ko: '액정 깨짐' },
+      { label: '방안1', en: 'pay for repair', ko: '수리비 부담' },
+      { label: '방안2', en: 'protector + case now', ko: '우선 필름·케이스' },
+      { label: '방안3', en: 'lend my old phone', ko: '예전 폰 대여' },
+    ],
   },
   {
     type: 'problem',
@@ -125,6 +156,13 @@ export const roleplayQAs: RoleplayQA[] = [
       'Would it be possible to',
       "If that doesn't work",
       "That's why",
+    ],
+    brainstorm: [
+      { label: '도입', en: "about today's appointment", ko: '오늘 예약 건' },
+      { label: '상황', en: "urgent, can't come", ko: '급한 일, 못 감' },
+      { label: '방안1', en: 'reschedule this week', ko: '이번 주로' },
+      { label: '방안2', en: 'or early next week', ko: '다음 주 초' },
+      { label: '마무리', en: 'telling you early', ko: '빨리 알림' },
     ],
   },
   {
@@ -145,6 +183,13 @@ export const roleplayQAs: RoleplayQA[] = [
       "Or, if that's not possible",
       'make an effort',
     ],
+    brainstorm: [
+      { label: '도입', en: 'ticket problem', ko: '티켓 문제' },
+      { label: '상황', en: 'wrong date on confirmation', ko: '날짜 불일치' },
+      { label: '방안1', en: 'fix date, no charge', ko: '무료 변경' },
+      { label: '방안2', en: 'or refund', ko: '환불' },
+      { label: '마무리', en: 'sort before the event', ko: '행사 전 해결' },
+    ],
   },
   {
     type: 'experience',
@@ -164,6 +209,13 @@ export const roleplayQAs: RoleplayQA[] = [
       'Looking back',
       'can relate to',
     ],
+    brainstorm: [
+      { label: '답', en: "borrowed friend's laptop", ko: '친구 노트북' },
+      { label: '상황', en: 'charger died', ko: '충전기 고장' },
+      { label: '이유', en: 'worried', ko: '걱정' },
+      { label: '방안', en: 'bought new one, told him', ko: '새로 사고 설명' },
+      { label: '마무리', en: 'honesty was right', ko: '솔직함이 옳음' },
+    ],
   },
   {
     type: 'experience',
@@ -182,6 +234,13 @@ export const roleplayQAs: RoleplayQA[] = [
       'frustrating',
       'Looking back',
       'get stressed out',
+    ],
+    brainstorm: [
+      { label: '답', en: 'canceled weekend trip', ko: '주말 여행 취소' },
+      { label: '이유', en: 'got sick', ko: '아픔' },
+      { label: '부연', en: 'all booked ahead', ko: '다 예약해둠' },
+      { label: '방안', en: 'called right away', ko: '바로 전화' },
+      { label: '마무리', en: 'notice people early', ko: '미리 알리기' },
     ],
   },
 ];

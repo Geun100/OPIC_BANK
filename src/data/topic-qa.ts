@@ -45,6 +45,9 @@ export const cutInfo: Record<CutKey, { name: string; slug: CutKey; hint: string 
   experience: { name: '경험', slug: 'experience', hint: '기억에 남는 일화를 묻는 질문' },
 };
 
+// 브레인스토밍 키워드 체인 한 단계 (답 → 이유 → 부연 → 예시 → 마무리)
+export type BrainstormStep = { label: string; en: string; ko: string };
+
 export type TopicQA = {
   topic: TopicKey;
   cut: CutKey;
@@ -52,6 +55,7 @@ export type TopicQA = {
   answer: string;
   answerKo: string;
   keyExpressions: string[];
+  brainstorm?: BrainstormStep[];
 };
 
 export const topicQAs: TopicQA[] = [
@@ -74,6 +78,13 @@ export const topicQAs: TopicQA[] = [
       'Compared to ...',
       'what I like most about',
     ],
+    brainstorm: [
+      { label: '답', en: 'apartment, family', ko: '가족과 아파트' },
+      { label: '이유', en: 'cozy', ko: '아늑함' },
+      { label: '부연', en: 'couch by window', ko: '창가 소파' },
+      { label: '예시', en: 'furnished, plants', ko: '가구·화분' },
+      { label: '마무리', en: 'calm at home', ko: '집=편안' },
+    ],
   },
   {
     topic: 'home',
@@ -90,6 +101,13 @@ export const topicQAs: TopicQA[] = [
       'what I enjoy most is',
       'clear my head',
       'rarely have time to',
+    ],
+    brainstorm: [
+      { label: '답', en: 'stay home', ko: '집에 있기' },
+      { label: '이유', en: 'most comfortable', ko: '제일 편함' },
+      { label: '부연', en: 'couch by window', ko: '창가 소파' },
+      { label: '예시', en: 'morning air, music', ko: '환기, 음악' },
+      { label: '마무리', en: 'weekends, nothing', ko: '주말엔 쉼' },
     ],
   },
   {
@@ -110,6 +128,13 @@ export const topicQAs: TopicQA[] = [
       'Come to think of it',
       "wasn't expecting to",
     ],
+    brainstorm: [
+      { label: '답', en: 'moving day', ko: '이사 날' },
+      { label: '이유', en: 'total mess', ko: '엉망' },
+      { label: '부연', en: 'night on the floor', ko: '바닥서 첫날밤' },
+      { label: '예시', en: 'decorated my way', ko: '내 맘대로' },
+      { label: '마무리', en: 'more than old place', ko: '예전 집보다 애착' },
+    ],
   },
   {
     topic: 'cafe',
@@ -126,6 +151,13 @@ export const topicQAs: TopicQA[] = [
       'if that makes sense',
       "What's more",
       "I've been really into",
+    ],
+    brainstorm: [
+      { label: '답', en: 'cafe near home', ko: '집 근처 카페' },
+      { label: '이유', en: 'cozy vibe', ko: '아늑함' },
+      { label: '부연', en: 'a regular', ko: '단골' },
+      { label: '예시', en: 'window seat, seasonal drinks', ko: '창가, 시즌 음료' },
+      { label: '마무리', en: 'stay a while', ko: '오래 머물고 싶음' },
     ],
   },
   {
@@ -147,6 +179,13 @@ export const topicQAs: TopicQA[] = [
       'As a result',
       "can't stand",
     ],
+    brainstorm: [
+      { label: '답', en: 'coffee, window seat', ko: '커피, 창가' },
+      { label: '이유', en: 'clear my head', ko: '머리 식히기' },
+      { label: '부연', en: 'people-watching', ko: '사람 구경' },
+      { label: '예시', en: 'book or laptop', ko: '책·노트북' },
+      { label: '마무리', en: 'second workspace', ko: '제2 작업실' },
+    ],
   },
   {
     topic: 'cafe',
@@ -165,6 +204,13 @@ export const topicQAs: TopicQA[] = [
       'Looking back',
       'The thing is',
       'reminds me of',
+    ],
+    brainstorm: [
+      { label: '답', en: 'old friend', ko: '옛 친구' },
+      { label: '이유', en: 'years apart', ko: '몇 년 만' },
+      { label: '부연', en: 'talked 3 hours', ko: '3시간 수다' },
+      { label: '예시', en: 'no plan to stay', ko: '계획 없었음' },
+      { label: '마무리', en: 'cafe = that day', ko: '카페=그날' },
     ],
   },
   {
@@ -186,6 +232,13 @@ export const topicQAs: TopicQA[] = [
       'Not only ... but also ...',
       'be all about',
     ],
+    brainstorm: [
+      { label: '답', en: 'action fan', ko: '액션 팬' },
+      { label: '이유', en: 'keeps me guessing', ko: '계속 궁금' },
+      { label: '부연', en: 'edge of my seat', ko: '손에 땀' },
+      { label: '예시', en: 'plot twist', ko: '반전' },
+      { label: '마무리', en: 'always action', ko: '늘 액션' },
+    ],
   },
   {
     topic: 'movie',
@@ -206,6 +259,13 @@ export const topicQAs: TopicQA[] = [
       'On top of that',
       "can't stand",
     ],
+    brainstorm: [
+      { label: '답', en: 'weekends', ko: '주말' },
+      { label: '이유', en: 'check reviews', ko: '리뷰 확인' },
+      { label: '부연', en: 'hate spoilers', ko: '스포일러 싫음' },
+      { label: '예시', en: 'snacks, couch', ko: '간식, 소파' },
+      { label: '마무리', en: 'never get tired', ko: '안 질림' },
+    ],
   },
   {
     topic: 'movie',
@@ -224,6 +284,13 @@ export const topicQAs: TopicQA[] = [
       'It turned out that ...',
       'Looking back',
       'make time for',
+    ],
+    brainstorm: [
+      { label: '답', en: 'theater twist', ko: '극장 반전' },
+      { label: '이유', en: 'audience gasped', ko: '관객 탄성' },
+      { label: '부연', en: 'rewatched next day', ko: '다음날 재관람' },
+      { label: '예시', en: 'hinted earlier', ko: '초반 암시' },
+      { label: '마무리', en: 'stands out most', ko: '제일 인상적' },
     ],
   },
   {
@@ -245,6 +312,13 @@ export const topicQAs: TopicQA[] = [
       "What's more",
       'the downside of',
     ],
+    brainstorm: [
+      { label: '답', en: 'Jeju', ko: '제주도' },
+      { label: '이유', en: 'breathtaking scenery', ko: '절경' },
+      { label: '부연', en: 'loose schedule', ko: '여유 일정' },
+      { label: '예시', en: 'hidden restaurant', ko: '숨은 맛집' },
+      { label: '마무리', en: 'recharge', ko: '재충전' },
+    ],
   },
   {
     topic: 'travel',
@@ -265,6 +339,13 @@ export const topicQAs: TopicQA[] = [
       'Thanks to that',
       'be planning on',
     ],
+    brainstorm: [
+      { label: '답', en: 'loose schedule', ko: '느슨한 일정' },
+      { label: '이유', en: 'take my time', ko: '여유롭게' },
+      { label: '부연', en: 'start early', ko: '일찍 시작' },
+      { label: '예시', en: 'local food, wandering', ko: '현지 음식, 걷기' },
+      { label: '마무리', en: 'my travel style', ko: '내 스타일' },
+    ],
   },
   {
     topic: 'travel',
@@ -284,6 +365,13 @@ export const topicQAs: TopicQA[] = [
       'frustrating',
       'stay away from',
     ],
+    brainstorm: [
+      { label: '답', en: 'plan fell through', ko: '계획 무산' },
+      { label: '이유', en: 'bad weather', ko: '날씨' },
+      { label: '부연', en: 'found local spot', ko: '현지 스팟' },
+      { label: '예시', en: 'laughed, adapted', ko: '웃으며 적응' },
+      { label: '마무리', en: 'best from surprises', ko: '예상 밖이 최고' },
+    ],
   },
   {
     topic: 'exercise',
@@ -302,6 +390,13 @@ export const topicQAs: TopicQA[] = [
       'clear my head',
       'On top of that',
       'make time for',
+    ],
+    brainstorm: [
+      { label: '답', en: 'jog, walk', ko: '조깅·걷기' },
+      { label: '이유', en: 'my own pace', ko: '내 페이스' },
+      { label: '부연', en: 'morning or evening', ko: '아침·저녁' },
+      { label: '예시', en: 'short walk daily', ko: '매일 짧게' },
+      { label: '마무리', en: 'clear my head', ko: '머리 식히기' },
     ],
   },
   {
@@ -323,6 +418,13 @@ export const topicQAs: TopicQA[] = [
       'As a result',
       'get frustrated when',
     ],
+    brainstorm: [
+      { label: '답', en: '30-min walk', ko: '30분 걷기' },
+      { label: '이유', en: 'evening, cooler', ko: '저녁이 시원' },
+      { label: '부연', en: 'music first', ko: '음악 먼저' },
+      { label: '예시', en: 'river near home', ko: '집 근처 강변' },
+      { label: '마무리', en: 'sleep better', ko: '잠 잘 옴' },
+    ],
   },
   {
     topic: 'exercise',
@@ -341,6 +443,13 @@ export const topicQAs: TopicQA[] = [
       'Looking back',
       'can relate to',
     ],
+    brainstorm: [
+      { label: '답', en: 'first long jog', ko: '첫 긴 조깅' },
+      { label: '이유', en: 'exhausting', ko: '지침' },
+      { label: '부연', en: 'hardest to start', ko: '시작이 어려움' },
+      { label: '예시', en: 'proud at the end', ko: '끝내고 뿌듯' },
+      { label: '마무리', en: 'kept exercising', ko: '계속하게 됨' },
+    ],
   },
   {
     topic: 'park',
@@ -356,6 +465,13 @@ export const topicQAs: TopicQA[] = [
       'take a stroll',
       "What's more",
       'make an effort',
+    ],
+    brainstorm: [
+      { label: '답', en: 'park near home', ko: '집 근처 공원' },
+      { label: '이유', en: 'green trees', ko: '울창한 나무' },
+      { label: '부연', en: 'bench by pond', ko: '연못 벤치' },
+      { label: '예시', en: 'pond path', ko: '연못 산책로' },
+      { label: '마무리', en: 'good reset', ko: '재충전' },
     ],
   },
   {
@@ -377,6 +493,13 @@ export const topicQAs: TopicQA[] = [
       'get some fresh air',
       'on the go',
     ],
+    brainstorm: [
+      { label: '답', en: 'evening stroll', ko: '저녁 산책' },
+      { label: '이유', en: 'head clear after work', ko: '퇴근 후 정리' },
+      { label: '부연', en: 'earphones, music', ko: '이어폰, 음악' },
+      { label: '예시', en: 'people-watching', ko: '사람 구경' },
+      { label: '마무리', en: 'unwind', ko: '긴장 풀기' },
+    ],
   },
   {
     topic: 'park',
@@ -394,6 +517,13 @@ export const topicQAs: TopicQA[] = [
       'such an ... experience that',
       'Looking back',
       'I wish I could',
+    ],
+    brainstorm: [
+      { label: '답', en: 'outdoor concert', ko: '야외 공연' },
+      { label: '이유', en: 'by chance', ko: '우연히' },
+      { label: '부연', en: 'relaxed on grass', ko: '잔디서 편안' },
+      { label: '예시', en: 'music together', ko: '함께 음악' },
+      { label: '마무리', en: 'why I love it', ko: '좋아하는 이유' },
     ],
   },
   {
@@ -414,6 +544,13 @@ export const topicQAs: TopicQA[] = [
       'Compared to ...',
       'be all about',
     ],
+    brainstorm: [
+      { label: '답', en: 'musicals, dance', ko: '뮤지컬·댄스' },
+      { label: '이유', en: 'room full of energy', ko: '에너지' },
+      { label: '부연', en: 'not like a screen', ko: '화면과 다름' },
+      { label: '예시', en: 'standing ovation', ko: '기립박수' },
+      { label: '마무리', en: 'catch when I can', ko: '기회 되면' },
+    ],
   },
   {
     topic: 'performance',
@@ -432,6 +569,13 @@ export const topicQAs: TopicQA[] = [
       'what I enjoy most is',
       'As a result',
       'rarely have time to',
+    ],
+    brainstorm: [
+      { label: '답', en: 'check every few months', ko: '몇 달마다 확인' },
+      { label: '이유', en: 'pick carefully', ko: '신중히' },
+      { label: '부연', en: 'book early', ko: '일찍 예매' },
+      { label: '예시', en: 'arrive early, coffee after', ko: '일찍 도착, 커피' },
+      { label: '마무리', en: 'whole evening', ko: '저녁 전체' },
     ],
   },
   {
@@ -452,6 +596,13 @@ export const topicQAs: TopicQA[] = [
       'Looking back',
       'take something seriously',
     ],
+    brainstorm: [
+      { label: '답', en: 'onstage mishap', ko: '무대 사고' },
+      { label: '이유', en: 'handled smoothly', ko: '자연스럽게' },
+      { label: '부연', en: 'nobody noticed', ko: '아무도 몰랐음' },
+      { label: '예시', en: 'ovation, goosebumps', ko: '기립박수, 소름' },
+      { label: '마무리', en: 'go to more shows', ko: '더 자주 봄' },
+    ],
   },
   {
     topic: 'concert',
@@ -470,6 +621,13 @@ export const topicQAs: TopicQA[] = [
       'worth every penny',
       'an unforgettable night',
       'the downside of',
+    ],
+    brainstorm: [
+      { label: '답', en: 'last year, favorite singer', ko: '작년 최애 가수' },
+      { label: '이유', en: 'crowd singing along', ko: '떼창' },
+      { label: '부연', en: 'good opening act', ko: '좋은 오프닝' },
+      { label: '예시', en: 'worth every penny', ko: '안 아까움' },
+      { label: '마무리', en: 'unforgettable night', ko: '잊을 수 없는 밤' },
     ],
   },
   {
@@ -490,6 +648,13 @@ export const topicQAs: TopicQA[] = [
       'what I enjoy most is',
       'make an effort',
     ],
+    brainstorm: [
+      { label: '답', en: 'tickets early', ko: '티켓 빨리' },
+      { label: '이유', en: 'sells out fast', ko: '금방 매진' },
+      { label: '부연', en: 'songs on repeat', ko: '노래 반복' },
+      { label: '예시', en: 'friends, merch', ko: '친구, 굿즈' },
+      { label: '마무리', en: 'talk all the way home', ko: '집 가며 얘기' },
+    ],
   },
   {
     topic: 'concert',
@@ -507,6 +672,13 @@ export const topicQAs: TopicQA[] = [
       'such an ... experience that',
       'Looking back',
       "it's common to see",
+    ],
+    brainstorm: [
+      { label: '답', en: 'artist in the crowd', ko: '관객석 아티스트' },
+      { label: '이유', en: 'unexpected', ko: '예상 밖' },
+      { label: '부연', en: 'everyone screamed', ko: '다 함성' },
+      { label: '예시', en: 'eye contact', ko: '눈 마주침' },
+      { label: '마무리', en: 'keep going back', ko: '계속 감' },
     ],
   },
   {
@@ -527,6 +699,13 @@ export const topicQAs: TopicQA[] = [
       'try something on',
       "can't stand",
     ],
+    brainstorm: [
+      { label: '답', en: 'clothes, window shopping', ko: '옷, 아이쇼핑' },
+      { label: '이유', en: 'no pressure', ko: '부담 없음' },
+      { label: '부연', en: 'try things on', ko: '입어봄' },
+      { label: '예시', en: 'weekday, quiet', ko: '평일, 한산' },
+      { label: '마무리', en: 'great deal', ko: '득템' },
+    ],
   },
   {
     topic: 'shopping',
@@ -545,6 +724,13 @@ export const topicQAs: TopicQA[] = [
       'what I enjoy most is',
       'an impulse buy',
       'stay away from',
+    ],
+    brainstorm: [
+      { label: '답', en: 'once or twice a month', ko: '월 1~2회' },
+      { label: '이유', en: 'weekends', ko: '주말' },
+      { label: '부연', en: 'browse first', ko: '먼저 구경' },
+      { label: '예시', en: 'try on, sizes vary', ko: '입어봄, 사이즈 편차' },
+      { label: '마무리', en: 'impulse buy is fun', ko: '충동구매도 재미' },
     ],
   },
   {
@@ -565,6 +751,13 @@ export const topicQAs: TopicQA[] = [
       'Looking back',
       'reminds me of',
     ],
+    brainstorm: [
+      { label: '답', en: 'jacket on sale', ko: '재킷 세일' },
+      { label: '이유', en: 'last in my size', ko: '마지막 한 벌' },
+      { label: '부연', en: 'excited at checkout', ko: '계산대서 신남' },
+      { label: '예시', en: 'recall the luck each time', ko: '입을 때마다 생각' },
+      { label: '마무리', en: 'best deal ever', ko: '인생 득템' },
+    ],
   },
   {
     topic: 'music',
@@ -583,6 +776,13 @@ export const topicQAs: TopicQA[] = [
       'have a good ear for music',
       'lyrics that hit different',
       "can't live without",
+    ],
+    brainstorm: [
+      { label: '답', en: 'indie, pop, R&B', ko: '인디·팝·R&B' },
+      { label: '이유', en: 'playlist per mood', ko: '상황별 리스트' },
+      { label: '부연', en: 'good ear', ko: '좋은 귀' },
+      { label: '예시', en: 'lyrics hit different', ko: '가사가 와닿음' },
+      { label: '마무리', en: 'big part of life', ko: '일상의 큰 부분' },
     ],
   },
   {
@@ -603,6 +803,13 @@ export const topicQAs: TopicQA[] = [
       'As a result',
       'get frustrated when',
     ],
+    brainstorm: [
+      { label: '답', en: 'music when I get home', ko: '집 오면 음악' },
+      { label: '이유', en: 'set the mood', ko: '분위기' },
+      { label: '부연', en: 'discover via playlists', ko: '추천으로 발견' },
+      { label: '예시', en: 'update every few weeks', ko: '몇 주마다 갱신' },
+      { label: '마무리', en: 'always background music', ko: '항상 배경음악' },
+    ],
   },
   {
     topic: 'music',
@@ -621,6 +828,13 @@ export const topicQAs: TopicQA[] = [
       'Looking back',
       'can relate to',
     ],
+    brainstorm: [
+      { label: '답', en: 'song by accident', ko: '우연히 발견' },
+      { label: '이유', en: 'almost skipped', ko: '넘길 뻔' },
+      { label: '부연', en: 'listened to lyrics', ko: '가사 들음' },
+      { label: '예시', en: 'matched my life', ko: '내 상황과 맞음' },
+      { label: '마무리', en: 'give new songs a chance', ko: '새 노래에 기회' },
+    ],
   },
   {
     topic: 'camping',
@@ -634,6 +848,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '저는 보통 도시에서 그렇게 멀지 않은 호숫가나 산 근처 캠핑장으로 캠핑을 가요. 제가 제일 좋아하는 건 밤이 되면 모든 게 정말 조용해진다는 건데, 평소 도시가 얼마나 시끄러운지랑 비교하면 특히 그래요. 보통 텐트를 치고 작은 모닥불을 피운 다음 늦게까지 그 주변에서 쉬어요. 솔직히 모닥불 냄새랑 주변 자연의 소리가 일상이랑 완전히 다른 느낌을 만들어주는데, 사실 어릴 때 가족이랑 갔던 여행이 생각나기도 해요. 게다가 밤에 별이 선명하게 보이는 것도 도시에서는 볼 수 없는 거예요. 그래서 캠핑 갈 때마다 정말 상쾌한 도피처처럼 느껴지는 거예요.',
     keyExpressions: ['set up a tent', 'On top of that', "That's mainly why", 'reminds me of'],
+    brainstorm: [
+      { label: '답', en: 'lake or mountains', ko: '호수·산' },
+      { label: '이유', en: 'quiet at night', ko: '밤이 조용' },
+      { label: '부연', en: 'tent, campfire', ko: '텐트, 모닥불' },
+      { label: '예시', en: 'campfire smell, stars', ko: '불 냄새, 별' },
+      { label: '마무리', en: 'refreshing escape', ko: '상쾌한 도피' },
+    ],
   },
   {
     topic: 'camping',
@@ -653,6 +874,13 @@ export const topicQAs: TopicQA[] = [
       'As a result',
       'make time for',
     ],
+    brainstorm: [
+      { label: '답', en: 'few times a year', ko: '연 몇 회' },
+      { label: '이유', en: 'spring, fall', ko: '봄·가을' },
+      { label: '부연', en: 'checklist', ko: '체크리스트' },
+      { label: '예시', en: 'portable stove, coffee', ko: '버너, 커피' },
+      { label: '마무리', en: 'disconnect', ko: '일상 탈출' },
+    ],
   },
   {
     topic: 'camping',
@@ -666,6 +894,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '잠깐 생각해볼게요... 한밤중에 갑자기 비가 내리기 시작해서 모든 걸 젖지 않게 하려고 정신없이 움직였던 캠핑이 기억나요. 다들 날씨가 그렇게 갑자기 바뀔 줄 몰랐어서 처음엔 정말 정신없는 경험이었어요. 그 순간엔 스트레스였던 일로 그렇게 웃게 될 줄은 몰랐어요. 근데 다 정리하고 나서는 그냥 텐트 안에 앉아서 그 상황이 얼마나 어이없었는지 얘기하며 웃었어요. 돌이켜보면 다 순조로웠을 때보다 훨씬 더 재밌는 얘깃거리가 돼서 제가 제일 좋아하는 추억 중 하나예요.',
     keyExpressions: ['Let me think about that for a second', 'Looking back', "wasn't expecting to"],
+    brainstorm: [
+      { label: '답', en: 'rain at night', ko: '한밤 비' },
+      { label: '이유', en: 'chaotic', ko: '정신없음' },
+      { label: '부연', en: "didn't expect to laugh", ko: '웃게 될 줄 몰랐음' },
+      { label: '예시', en: 'laughed in the tent', ko: '텐트서 웃음' },
+      { label: '마무리', en: 'favorite memory', ko: '최고 추억' },
+    ],
   },
   {
     topic: 'sports',
@@ -679,6 +914,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '저는 축구 보는 걸 정말 좋아하는데, 특히 강팀끼리 붙는 큰 경기가 있을 때요. 어렸을 때 가족이랑 같이 보면서부터 계속 푹 빠져 있어요. 스포츠를 라이브로 보는 걸 제일 좋아하는 이유는 분위기 때문인데, 관중 전체가 다 같이 경기에 몰입하거든요. 보통 집에서 친구들이랑 보거나 티켓이 있으면 가끔 경기장에서 보기도 해요. 솔직히 마지막 순간까지 접전인 경기가 저한테는 스포츠 관람을 정말 흥미롭게 만드는 요소예요. 아직도 생생하게 기억나는 경기가 하나 있는데, 결말이 너무 팽팽해서 방 안 전체가 거의 소리를 지르고 있었어요. 그래서 기회가 될 때마다 큰 경기를 챙겨 보려고 해요.',
     keyExpressions: ['the atmosphere', "That's mainly why", "I've been really into"],
+    brainstorm: [
+      { label: '답', en: 'soccer, big matches', ko: '축구, 큰 경기' },
+      { label: '이유', en: 'since a kid', ko: '어릴 때부터' },
+      { label: '부연', en: 'crowd atmosphere', ko: '관중 분위기' },
+      { label: '예시', en: 'close to the end', ko: '막판 접전' },
+      { label: '마무리', en: 'catch big matches', ko: '큰 경기 챙김' },
+    ],
   },
   {
     topic: 'sports',
@@ -696,6 +938,13 @@ export const topicQAs: TopicQA[] = [
       "I've made it a habit to",
       'what I enjoy most is',
       'rarely have time to',
+    ],
+    brainstorm: [
+      { label: '답', en: 'check schedule weekly', ko: '매주 일정' },
+      { label: '이유', en: 'no time for all', ko: '다 볼 시간 없음' },
+      { label: '부연', en: 'highlights for the rest', ko: '나머지는 하이라이트' },
+      { label: '예시', en: 'snacks, friends', ko: '간식, 친구' },
+      { label: '마무리', en: 'talk best moments', ko: '명장면 얘기' },
     ],
   },
   {
@@ -715,6 +964,13 @@ export const topicQAs: TopicQA[] = [
       'Looking back',
       "can't stand",
     ],
+    brainstorm: [
+      { label: '답', en: 'went to overtime', ko: '연장전' },
+      { label: '이유', en: 'tension building', ko: '긴장 고조' },
+      { label: '부연', en: "couldn't sit still", ko: '못 앉음' },
+      { label: '예시', en: 'winning goal, jumped up', ko: '결승골, 벌떡' },
+      { label: '마무리', en: 'most exciting game', ko: '최고 경기' },
+    ],
   },
   {
     topic: 'overseas',
@@ -728,6 +984,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '제가 갔던 해외여행 중 가장 기억에 남는 건 몇 년 전 일본 여행이에요. 제일 좋았던 건 비행 시간이 그렇게 길지 않은데도 일상 풍경이 완전히 다르게 느껴진다는 거였어요. 주요 관광지에서 좀 떨어진 조용한 동네에 묵어서 여행이 훨씬 여유롭게 느껴졌어요. 솔직히 한 번도 안 먹어본 현지 음식을 먹어보는 게 여행에서 제일 좋았던 부분이었어요. 내년쯤엔 다른 지역도 둘러보러 다시 갈 계획이에요. 게다가 기본적인 표현이랑 손짓에 의존해야 하는 곳에 있다는 것 자체가 모험처럼 느껴지게 만들어줬어요. 그래서 국내 여행이랑 비교하면 해외여행이 저한테는 여전히 제일 신선하게 느껴지는 것 같아요.',
     keyExpressions: ['On top of that', "That's mainly why", 'Compared to ...', 'be planning on'],
+    brainstorm: [
+      { label: '답', en: 'Japan', ko: '일본' },
+      { label: '이유', en: 'scenery felt different', ko: '다른 풍경' },
+      { label: '부연', en: 'away from tourist spots', ko: '관광지 밖' },
+      { label: '예시', en: 'local food, phrases', ko: '현지 음식, 표현' },
+      { label: '마무리', en: 'most refreshing', ko: '제일 신선' },
+    ],
   },
   {
     topic: 'overseas',
@@ -747,6 +1010,13 @@ export const topicQAs: TopicQA[] = [
       'As a result',
       'get stressed out',
     ],
+    brainstorm: [
+      { label: '답', en: 'research first', ko: '먼저 조사' },
+      { label: '이유', en: 'no wasted time', ko: '시간 아끼려' },
+      { label: '부연', en: 'rough list only', ko: '대략만' },
+      { label: '예시', en: 'learn a few phrases', ko: '표현 몇 개' },
+      { label: '마무리', en: 'planning is fun', ko: '계획도 재미' },
+    ],
   },
   {
     topic: 'overseas',
@@ -760,6 +1030,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '잠깐 생각해볼게요... 외국 도시에서 표지판을 하나도 못 읽어서 완전히 길을 잃었던 적이 기억나요. 처음엔 길을 물어볼 방법도 몰라서 정말 스트레스 받는 경험이었어요. 근데 결국 현지인 한 분이 제가 헤매는 걸 보고 언어가 안 통하는데도 거의 다 데려다줬어요. 언어가 안 통해도 사람들이 얼마나 도우려고 노력하는지 그때 진짜 느꼈어요. 돌이켜보면 그게 제가 제일 좋아하는 여행 추억 중 하나예요, 언어 장벽이 있어도 낯선 사람이 얼마나 친절할 수 있는지 다시 느끼게 해줬거든요.',
     keyExpressions: ['Let me think about that for a second', 'Looking back', 'make an effort'],
+    brainstorm: [
+      { label: '답', en: 'got lost', ko: '길 잃음' },
+      { label: '이유', en: "couldn't read signs", ko: '표지판 못 읽음' },
+      { label: '부연', en: 'a local helped', ko: '현지인 도움' },
+      { label: '예시', en: 'no shared language', ko: '언어 안 통함' },
+      { label: '마무리', en: 'strangers are kind', ko: '낯선 이도 친절' },
+    ],
   },
   {
     topic: 'staycation',
@@ -773,6 +1050,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '휴가인데 집에 있을 땐, 보통 평범한 주말처럼 바쁘게 보내기보다 완전히 속도를 늦추는 기회로 삼아요. 제일 좋은 건 이번만큼은 알람을 안 맞추고 어떤 일정에도 안 맞춰도 된다는 거예요. 보통 밀린 드라마를 보거나, 평소엔 시간 없어서 못 해먹는 요리를 하면서 집에서 그냥 쉬어요. 솔직히 오후 2시까지도 잠옷 차림으로 있는 게 흔한 일인데, 그래도 전혀 상관없어요. 게다가 여행 갈 때 드는 추가 비용 없이도 여전히 휴가 기분을 느낄 수 있어요. 그래서 집에서 보내는 휴가가 재충전하는 제가 제일 좋아하는 방법 중 하나가 됐어요.',
     keyExpressions: ['On top of that', "That's mainly why", "it's common to see"],
+    brainstorm: [
+      { label: '답', en: 'stay home, slow down', ko: '집, 속도 늦춤' },
+      { label: '이유', en: 'no alarm', ko: '알람 없음' },
+      { label: '부연', en: 'shows, cooking', ko: '드라마, 요리' },
+      { label: '예시', en: 'pajamas at 2pm', ko: '오후 2시 잠옷' },
+      { label: '마무리', en: 'favorite recharge', ko: '좋아하는 재충전' },
+    ],
   },
   {
     topic: 'staycation',
@@ -792,6 +1076,13 @@ export const topicQAs: TopicQA[] = [
       'As a result',
       'on the go',
     ],
+    brainstorm: [
+      { label: '답', en: 'loose list', ko: '느슨한 리스트' },
+      { label: '이유', en: 'sleep in', ko: '늦잠' },
+      { label: '부연', en: 'busy all week', ko: '평일 바쁨' },
+      { label: '예시', en: 'good food', ko: '맛있는 음식' },
+      { label: '마무리', en: 'surprisingly restorative', ko: '의외로 충전됨' },
+    ],
   },
   {
     topic: 'staycation',
@@ -805,6 +1096,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '생각해보니, 오랫동안 해보고 싶었던 꽤 복잡한 레시피에 도전했던 어느 집휴가가 기억나요. 시간이랑 뒷정리가 얼마나 걸릴지 완전히 과소평가해서 처음엔 정말 엉망인 경험이었어요. 근데 다 끝나고 나니까 맛이 정말 좋아서 해냈다는 게 묘하게 뿌듯했어요. 그런 요리 마라톤을 더 자주 할 수 있으면 좋겠어요. 돌이켜보면 그게 제가 제일 좋아하는 집휴가 추억 중 하나예요, 평범한 집에서의 하루를 진짜 성취처럼 느껴지게 만들어줬거든요.',
     keyExpressions: ['Come to think of it', 'Looking back', 'I wish I could'],
+    brainstorm: [
+      { label: '답', en: 'hard recipe', ko: '어려운 요리' },
+      { label: '이유', en: 'messy', ko: '엉망' },
+      { label: '부연', en: 'tasted great', ko: '맛있었음' },
+      { label: '예시', en: 'oddly proud', ko: '묘하게 뿌듯' },
+      { label: '마무리', en: 'felt like an accomplishment', ko: '성취감' },
+    ],
   },
   {
     topic: 'beach',
@@ -818,6 +1116,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '제가 제일 좋아하는 해변은 부산에 있는데, 친구들이 많이 사는 곳 근처예요. 제일 좋은 건 백사장이 길게 펼쳐져 있어서 여름에도 그렇게 붐비지 않는다는 거예요. 물이 보통 잔잔하고 맑아서 해변에서도 꽤 멀리까지 보여요. 게다가 해안가를 따라 카페랑 식당이 많아서 먹을 걸 찾으러 멀리 갈 필요가 없어요. 그 해변의 단점은 성수기에 주차가 힘들다는 건데, 그래서 보통 지하철을 타고 가요. 솔직히 파도 소리만 들어도 도착하는 순간 마음이 편안해져요. 그래서 매년 여름 적어도 한 번은 가려고 해요.',
     keyExpressions: ['On top of that', "That's mainly why", 'the downside of'],
+    brainstorm: [
+      { label: '답', en: 'Busan beach', ko: '부산 해변' },
+      { label: '이유', en: 'long sand, not crowded', ko: '긴 백사장, 안 붐빔' },
+      { label: '부연', en: 'calm clear water', ko: '잔잔·맑음' },
+      { label: '예시', en: 'coast cafes', ko: '해안 카페' },
+      { label: '마무리', en: 'waves relax me', ko: '파도 소리에 편안' },
+    ],
   },
   {
     topic: 'beach',
@@ -837,6 +1142,13 @@ export const topicQAs: TopicQA[] = [
       'As a result',
       'get frustrated when',
     ],
+    brainstorm: [
+      { label: '답', en: 'few times each summer', ko: '여름에 몇 번' },
+      { label: '이유', en: 'friends, a mat', ko: '친구, 돗자리' },
+      { label: '부연', en: 'relax, not swim', ko: '수영보다 휴식' },
+      { label: '예시', en: 'snacks, sunscreen', ko: '간식, 선크림' },
+      { label: '마무리', en: 'sunset walks', ko: '노을 산책' },
+    ],
   },
   {
     topic: 'beach',
@@ -850,6 +1162,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '잠깐 생각해볼게요... 친구들이랑 해변에 갔는데 자리 잡자마자 갑자기 소나기가 내렸던 게 기억나요. 이제 막 쉬려던 참이라 처음엔 정말 답답한 경험이었어요. 근데 그냥 자리를 뜨는 대신 근처 정자로 뛰어가서 상황이 얼마나 빨리 바뀌었는지 얘기하며 웃었어요. 그 정자를 지날 때마다 아직도 그날 오후가 생각나요. 돌이켜보면 그게 제가 제일 좋아하는 해변 추억 중 하나예요, 하루를 망치는 대신 즉흥적이고 재밌는 순간이 됐거든요.',
     keyExpressions: ['Let me think about that for a second', 'Looking back', 'reminds me of'],
+    brainstorm: [
+      { label: '답', en: 'rainstorm after setup', ko: '자리 잡자 소나기' },
+      { label: '이유', en: 'just started relaxing', ko: '막 쉬려던 참' },
+      { label: '부연', en: 'ran to a pavilion', ko: '정자로 대피' },
+      { label: '예시', en: 'laughed about it', ko: '웃음' },
+      { label: '마무리', en: 'fun instead of ruined', ko: '망친 대신 재미' },
+    ],
   },
   {
     topic: 'furniture',
@@ -863,6 +1182,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '저희 집엔 화려한 가구보다는 침대, 책상, 작은 소파처럼 단순하고 실용적인 가구가 대부분이에요. 전자제품은 노트북, TV, 그리고 괜찮은 스피커 정도가 있는데, 실제로 매일 쓰는 것들이라서요. 솔직히 노트북은 이제 없이는 못 살 정도인데, 일할 때부터 그냥 쉴 때까지 다 이걸로 하거든요. 제가 제일 좋아하는 건 다 미니멀해서 공간이 답답하지 않다는 거예요. 게다가 케이블이랑 충전기를 정리해두려고 하는 편인데, 지저분한 책상은 솔직히 스트레스거든요. 그래서 제 방이 친구들 방보다 꽤 단순해 보이는 편이에요.',
     keyExpressions: ['On top of that', "That's mainly why", "can't live without"],
+    brainstorm: [
+      { label: '답', en: 'simple furniture', ko: '단순한 가구' },
+      { label: '이유', en: 'use daily', ko: '매일 씀' },
+      { label: '부연', en: 'laptop I need', ko: '필수 노트북' },
+      { label: '예시', en: 'minimal, tidy cables', ko: '미니멀, 선 정리' },
+      { label: '마무리', en: 'place looks simple', ko: '단순해 보임' },
+    ],
   },
   {
     topic: 'furniture',
@@ -882,6 +1208,13 @@ export const topicQAs: TopicQA[] = [
       'As a result',
       "can't stand",
     ],
+    brainstorm: [
+      { label: '답', en: 'living room couch', ko: '거실 소파' },
+      { label: '이유', en: 'most downtime', ko: '여유 시간 대부분' },
+      { label: '부연', en: 'use for everything', ko: '뭐든 거기서' },
+      { label: '예시', en: 'blanket, side table', ko: '담요, 테이블' },
+      { label: '마무리', en: 'miss it most if I moved', ko: '이사 가면 그리울 것' },
+    ],
   },
   {
     topic: 'furniture',
@@ -895,6 +1228,13 @@ export const topicQAs: TopicQA[] = [
     answerKo:
       '지금 당장 새 전자제품을 사야 한다면, 아마 더 좋은 헤드폰을 살 것 같아요, 일할 때랑 음악 들을 때 거의 매일 쓰거든요. 지금 쓰는 건 솔직히 꽤 오래돼서 음질이 눈에 띄게 나빠졌어요. 평소엔 기기 업그레이드를 그렇게 진지하게 생각 안 하는데, 이번엔 좀 늦은 것 같아요. 좋은 헤드폰이 사람들이 생각하는 것보다 일상에 더 큰 차이를 만드는 것 같아요, 특히 뭔가를 듣는 데 시간을 많이 쓴다면요. 이미 얼마나 의존하고 있는지 생각해보면, 미루기보다 빨리 바꾸는 게 맞는 것 같아요.',
     keyExpressions: ['Looking back', 'take something seriously'],
+    brainstorm: [
+      { label: '답', en: 'better headphones', ko: '더 좋은 헤드폰' },
+      { label: '이유', en: 'used daily, old', ko: '매일 씀, 낡음' },
+      { label: '부연', en: 'sound worse now', ko: '음질 나빠짐' },
+      { label: '예시', en: 'big daily difference', ko: '일상에 큰 차이' },
+      { label: '마무리', en: 'upgrade soon', ko: '곧 교체' },
+    ],
   },
 ];
 

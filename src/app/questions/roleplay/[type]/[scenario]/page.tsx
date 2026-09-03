@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { roleplayQAs, roleplayTypeInfo, getRoleplayQA } from '@/data/roleplay-qa';
-import { AnswerGradeViewer } from '@/components/answer-grade-viewer';
+import { QAAnswerBlock } from '@/components/qa-answer-block';
 
 export function generateStaticParams() {
   return roleplayQAs.map((q) => ({ type: q.type, scenario: q.scenario }));
@@ -48,23 +48,11 @@ export default async function RoleplayCutPage({
       </h1>
       <p className="mt-2 text-[15px] text-muted-foreground">{typeInfo.note}</p>
 
-      <div className="mt-8 rounded-xl border border-border bg-card p-6">
-        <p className="text-[13px] text-muted-foreground">예상 질문</p>
-        <p className="mt-1 text-[18px] font-medium">{qa.question.en}</p>
-        <p className="mt-1 text-[14px] text-muted-foreground">{qa.question.ko}</p>
-      </div>
-
-      <AnswerGradeViewer
-        id={`roleplay-qa-${qa.type}-${qa.scenario}`}
-        questionKo={qa.question.ko}
-        fullAnswerEn={qa.answer}
-        fullAnswerKo={qa.answerKo}
-        keyExpressions={qa.keyExpressions}
+      <QAAnswerBlock
+        qa={qa}
+        viewerId={`roleplay-qa-${qa.type}-${qa.scenario}`}
+        disclaimer="답안은 학습용 초안이에요. 통째로 외우기보다 내 상황에 맞게 바꿔서 연습하세요."
       />
-
-      <p className="mt-10 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
-        답안은 학습용 초안이에요. 통째로 외우기보다 내 상황에 맞게 바꿔서 연습하세요.
-      </p>
     </div>
   );
 }

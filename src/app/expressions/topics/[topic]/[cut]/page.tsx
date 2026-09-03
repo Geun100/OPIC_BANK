@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { topicQAs, topicInfo, cutInfo, getTopicQA, type CutKey } from '@/data/topic-qa';
-import { AnswerGradeViewer } from '@/components/answer-grade-viewer';
+import { QAAnswerBlock } from '@/components/qa-answer-block';
 
 export function generateStaticParams() {
   return topicQAs.map((q) => ({ topic: q.topic, cut: q.cut }));
@@ -67,23 +67,7 @@ export default async function TopicCutPage({
         ))}
       </div>
 
-      <div className="mt-6 rounded-xl border border-border bg-card p-6">
-        <p className="text-[13px] text-muted-foreground">예상 질문</p>
-        <p className="mt-1 text-[18px] font-medium">{qa.question.en}</p>
-        <p className="mt-1 text-[14px] text-muted-foreground">{qa.question.ko}</p>
-      </div>
-
-      <AnswerGradeViewer
-        id={`topic-qa-${qa.topic}-${qa.cut}`}
-        questionKo={qa.question.ko}
-        fullAnswerEn={qa.answer}
-        fullAnswerKo={qa.answerKo}
-        keyExpressions={qa.keyExpressions}
-      />
-
-      <p className="mt-10 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
-        답안은 학습용 초안이에요. 통째로 외우기보다 내 경험에 맞게 바꿔서 연습하세요.
-      </p>
+      <QAAnswerBlock qa={qa} viewerId={`topic-qa-${qa.topic}-${qa.cut}`} />
     </div>
   );
 }
