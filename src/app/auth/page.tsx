@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { LoginForm, SignUpForm } from '@/components/auth';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { PageSEO } from '@/components/seo';
 import { pageDefaults } from '@/lib/seo/config';

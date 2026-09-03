@@ -1,6 +1,9 @@
+// '...' 자리표시자가 없는, 그대로 매칭 가능한 표현만 추림
+const literalExpressions = (expressions: string[]) => expressions.filter((e) => !e.includes('...'));
+
 // 답변 본문 안에서 핵심 표현을 찾아 굵게 표시하기 위한 텍스트 분리 유틸
 export function splitByExpressions(text: string, expressions: string[]): string[] {
-  const literal = expressions.filter((e) => !e.includes('...'));
+  const literal = literalExpressions(expressions);
   if (literal.length === 0) return [text];
 
   const pattern = literal
@@ -26,7 +29,7 @@ export function truncateSentences(text: string, n: number): string {
 
 // 답변 문장 중 핵심 표현이 들어간 문장을 최대 3개 뽑아 "암기 추천 문장"으로 제공
 export function pickMemorizeSentences(answer: string, expressions: string[], max = 3): string[] {
-  const literal = expressions.filter((e) => !e.includes('...'));
+  const literal = literalExpressions(expressions);
   const sentences = splitSentences(answer);
 
   const picked: string[] = [];
