@@ -36,6 +36,7 @@ export function QAAnswerBlock({
         fullAnswerEn={qa.answer}
         fullAnswerKo={qa.answerKo}
         keyExpressions={qa.keyExpressions}
+        brainstorm={qa.brainstorm}
       />
 
       <p className="mt-10 rounded-lg bg-muted p-4 text-[12px] text-muted-foreground">
