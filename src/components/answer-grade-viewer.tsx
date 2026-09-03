@@ -59,20 +59,21 @@ export function AnswerGradeViewer({
     tailored.answerEn.toLowerCase().includes(e.toLowerCase()),
   );
 
-  // '...' 없는 실제 매칭용 표현 + 특정 문장에 든 표현 추출
+  // '...' 없는 실제 매칭용 표현
   const litExpressions = (activeExpressions.length > 0 ? activeExpressions : keyExpressions).filter(
     (e) => !e.includes('...'),
   );
-  const expressionsInSentence = (s: string) =>
-    litExpressions.filter((e) => s.toLowerCase().includes(e.toLowerCase()));
-  const coveredExpr = new Set(
-    memorizeSentences.flatMap(expressionsInSentence).map((e) => e.toLowerCase()),
-  );
-  const otherExpressions = litExpressions.filter((e) => !coveredExpr.has(e.toLowerCase()));
 
   // 모범답안 문장을 브레인스토밍 단계 수만큼 순서대로 구획 (답변은 브레인스토밍 흐름대로 쓰여 있음)
   const enSentences = splitSentences(tailored.answerEn);
   const koSentences = splitSentences(tailored.answerKo);
+
+  // 암기 추천 문장에 대응하는 한글 해석 (문장 수가 일치할 때만)
+  const memoPairs = memorizeSentences.map((s) => {
+    const idx = enSentences.indexOf(s);
+    const ko = idx >= 0 && koSentences.length === enSentences.length ? koSentences[idx] : null;
+    return { en: s, ko };
+  });
   const steps = brainstorm ?? [];
   const beatGroups =
     steps.length > 0
@@ -269,24 +270,27 @@ export function AnswerGradeViewer({
           )}
         </div>
         <ul className="mt-3 flex flex-col gap-2.5">
-          {memorizeSentences.length > 0 ? (
-            memorizeSentences.map((s, idx) => (
-              <li key={s} className="rounded-lg bg-white p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+          {memoPairs.length > 0 ? (
+            memoPairs.map((pair, idx) => (
+              <li
+                key={pair.en}
+                className="rounded-lg bg-white p-3 shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+              >
                 <div className="flex items-start gap-3">
                   <span className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-subdued/50 text-[11px] font-semibold text-primary-press">
                     {idx + 1}
                   </span>
-                  <p className="text-[14px] leading-relaxed">
-                    {renderHighlighted(s, `memo-${idx}`)}
-                  </p>
-                </div>
-                {expressionsInSentence(s).length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1.5 pl-8">
-                    {expressionsInSentence(s).map((e) => (
-                      <ExprChip key={e} e={e} />
-                    ))}
+                  <div>
+                    <p className="text-[14px] leading-relaxed">
+                      {renderHighlighted(pair.en, `memo-${idx}`)}
+                    </p>
+                    {pair.ko && (
+                      <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                        {pair.ko}
+                      </p>
+                    )}
                   </div>
-                )}
+                </div>
               </li>
             ))
           ) : (
@@ -294,13 +298,13 @@ export function AnswerGradeViewer({
           )}
         </ul>
 
-        {otherExpressions.length > 0 && (
+        {litExpressions.length > 0 && (
           <div className="mt-4 border-t border-border pt-3">
             <p className="text-[12px] font-medium text-muted-foreground">
-              {memorizeSentences.length > 0 ? '그 외 핵심 표현' : '이 답변에 쓰인 핵심 표현'}
+              이 답변에 쓰인 핵심 표현
             </p>
             <div className="mt-2 flex flex-wrap gap-1.5">
-              {otherExpressions.map((e) => (
+              {litExpressions.map((e) => (
                 <ExprChip key={e} e={e} />
               ))}
             </div>
