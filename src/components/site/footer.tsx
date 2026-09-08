@@ -1,6 +1,7 @@
 // OPIC Bank 사이트 푸터 — 메뉴 링크와 면책 문구
 import Image from 'next/image';
 import Link from 'next/link';
+import { Instagram } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -12,6 +13,15 @@ export function Footer() {
             OPIC <span className="text-primary">Bank</span> (오픽뱅크)
           </p>
           <p>오픽에 필요한 모든 표현을 한곳에 모아둔 아카이브</p>
+          <a
+            href="https://www.instagram.com/opic_bank"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-2 inline-flex items-center gap-1.5 hover:text-primary"
+          >
+            <Instagram className="size-4" />
+            @opic_bank
+          </a>
         </div>
         <div className="flex flex-col gap-2">
           <p className="text-foreground">가이드</p>
