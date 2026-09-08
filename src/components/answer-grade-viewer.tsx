@@ -75,22 +75,39 @@ export function AnswerGradeViewer({
     return { en: s, ko };
   });
   const steps = brainstorm ?? [];
+  // 등급별로 답변 문장 수가 다르게 추려지므로(IM 4문장/IH 6~7문장/AL 전체),
+  // 추려진 문장 개수 기준으로 단계를 나누면 라벨이 밀린다.
+  // 원본 답변 기준 각 문장이 몇 번째 브레인스토밍 단계에 속하는지 먼저 정하고,
+  // 그 원본 인덱스(tailored.indices)로 추려진 문장을 해당 단계에 배정한다.
+  const originalTotal = splitSentences(fullAnswerEn).length;
+  const stepOfOriginalIndex = (idx: number) => {
+    for (let s = 0; s < steps.length; s++) {
+      const from = Math.floor((s * originalTotal) / steps.length);
+      const to = Math.floor(((s + 1) * originalTotal) / steps.length);
+      if (idx >= from && idx < to) return s;
+    }
+    return steps.length - 1;
+  };
   const beatGroups =
     steps.length > 0
-      ? steps
-          .map((step, i) => {
-            const from = Math.floor((i * enSentences.length) / steps.length);
-            const to = Math.floor(((i + 1) * enSentences.length) / steps.length);
-            const koFrom = Math.floor((i * koSentences.length) / steps.length);
-            const koTo = Math.floor(((i + 1) * koSentences.length) / steps.length);
-            return {
-              step,
-              tone: BEAT_TONES[i % BEAT_TONES.length],
-              en: enSentences.slice(from, to),
-              ko: koSentences.slice(koFrom, koTo),
-            };
-          })
-          .filter((g) => g.en.length > 0)
+      ? (() => {
+          const groups = steps.map((step, i) => ({
+            step,
+            tone: BEAT_TONES[i % BEAT_TONES.length],
+            en: [] as string[],
+            ko: [] as string[],
+          }));
+          const koAligned = koSentences.length === tailored.indices.length;
+          tailored.indices.forEach((originalIdx, pos) => {
+            const en = enSentences[pos];
+            if (en === undefined) return; // 방어: 문장 수보다 많은 인덱스가 들어온 경우 건너뜀
+            const stepIdx = stepOfOriginalIndex(originalIdx);
+            groups[stepIdx].en.push(en);
+            if (koAligned && koSentences[pos] !== undefined)
+              groups[stepIdx].ko.push(koSentences[pos]);
+          });
+          return groups.filter((g) => g.en.length > 0);
+        })()
       : null;
 
   const copyMemorizeSentences = async () => {

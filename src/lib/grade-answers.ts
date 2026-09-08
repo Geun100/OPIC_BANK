@@ -56,6 +56,8 @@ export type GradeAnswerResult = {
   answerEn: string;
   answerKo: string;
   sentenceCount: number;
+  // 원본 답변 기준 몇 번째 문장을 뽑아 썼는지 — 브레인스토밍 단계 라벨과 맞춰 보여줄 때 사용
+  indices: number[];
 };
 
 export function getGradeTailoredAnswer(
@@ -91,13 +93,14 @@ export function getGradeTailoredAnswer(
       answerEn,
       answerKo,
       sentenceCount: indices.length,
+      indices,
     };
   }
 
   if (grade === 'IH') {
     // Pick 5-6 front sentences + 1 conclusion sentence (total 6-7 sentences)
     const indices: number[] = [];
-    const targetCount = Math.min(6, Math.max(5, total - 3));
+    const targetCount = Math.min(6, Math.max(5, total - 3), total);
     for (let i = 0; i < targetCount; i++) {
       indices.push(i);
     }
@@ -118,6 +121,7 @@ export function getGradeTailoredAnswer(
       answerEn,
       answerKo,
       sentenceCount: indices.length,
+      indices,
     };
   }
 
@@ -135,5 +139,6 @@ export function getGradeTailoredAnswer(
     answerEn,
     answerKo,
     sentenceCount: enSentences.length,
+    indices: enSentences.map((_, i) => i),
   };
 }

@@ -33,10 +33,15 @@ export default function AboutPage() {
         </p>
         <p>
           운영 및 콘텐츠 관련 문의는{' '}
-          <a href="/contact" className="text-primary hover:underline">
-            연락처 페이지
+          <a
+            href="https://www.instagram.com/opic_bank"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            인스타그램 @opic_bank
           </a>
-          를 통해 남겨주세요.
+          로 남겨주세요.
         </p>
       </div>
     </div>
