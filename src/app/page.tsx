@@ -9,6 +9,8 @@ import {
   Award,
   NotebookPen,
   Target,
+  Lightbulb,
+  ClipboardList,
 } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -43,10 +45,22 @@ const menus = [
     desc: '주제별 표현, 필러, 만능 패턴 검색',
   },
   {
+    href: '/tips',
+    icon: Lightbulb,
+    title: '오픽 TIP',
+    desc: '답변 구조부터 서베이 전략까지 실전 팁',
+  },
+  {
     href: '/grade',
     icon: Award,
     title: 'AL·IH 표현집',
     desc: '고득점 표현·문장 패턴 모음',
+  },
+  {
+    href: '/mp-worksheet',
+    icon: ClipboardList,
+    title: 'MP 워크시트',
+    desc: '답변을 MP→이유→감정 구조로 정리하기',
   },
   {
     href: '/notes',
