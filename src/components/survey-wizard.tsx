@@ -2,7 +2,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, Copy, RotateCcw } from 'lucide-react';
+import Link from 'next/link';
+import { Check, Copy, RotateCcw, MessageSquareQuote, Search, ArrowRight } from 'lucide-react';
 import { splitSentences } from '@/lib/highlight';
 import {
   goalTierInfo,
@@ -204,6 +205,42 @@ export function SurveyWizard() {
             {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
             {copied ? '복사됨' : '프롬프트 복사'}
           </button>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="mb-3 text-[18px]">이제 이 조합으로 준비하세요</h3>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Link
+            href="/questions"
+            className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/50"
+          >
+            <div className="flex items-center gap-3">
+              <MessageSquareQuote className="size-5 shrink-0 text-primary" />
+              <div>
+                <p className="text-[14px] font-medium">질문 라이브러리 보기</p>
+                <p className="mt-0.5 text-[12px] text-muted-foreground">
+                  콤보·돌발 예상 질문 확인하기
+                </p>
+              </div>
+            </div>
+            <ArrowRight className="size-4 shrink-0 text-muted-foreground" />
+          </Link>
+          <Link
+            href="/expressions"
+            className="flex items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/50"
+          >
+            <div className="flex items-center gap-3">
+              <Search className="size-5 shrink-0 text-primary" />
+              <div>
+                <p className="text-[14px] font-medium">표현 라이브러리 보기</p>
+                <p className="mt-0.5 text-[12px] text-muted-foreground">
+                  이 조합에 쓸 표현 찾아보기
+                </p>
+              </div>
+            </div>
+            <ArrowRight className="size-4 shrink-0 text-muted-foreground" />
+          </Link>
         </div>
       </div>
 
