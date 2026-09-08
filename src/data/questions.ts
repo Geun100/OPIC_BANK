@@ -127,15 +127,15 @@ export const comboTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'What kind of performances do you like to watch?',
-        ko: '좋아하는 공연 종류를 묘사해달라는 질문',
+        ko: '어떤 종류의 공연을 즐겨 보나요?',
       },
       {
         en: "How often do you go see performances, and what's your routine?",
-        ko: '공연을 얼마나 자주, 어떻게 보는지 묻는 질문',
+        ko: '공연을 얼마나 자주 보러 가고, 보통 어떻게 하나요?',
       },
       {
         en: 'Tell me about a memorable experience watching a performance.',
-        ko: '공연 관람 중 기억에 남는 경험',
+        ko: '공연을 보다가 있었던 기억에 남는 경험을 이야기해 주세요.',
       },
     ],
   },
@@ -144,27 +144,30 @@ export const comboTopics: QuestionTopic[] = [
     questions: [
       {
         en: "Describe a concert you've been to or would like to attend.",
-        ko: '콘서트를 묘사해달라는 질문',
+        ko: '가봤거나 가보고 싶은 콘서트를 묘사해 주세요.',
       },
       {
         en: 'What do you usually do to prepare for a concert?',
-        ko: '콘서트 갈 때 평소 준비하는 방식',
+        ko: '콘서트 갈 때 보통 어떻게 준비하나요?',
       },
       {
         en: 'Tell me about a memorable experience at a concert.',
-        ko: '콘서트에서의 기억에 남는 경험',
+        ko: '콘서트에서 있었던 기억에 남는 경험을 이야기해 주세요.',
       },
     ],
   },
   {
     name: '쇼핑하기',
     questions: [
-      { en: 'What kind of shopping do you usually do?', ko: '평소 하는 쇼핑을 묘사해달라는 질문' },
+      { en: 'What kind of shopping do you usually do?', ko: '평소 어떤 쇼핑을 주로 하나요?' },
       {
         en: "How often do you go shopping, and what's your routine?",
-        ko: '쇼핑을 얼마나 자주, 어떻게 하는지 묻는 질문',
+        ko: '쇼핑을 얼마나 자주 가고, 보통 어떻게 하나요?',
       },
-      { en: 'Tell me about a memorable shopping experience.', ko: '쇼핑 중 기억에 남는 경험' },
+      {
+        en: 'Tell me about a memorable shopping experience.',
+        ko: '기억에 남는 쇼핑 경험을 이야기해 주세요.',
+      },
     ],
   },
   {
@@ -172,13 +175,16 @@ export const comboTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'Can you describe what camping is usually like for you? Where do you usually go?',
-        ko: '캠핑을 묘사해달라는 질문',
+        ko: '평소 캠핑이 어떤 모습인지 설명해 주세요. 보통 어디로 가나요?',
       },
       {
         en: 'How often do you go camping, and what do you usually do to prepare?',
-        ko: '캠핑을 얼마나 자주, 어떻게 준비하는지 묻는 질문',
+        ko: '캠핑을 얼마나 자주 가고, 보통 어떻게 준비하나요?',
       },
-      { en: 'Tell me about a memorable camping experience.', ko: '캠핑 중 기억에 남는 경험' },
+      {
+        en: 'Tell me about a memorable camping experience.',
+        ko: '기억에 남는 캠핑 경험을 이야기해 주세요.',
+      },
     ],
   },
   {
@@ -186,15 +192,15 @@ export const comboTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'What kind of sports do you like to watch?',
-        ko: '좋아하는 스포츠 관람을 묘사해달라는 질문',
+        ko: '어떤 스포츠 관람을 좋아하나요?',
       },
       {
         en: "How often do you watch sports, and what's your routine?",
-        ko: '스포츠 관람을 얼마나 자주, 어떻게 하는지 묻는 질문',
+        ko: '스포츠를 얼마나 자주 보고, 보통 어떻게 하나요?',
       },
       {
         en: 'Tell me about a memorable experience watching a sports game.',
-        ko: '스포츠 관람 중 기억에 남는 경험',
+        ko: '스포츠 경기를 보다가 있었던 기억에 남는 경험을 이야기해 주세요.',
       },
     ],
   },
@@ -203,15 +209,15 @@ export const comboTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'Describe a trip abroad that you remember well. Where did you go?',
-        ko: '기억에 남는 해외여행을 묘사해달라는 질문',
+        ko: '기억에 남는 해외여행을 묘사해 주세요. 어디로 갔나요?',
       },
       {
         en: 'How do you usually prepare for an overseas trip?',
-        ko: '해외여행을 어떻게 준비하는지 묻는 질문',
+        ko: '해외여행은 보통 어떻게 준비하나요?',
       },
       {
         en: 'Tell me about a memorable experience you had on an overseas trip.',
-        ko: '해외여행 중 기억에 남는 경험',
+        ko: '해외여행 중 있었던 기억에 남는 경험을 이야기해 주세요.',
       },
     ],
   },
@@ -220,13 +226,16 @@ export const comboTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'What do you like to do when you spend your vacation at home?',
-        ko: '집에서 보내는 휴가에 뭘 하는지 묻는 질문',
+        ko: '집에서 휴가를 보낼 때 주로 뭘 하나요?',
       },
       {
         en: 'How do you usually spend a staycation?',
-        ko: '집에서 보내는 휴가를 어떻게 보내는지 묻는 질문',
+        ko: '집콕 휴가는 보통 어떻게 보내나요?',
       },
-      { en: 'Tell me about a memorable staycation experience.', ko: '집휴가 중 기억에 남는 경험' },
+      {
+        en: 'Tell me about a memorable staycation experience.',
+        ko: '기억에 남는 집콕 휴가 경험을 이야기해 주세요.',
+      },
     ],
   },
   {
@@ -234,15 +243,15 @@ export const comboTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'Describe your favorite beach. What does it look like?',
-        ko: '좋아하는 해변을 묘사해달라는 질문',
+        ko: '좋아하는 해변을 묘사해 주세요. 어떻게 생겼나요?',
       },
       {
         en: 'How often do you go to the beach, and what do you usually do there?',
-        ko: '해변에서 평소 뭘 하는지 묻는 질문',
+        ko: '해변에 얼마나 자주 가고, 거기서 주로 뭘 하나요?',
       },
       {
         en: 'Tell me about a memorable experience at the beach.',
-        ko: '해변에서의 기억에 남는 경험',
+        ko: '해변에서 있었던 기억에 남는 경험을 이야기해 주세요.',
       },
     ],
   },
@@ -251,15 +260,15 @@ export const comboTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'What kind of furniture or electronic devices do you have at home?',
-        ko: '집에 있는 가구/전자제품을 묻는 질문',
+        ko: '집에 어떤 가구나 전자제품이 있나요?',
       },
       {
         en: 'Tell me about your favorite piece of furniture or device. Why is it important to you?',
-        ko: '제일 좋아하는 가구/기기를 묻는 질문',
+        ko: '제일 좋아하는 가구나 기기를 이야기해 주세요. 왜 중요한가요?',
       },
       {
         en: 'If you had to buy a new device, what would it be and why?',
-        ko: '새로 살 기기가 있다면 뭘지 묻는 질문',
+        ko: '새 기기를 산다면 뭘 사고 싶고 이유는 뭔가요?',
       },
     ],
   },
@@ -359,15 +368,15 @@ export const suddenTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'Describe what a typical bank in your country looks like.',
-        ko: '일반적인 은행의 모습을 묻는 질문',
+        ko: '당신 나라의 일반적인 은행은 어떤 모습인가요?',
       },
       {
         en: 'Tell me about the last time you went to a bank. What was the purpose?',
-        ko: '마지막으로 은행 간 목적을 묻는 질문',
+        ko: '마지막으로 은행에 갔던 때를 이야기해 주세요. 목적이 뭐였나요?',
       },
       {
         en: 'Imagine a foreigner asks you how to open a bank account. How would you explain the process?',
-        ko: '외국인에게 계좌 개설 과정을 설명하는 질문',
+        ko: '외국인이 계좌 개설 방법을 물어본다면 어떻게 설명할 건가요?',
       },
     ],
   },
@@ -376,43 +385,46 @@ export const suddenTopics: QuestionTopic[] = [
     questions: [
       {
         en: 'Tell me about a holiday or special day you celebrate.',
-        ko: '기념하는 명절/휴일을 묻는 질문',
+        ko: '당신이 기념하는 명절이나 특별한 날을 이야기해 주세요.',
       },
       {
         en: 'Describe what people usually do during that holiday.',
-        ko: '명절에 사람들이 하는 것을 묻는 질문',
+        ko: '그 명절에 사람들이 보통 뭘 하는지 설명해 주세요.',
       },
       {
         en: 'Imagine you are explaining a Korean holiday to a foreigner. What would you say?',
-        ko: '외국인에게 한국 명절을 설명하는 질문',
+        ko: '외국인에게 한국 명절을 설명한다면 뭐라고 말할 건가요?',
       },
     ],
   },
   {
     name: '패션',
     questions: [
-      { en: 'What kind of clothes do you usually wear?', ko: '평소 옷차림을 묻는 질문' },
+      { en: 'What kind of clothes do you usually wear?', ko: '평소 어떤 옷을 주로 입나요?' },
       {
         en: 'Describe a fashion trend that you like or dislike.',
-        ko: '좋아하거나 싫어하는 패션 트렌드를 묻는 질문',
+        ko: '좋아하거나 싫어하는 패션 트렌드를 설명해 주세요.',
       },
       {
         en: 'If you had to recommend Korean fashion to a foreigner, what would it be?',
-        ko: '외국인에게 추천할 한국 패션을 묻는 질문',
+        ko: '외국인에게 한국 패션을 추천한다면 뭘 추천하고 싶나요?',
       },
     ],
   },
   {
     name: '산업',
     questions: [
-      { en: 'What industries are popular in your country?', ko: '인기 있는 산업을 묻는 질문' },
+      {
+        en: 'What industries are popular in your country?',
+        ko: '당신 나라에서 인기 있는 산업은 무엇인가요?',
+      },
       {
         en: "How do these industries affect people's everyday lives in your country?",
-        ko: '산업이 일상에 미치는 영향을 묻는 질문',
+        ko: '그 산업들이 사람들의 일상에 어떤 영향을 미치나요?',
       },
       {
         en: "Tell me about a change you've noticed in an industry in your country.",
-        ko: '산업의 변화를 묻는 질문',
+        ko: '당신 나라의 한 산업에서 느낀 변화를 이야기해 주세요.',
       },
     ],
   },
