@@ -7,6 +7,7 @@ import { splitByExpressions, pickMemorizeSentences, splitSentences } from '@/lib
 import { GRADE_TIER_INFO, getGradeTailoredAnswer, type GradeTier } from '@/lib/grade-answers';
 import { findExpressionMeaning } from '@/data/expressions';
 import type { BrainstormStep } from '@/data/topic-qa';
+import { analytics } from '@/lib/analytics';
 
 type AnswerGradeViewerProps = {
   id: string;
@@ -112,6 +113,11 @@ export function AnswerGradeViewer({
 
   const copyMemorizeSentences = async () => {
     await navigator.clipboard.writeText(memorizeSentences.join('\n'));
+    analytics.capture('memorize_sentences_copied', {
+      content_id: id,
+      target_grade: activeGrade,
+      sentence_count: memorizeSentences.length,
+    });
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -177,7 +183,13 @@ export function AnswerGradeViewer({
               <button
                 key={g}
                 type="button"
-                onClick={() => setActiveGrade(g)}
+                onClick={() => {
+                  setActiveGrade(g);
+                  analytics.capture('answer_grade_selected', {
+                    content_id: id,
+                    target_grade: g,
+                  });
+                }}
                 className={`flex flex-col items-center justify-center rounded-lg border py-2.5 px-2 text-center transition-all ${
                   isSelected
                     ? gradeItem.tabActiveClass

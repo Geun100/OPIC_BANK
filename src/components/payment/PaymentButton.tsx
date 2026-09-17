@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
+import { analytics } from '@/lib/analytics';
 
 interface PaymentButtonProps {
   amount: number;
@@ -49,6 +50,7 @@ export const PaymentButton = ({
         customerEmail,
       };
 
+      analytics.capture('payment_started', { amount, order_name: orderName });
       await requestPayment(paymentData);
 
       // 결제 성공 시 콜백 호출
@@ -56,6 +58,7 @@ export const PaymentButton = ({
         onSuccess(paymentData.orderId);
       }
     } catch (err: unknown) {
+      analytics.capture('payment_failed', { amount, order_name: orderName });
       console.error('결제 처리 오류:', err);
       const error = err as { message?: string };
       if (onError) {

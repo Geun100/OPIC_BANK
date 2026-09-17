@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Check, Copy, RotateCcw, MessageSquareQuote, Search, ArrowRight } from 'lucide-react';
 import { splitSentences } from '@/lib/highlight';
+import { analytics } from '@/lib/analytics';
 import {
   goalTierInfo,
   recommend,
@@ -45,6 +46,7 @@ export function SurveyWizard() {
             key={t}
             className={optionBtn}
             onClick={() => {
+              analytics.capture('survey_recommendation_started', { target_grade: t });
               setTier(t);
               setStep('style');
             }}
@@ -69,6 +71,7 @@ export function SurveyWizard() {
         <button
           className={optionBtn}
           onClick={() => {
+            analytics.capture('survey_style_selected', { style: 'safe' });
             setStyle('safe');
             setStep('place');
           }}
@@ -81,6 +84,7 @@ export function SurveyWizard() {
         <button
           className={optionBtn}
           onClick={() => {
+            analytics.capture('survey_style_selected', { style: 'variety' });
             setStyle('variety');
             setStep('place');
           }}
@@ -101,6 +105,11 @@ export function SurveyWizard() {
         <button
           className={optionBtn}
           onClick={() => {
+            analytics.capture('survey_recommendation_completed', {
+              target_grade: tier,
+              style,
+              place: 'indoor',
+            });
             setPlace('indoor');
             setStep('result');
           }}
@@ -111,6 +120,11 @@ export function SurveyWizard() {
         <button
           className={optionBtn}
           onClick={() => {
+            analytics.capture('survey_recommendation_completed', {
+              target_grade: tier,
+              style,
+              place: 'outdoor',
+            });
             setPlace('outdoor');
             setStep('result');
           }}
@@ -197,6 +211,11 @@ export function SurveyWizard() {
           <button
             onClick={async () => {
               await navigator.clipboard.writeText(prompt);
+              analytics.capture('practice_prompt_copied', {
+                target_grade: tier,
+                style,
+                place,
+              });
               setCopied(true);
               setTimeout(() => setCopied(false), 2000);
             }}
