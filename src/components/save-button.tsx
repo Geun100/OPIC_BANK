@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { Star } from 'lucide-react';
 import { isSaved, toggleNote, onNotesChange, type NoteItem } from '@/lib/notes';
+import { analytics } from '@/lib/analytics';
 
 type Props = Omit<NoteItem, 'savedAt'>;
 
@@ -19,7 +20,14 @@ export function SaveButton(props: Props) {
     <button
       type="button"
       aria-label={saved ? '노트에서 제거' : '노트에 저장'}
-      onClick={() => setSaved(toggleNote(props))}
+      onClick={() => {
+        const nextSaved = toggleNote(props);
+        setSaved(nextSaved);
+        analytics.capture(nextSaved ? 'note_saved' : 'note_removed', {
+          content_id: props.id,
+          content_type: props.type,
+        });
+      }}
       className="shrink-0 rounded-full p-1.5 transition-[background-color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-accent active:scale-90"
     >
       <Star

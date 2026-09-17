@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { CheckCircle, AlertCircle, ArrowLeft, Receipt } from 'lucide-react';
 import { formatAmount, parsePaymentResult } from '@/lib/toss-payments';
+import { analytics } from '@/lib/analytics';
 
 interface PaymentDetail {
   paymentKey: string;
@@ -73,6 +74,11 @@ export default function PaymentSuccessPage() {
 
         if (result.success && result.payment) {
           setPaymentDetail(result.payment);
+          analytics.capture('payment_completed', {
+            amount: result.payment.totalAmount,
+            order_name: result.payment.orderName,
+            payment_method: result.payment.method,
+          });
         } else {
           throw new Error('결제 승인 응답이 올바르지 않습니다.');
         }

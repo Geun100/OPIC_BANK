@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContextType, AuthUser, mapSupabaseUser } from '@/types/auth';
 import { supabase } from '@/lib/supabase';
+import { analytics } from '@/lib/analytics';
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
@@ -27,7 +28,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     supabase.auth
       .getSession()
       .then(({ data: { session } }) => {
-        setUser(mapSupabaseUser(session?.user ?? null));
+        const mappedUser = mapSupabaseUser(session?.user ?? null);
+        setUser(mappedUser);
+        if (mappedUser) analytics.identify(mappedUser.id);
         setLoading(false);
       })
       .catch((error) => {
@@ -40,8 +43,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       const {
         data: { subscription },
-      } = supabase.auth.onAuthStateChange((_event, session) => {
-        setUser(mapSupabaseUser(session?.user ?? null));
+      } = supabase.auth.onAuthStateChange((event, session) => {
+        const mappedUser = mapSupabaseUser(session?.user ?? null);
+        setUser(mappedUser);
+        if (mappedUser) {
+          analytics.identify(mappedUser.id);
+          if (event === 'SIGNED_IN') analytics.capture('user_signed_in');
+        }
         setLoading(false);
       });
 
@@ -64,6 +72,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         return { error: error.message };
       }
 
+      analytics.capture('email_sign_in_succeeded');
       return {};
     } catch {
       return { error: '로그인 중 오류가 발생했습니다' };
@@ -87,6 +96,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         return { error: error.message };
       }
 
+      analytics.capture('user_signed_up', { method: 'email' });
       return {};
     } catch {
       return { error: '회원가입 중 오류가 발생했습니다' };
@@ -99,6 +109,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       setLoading(true);
       await supabase.auth.signOut();
+      analytics.capture('user_signed_out');
+      analytics.reset();
     } catch (_error) {
       console.error('로그아웃 오류:', _error);
     } finally {
@@ -109,6 +121,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const signInWithGoogle = async () => {
     try {
       setLoading(true);
+      analytics.capture('social_sign_in_started', { provider: 'google' });
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
@@ -131,6 +144,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const signInWithKakao = async () => {
     try {
       setLoading(true);
+      analytics.capture('social_sign_in_started', { provider: 'kakao' });
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'kakao',
         options: {
