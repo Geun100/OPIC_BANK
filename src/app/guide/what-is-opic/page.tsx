@@ -1,12 +1,13 @@
 // 가이드 1 — OPIc 시험 소개
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import { GuideArticle } from '@/components/guide-article';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/guide/what-is-opic', {
   title: 'OPIc(오픽)이란? 시험 소개',
   description:
     '오픽은 컴퓨터로 보는 영어 말하기 시험입니다. 토익스피킹과의 차이, 기업이 요구하는 이유까지 입문자 눈높이로 정리했습니다.',
-};
+});
 
 export default function Page() {
   return (

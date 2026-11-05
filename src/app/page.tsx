@@ -1,6 +1,7 @@
 // OPIC Bank 홈 — 6메뉴 라이브러리 카드 구조로 소프트 롤백(v4)
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import {
   HelpCircle,
   ListChecks,
@@ -13,11 +14,11 @@ import {
   ClipboardList,
 } from 'lucide-react';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/', {
   title: 'OPIC Bank(오픽뱅크) — 오픽 표현·질문 검색',
   description:
     '오픽뱅크(OPIC Bank)는 오픽 예상 질문·모범답안·표현을 한곳에 모아둔 사이트입니다. 오픽이 처음이라면 입문 가이드부터, 준비 중이라면 서베이 추천·질문·표현 라이브러리에서 필요한 것만 바로 찾아보세요.',
-};
+});
 
 const menus = [
   {

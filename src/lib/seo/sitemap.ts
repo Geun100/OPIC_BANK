@@ -1,8 +1,11 @@
 import { SitemapUrl, RobotsRule } from '@/types/seo';
 import { seoConfig } from './config';
-import { topicQAs } from '@/data/topic-qa';
-import { suddenQAs } from '@/data/sudden-qa';
-import { roleplayQAs } from '@/data/roleplay-qa';
+import { topicInfo } from '@/data/topic-qa';
+import { suddenTopicInfo } from '@/data/sudden-qa';
+import { roleplayTypeInfo } from '@/data/roleplay-qa';
+
+// 콘텐츠가 실제로 바뀐 마지막 날짜 — 요청 시각이 아니라 이 값을 lastmod·pubDate로 쓴다. 콘텐츠를 고칠 때만 갱신할 것.
+const CONTENT_UPDATED = new Date('2026-11-05T00:00:00Z');
 
 // 정적 페이지 URL들 — OPIC Bank 라우트
 const staticPages = [
@@ -32,18 +35,19 @@ const staticPages = [
   { url: '/about', priority: 0.3, changeFrequency: 'yearly' as const },
   { url: '/contact', priority: 0.3, changeFrequency: 'yearly' as const },
   { url: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
-  ...topicQAs.map((q) => ({
-    url: `/expressions/topics/${q.topic}/${q.cut}`,
+  // 주제 허브 — 개별 상세 URL은 301로 허브에 통합되어 sitemap에서 제외
+  ...Object.keys(topicInfo).map((topic) => ({
+    url: `/expressions/topics/${topic}`,
     priority: 0.7,
     changeFrequency: 'monthly' as const,
   })),
-  ...suddenQAs.map((q) => ({
-    url: `/questions/sudden/${q.topic}/${q.cut}`,
+  ...Object.keys(suddenTopicInfo).map((topic) => ({
+    url: `/questions/sudden/${topic}`,
     priority: 0.7,
     changeFrequency: 'monthly' as const,
   })),
-  ...roleplayQAs.map((q) => ({
-    url: `/questions/roleplay/${q.type}/${q.scenario}`,
+  ...Object.keys(roleplayTypeInfo).map((type) => ({
+    url: `/questions/roleplay/${type}`,
     priority: 0.7,
     changeFrequency: 'monthly' as const,
   })),
@@ -74,7 +78,7 @@ export const getDynamicPages = async (): Promise<SitemapUrl[]> => {
 export const generateSitemap = async (): Promise<string> => {
   const staticUrls: SitemapUrl[] = staticPages.map((page) => ({
     url: page.url,
-    lastModified: new Date(),
+    lastModified: CONTENT_UPDATED,
     priority: page.priority,
     changeFrequency: page.changeFrequency,
   }));
@@ -107,25 +111,23 @@ ${allUrls
 // RSS 피드 생성 — 질문/표현 상세 페이지를 아이템으로 노출해 검색엔진에 "꾸준히 업데이트되는 사이트"임을 알림
 export const generateRssFeed = (): string => {
   const items = [
-    ...topicQAs.map((q) => ({
-      title: q.question.en,
-      link: `/expressions/topics/${q.topic}/${q.cut}`,
-      description: q.question.ko,
+    ...Object.values(topicInfo).map((t) => ({
+      title: `오픽 ${t.name} 예상 질문과 모범답안`,
+      link: `/expressions/topics/${t.slug}`,
+      description: `${t.name} 주제의 묘사·습관·경험 질문과 모범답안`,
     })),
-    ...suddenQAs.map((q) => ({
-      title: q.question.en,
-      link: `/questions/sudden/${q.topic}/${q.cut}`,
-      description: q.question.ko,
+    ...Object.values(suddenTopicInfo).map((t) => ({
+      title: `오픽 돌발주제 ${t.name} 예상 질문과 모범답안`,
+      link: `/questions/sudden/${t.slug}`,
+      description: `돌발주제 ${t.name}의 묘사·습관·경험 질문과 모범답안`,
     })),
-    ...roleplayQAs.map((q) => ({
-      title: q.question.en,
-      link: `/questions/roleplay/${q.type}/${q.scenario}`,
-      description: q.question.ko,
+    ...Object.values(roleplayTypeInfo).map((t) => ({
+      title: `오픽 롤플레이 ${t.name} 예상 질문과 모범답안`,
+      link: `/questions/roleplay/${t.slug}`,
+      description: t.note,
     })),
   ];
 
-  // ponytail: 실제 발행일 데이터가 없어 콘텐츠 순서 기반으로 날짜를 역산해 배정
-  const now = Date.now();
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -136,12 +138,12 @@ export const generateRssFeed = (): string => {
     <atom:link href="${seoConfig.siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
 ${items
   .map(
-    (item, idx) => `    <item>
+    (item) => `    <item>
       <title><![CDATA[${item.title}]]></title>
       <link>${seoConfig.siteUrl}${item.link}</link>
       <guid>${seoConfig.siteUrl}${item.link}</guid>
       <description><![CDATA[${item.description}]]></description>
-      <pubDate>${new Date(now - idx * 3600 * 1000).toUTCString()}</pubDate>
+      <pubDate>${CONTENT_UPDATED.toUTCString()}</pubDate>
     </item>`,
   )
   .join('\n')}

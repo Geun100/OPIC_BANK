@@ -1,13 +1,14 @@
 // 가이드 3 — 등급 체계 설명
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import Link from 'next/link';
 import { GuideArticle } from '@/components/guide-article';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/guide/grades', {
   title: '오픽 등급 체계 — IM, IH, AL 차이',
   description:
     '오픽 등급이 어떻게 나뉘는지, IM·IH·AL이 각각 어떤 수준인지, 취업에는 보통 어떤 등급이 필요한지 정리했습니다.',
-};
+});
 
 const grades = [
   { grade: 'NL · NM · NH', level: 'Novice', desc: '단어·암기 문장 수준의 초보 단계' },

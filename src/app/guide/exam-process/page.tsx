@@ -1,12 +1,13 @@
 // 가이드 2 — 시험 진행 방식
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import { GuideArticle } from '@/components/guide-article';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/guide/exam-process', {
   title: '오픽 시험 진행 방식 — 40분 동안 일어나는 일',
   description:
     '백그라운드 서베이, 셀프 난이도 설정, 콤보 질문, 난이도 재조정까지. 오픽 시험이 실제로 어떻게 진행되는지 순서대로 설명합니다.',
-};
+});
 
 export default function Page() {
   return (

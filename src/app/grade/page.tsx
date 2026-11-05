@@ -1,5 +1,6 @@
 // AL·IH 표현집 — 목표 등급별 고득점 표현 탭
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   ihExpressions,
@@ -10,11 +11,11 @@ import {
 import type { Expression } from '@/data/expressions';
 import { SaveButton } from '@/components/save-button';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/grade', {
   title: '오픽 AL·IH 표현집 — 고득점 표현 모음',
   description:
     'IH 필수 표현, AL 고급 표현, 고득점 문장 패턴, 자연스러운 확장 표현. 목표 등급별로 골라 학습하세요.',
-};
+});
 
 function ExpressionList({ items }: { items: Expression[] }) {
   return (

@@ -1,10 +1,11 @@
 // 연락처 페이지 — 문의 안내
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/contact', {
   title: '연락처',
   description: 'OPIC Bank 운영자에게 문의하는 방법을 안내합니다.',
-};
+});
 
 export default function ContactPage() {
   return (

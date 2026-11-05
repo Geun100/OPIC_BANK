@@ -1,10 +1,11 @@
 // 개인정보처리방침 페이지
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/privacy', {
   title: '개인정보처리방침',
   description: 'OPIC Bank의 개인정보 수집·이용 및 쿠키·광고 정책을 안내합니다.',
-};
+});
 
 export default function PrivacyPage() {
   return (

@@ -1,10 +1,11 @@
 // 소개 페이지 — 사이트 운영 목적과 운영자 정보
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/about', {
   title: '소개',
   description: 'OPIC Bank는 오픽 표현과 예상 질문을 한곳에 모아둔 학습 아카이브입니다.',
-};
+});
 
 export default function AboutPage() {
   return (

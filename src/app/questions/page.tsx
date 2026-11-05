@@ -1,13 +1,14 @@
 // 질문 라이브러리 인덱스 — 콤보/돌발/경향/예상 4개 섹션 안내
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import { comboTopics, suddenTopics, roleplayTopics, expectedQuestions } from '@/data/questions';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/questions', {
   title: '오픽 질문 라이브러리 — 콤보·돌발 주제별 실전 질문',
   description:
     '오픽 콤보 주제와 돌발 주제별 실전 질문 모음. 최신 출제 경향과 고정 출제 예상 질문까지 정리했습니다.',
-};
+});
 
 export default function QuestionsIndex() {
   const cards = [

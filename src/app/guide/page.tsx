@@ -1,12 +1,13 @@
 // 입문 가이드 인덱스 — 3개 가이드 문서 안내
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/guide', {
   title: '오픽이 처음이라면? 입문 가이드',
   description:
     '오픽(OPIc)이 어떤 시험인지, 어떻게 진행되는지, IM·IH·AL 등급은 무엇인지. 처음 준비하는 사람을 위한 안내.',
-};
+});
 
 const docs = [
   {

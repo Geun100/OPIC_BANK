@@ -1,13 +1,14 @@
 // 표현 라이브러리 인덱스 — 5개 카테고리 안내
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import { expressionCategories } from '@/data/expressions';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/expressions', {
   title: '오픽 표현 라이브러리 — 주제별 표현·필러·만능 패턴',
   description:
     '오픽 답변에 바로 쓰는 표현 모음. 주제별 표현, 필러(Filler), 만능 문장 패턴, 감정 표현, 연결 표현을 예문과 함께 정리했습니다.',
-};
+});
 
 export default function ExpressionsIndex() {
   return (

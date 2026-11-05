@@ -1,5 +1,6 @@
 // 표현 카테고리 페이지 — 그룹별 표현 목록과 노트 저장 버튼
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { expressionCategories, getCategory } from '@/data/expressions';
@@ -38,10 +39,10 @@ export async function generateMetadata({
   const { category } = await params;
   const cat = getCategory(category);
   if (!cat) return {};
-  return {
+  return withSeo(`/expressions/${category}`, {
     title: `오픽 ${cat.name}`,
     description: `${cat.description}. 예문과 함께 정리한 오픽 실전 표현.`,
-  };
+  });
 }
 
 // AdSense 광고 단위 ID — 애드센스 승인 후 대시보드에서 발급받아 환경변수에 추가
@@ -77,7 +78,7 @@ export default async function ExpressionCategoryPage({
                       {(Object.keys(cutInfo) as CutKey[]).map((cut) => (
                         <Link
                           key={cut}
-                          href={`/expressions/topics/${topicSlug}/${cut}`}
+                          href={`/expressions/topics/${topicSlug}#${cut}`}
                           className="rounded-full border border-border px-3 py-1 text-[12px] text-muted-foreground transition-[border-color,color,transform] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-primary/40 hover:text-primary active:scale-95"
                         >
                           {cutInfo[cut].name} 답변

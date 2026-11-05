@@ -1,13 +1,14 @@
 // 오픽 TIP 페이지 — 암기 표현이 아닌 실전 전략/화법 팁 모음
 import type { Metadata } from 'next';
+import { withSeo } from '@/lib/seo/with-seo';
 import { tipGroups } from '@/data/tips';
 import { AdUnit } from '@/components/ads/AdUnit';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withSeo('/tips', {
   title: '오픽 TIP',
   description:
     '답변 구조, 자연스러운 화법, 서베이 전략, AI Practice(GPT 활용법), 시험 당일 팁까지 포함된 실전 오픽 전략 가이드.',
-};
+});
 
 // AdSense 광고 단위 ID — 애드센스 승인 후 환경변수에 추가
 const AD_SLOT = process.env.NEXT_PUBLIC_ADSENSE_SLOT_INFEED ?? '';
