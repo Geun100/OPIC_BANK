@@ -45,7 +45,6 @@ export default async function TopicHubPage({ params }: { params: Promise<{ topic
 
   return (
     <TopicHub
-      noteKey={`topics/${topic}`}
       backHref="/expressions/topics"
       backLabel="주제별 표현"
       eyebrow={`${info.name} · 묘사 / 습관 / 경험`}

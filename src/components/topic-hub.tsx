@@ -2,7 +2,6 @@
 import type { ComponentProps } from 'react';
 import Link from 'next/link';
 import { QAAnswerBlock } from '@/components/qa-answer-block';
-import { hubNotes } from '@/data/hub-notes';
 
 export type HubSection = {
   id: string;
@@ -14,7 +13,6 @@ export type HubSection = {
 };
 
 export function TopicHub({
-  noteKey,
   backHref,
   backLabel,
   eyebrow,
@@ -22,7 +20,6 @@ export function TopicHub({
   lead,
   sections,
 }: {
-  noteKey: string;
   backHref: string;
   backLabel: string;
   eyebrow: string;
@@ -30,7 +27,6 @@ export function TopicHub({
   lead: string;
   sections: HubSection[];
 }) {
-  const note = hubNotes[noteKey];
   // 섹션별 핵심 표현을 중복 없이 모아 한눈에 보는 표현 정리
   const allExpressions = Array.from(new Set(sections.flatMap((s) => s.qa.keyExpressions)));
 
@@ -54,44 +50,6 @@ export function TopicHub({
           </a>
         ))}
       </nav>
-
-      {note && (
-        <section className="mt-10 rounded-xl border border-border bg-card p-6">
-          <h2 className="text-[20px]">이 주제, 이렇게 준비하세요</h2>
-          {note.points && note.points.length > 0 && (
-            <div className="mt-4">
-              <h3 className="text-[15px] font-medium">자주 묻는 포인트</h3>
-              <ul className="mt-2 list-disc pl-5 text-[14px] text-muted-foreground">
-                {note.points.map((p) => (
-                  <li key={p}>{p}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {note.mistakes && note.mistakes.length > 0 && (
-            <div className="mt-4">
-              <h3 className="text-[15px] font-medium">흔한 실수</h3>
-              <ul className="mt-2 list-disc pl-5 text-[14px] text-muted-foreground">
-                {note.mistakes.map((m) => (
-                  <li key={m}>{m}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {note.survey && (
-            <div className="mt-4">
-              <h3 className="text-[15px] font-medium">서베이에서 고를 때</h3>
-              <p className="mt-2 text-[14px] text-muted-foreground">{note.survey}</p>
-            </div>
-          )}
-          {note.experience && (
-            <div className="mt-4">
-              <h3 className="text-[15px] font-medium">직접 본 시험에서는</h3>
-              <p className="mt-2 text-[14px] text-muted-foreground">{note.experience}</p>
-            </div>
-          )}
-        </section>
-      )}
 
       {sections.map((s) => (
         <section key={s.id} id={s.id} className="mt-14 scroll-mt-20">

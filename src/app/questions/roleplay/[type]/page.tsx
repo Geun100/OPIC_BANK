@@ -41,7 +41,6 @@ export default async function RoleplayHubPage({ params }: { params: Promise<{ ty
 
   return (
     <TopicHub
-      noteKey={`roleplay/${type}`}
       backHref="/questions/roleplay"
       backLabel="롤플레이"
       eyebrow={info.name}

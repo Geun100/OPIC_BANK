@@ -46,7 +46,6 @@ export default async function SuddenHubPage({ params }: { params: Promise<{ topi
 
   return (
     <TopicHub
-      noteKey={`sudden/${topic}`}
       backHref="/questions/sudden"
       backLabel="돌발 주제"
       eyebrow={`돌발 주제 · ${info.name}`}
